@@ -82,20 +82,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1EBA5CFD220ACCE4008C7AEE /* RiwayatDetail */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = RiwayatDetail;
-			sourceTree = "<group>";
-		};
-		1EBA5CFE220ACD2A008C7AEE /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		3C378128220ABC9F00225723 = {
 			isa = PBXGroup;
 			children = (
@@ -120,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				3C378168220ABFC500225723 /* RootTabBar */,
-				1EBA5CFE220ACD2A008C7AEE /* Utils */,
 				3C378134220ABC9F00225723 /* AppDelegate.swift */,
 				3C378136220ABC9F00225723 /* ViewController.swift */,
 				3C378138220ABC9F00225723 /* Main.storyboard */,
@@ -179,7 +164,6 @@
 		3C37816B220ABFDD00225723 /* Riwayat */ = {
 			isa = PBXGroup;
 			children = (
-				1EBA5CFD220ACCE4008C7AEE /* RiwayatDetail */,
 				3C37816E220AC01100225723 /* Riwayat.storyboard */,
 			);
 			path = Riwayat;
@@ -513,7 +497,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9NK5K8792B;
+				DEVELOPMENT_TEAM = 6QR34RC9H5;
 				INFOPLIST_FILE = "final challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -531,7 +515,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9NK5K8792B;
+				DEVELOPMENT_TEAM = 6QR34RC9H5;
 				INFOPLIST_FILE = "final challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
