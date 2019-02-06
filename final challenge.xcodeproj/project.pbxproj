@@ -82,13 +82,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1EBA5CFF220ACF60008C7AEE /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		3C378128220ABC9F00225723 = {
 			isa = PBXGroup;
 			children = (
@@ -113,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				3C378168220ABFC500225723 /* RootTabBar */,
-				1EBA5CFF220ACF60008C7AEE /* Utils */,
 				3C378134220ABC9F00225723 /* AppDelegate.swift */,
 				3C378136220ABC9F00225723 /* ViewController.swift */,
 				3C378138220ABC9F00225723 /* Main.storyboard */,
