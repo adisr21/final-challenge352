@@ -92,7 +92,6 @@
 			isa = PBXGroup;
 			children = (
 				1EB5D3D7220AD0B9000A5C44 /* AlvaTesting.swift */,
-				1ED368F6220AD9C0000A086A /* FuncAndStuffs.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -100,59 +99,6 @@
 		1ED3687D220AD959000A086A /* font */ = {
 			isa = PBXGroup;
 			children = (
-				1ED3687E220AD959000A086A /* SFCompactDisplay-Heavy.otf */,
-				1ED3687F220AD959000A086A /* SFCompactText-Medium.otf */,
-				1ED36880220AD959000A086A /* SF-Pro-Display-Thin.otf */,
-				1ED36881220AD959000A086A /* SF-Pro-Display-SemiboldItalic.otf */,
-				1ED36882220AD959000A086A /* SF-Pro-Text-Heavy.otf */,
-				1ED36883220AD959000A086A /* SFCompactText-SemiboldItalic.otf */,
-				1ED36884220AD959000A086A /* SF-Pro-Display-RegularItalic.otf */,
-				1ED36885220AD959000A086A /* SF-Pro-Display-Light.otf */,
-				1ED36886220AD959000A086A /* SF-Pro-Display-Regular.otf */,
-				1ED36887220AD959000A086A /* SF-Pro-Text-MediumItalic.otf */,
-				1ED36888220AD959000A086A /* SF-Pro-Display-Bold.otf */,
-				1ED36889220AD959000A086A /* SF-Pro-Display-Medium.otf */,
-				1ED3688A220AD959000A086A /* SF-Pro-Display-Heavy.otf */,
-				1ED3688B220AD959000A086A /* SFCompactDisplay-Light.otf */,
-				1ED3688C220AD959000A086A /* SFCompactText-Regular.otf */,
-				1ED3688D220AD959000A086A /* SFCompactText-BoldItalic.otf */,
-				1ED3688E220AD959000A086A /* SFCompactDisplay-Semibold.otf */,
-				1ED3688F220AD959000A086A /* SF-Pro-Text-Light.otf */,
-				1ED36890220AD959000A086A /* SF-Pro-Display-Semibold.otf */,
-				1ED36891220AD959000A086A /* SFCompactDisplay-Medium.otf */,
-				1ED36892220AD959000A086A /* SFCompactDisplay-Black.otf */,
-				1ED36893220AD959000A086A /* SF-Pro-Text-Regular.otf */,
-				1ED36894220AD959000A086A /* SFCompactDisplay-Regular.otf */,
-				1ED36895220AD959000A086A /* SF-Pro-Text-Bold.otf */,
-				1ED36896220AD959000A086A /* SF-Pro-Display-MediumItalic.otf */,
-				1ED36897220AD959000A086A /* SFCompactText-MediumItalic.otf */,
-				1ED36898220AD959000A086A /* SF-Pro-Display-HeavyItalic.otf */,
-				1ED36899220AD959000A086A /* SFCompactText-Semibold.otf */,
-				1ED3689A220AD959000A086A /* SFCompactText-RegularItalic.otf */,
-				1ED3689B220AD959000A086A /* SFCompactText-Light.otf */,
-				1ED3689C220AD959000A086A /* SF-Pro-Display-Ultralight.otf */,
-				1ED3689D220AD959000A086A /* SF-Pro-Display-UltralightItalic.otf */,
-				1ED3689E220AD959000A086A /* SF-Pro-Display-LightItalic.otf */,
-				1ED3689F220AD959000A086A /* SFCompactDisplay-Bold.otf */,
-				1ED368A0220AD959000A086A /* SFCompactText-Bold.otf */,
-				1ED368A1220AD959000A086A /* SF-Pro-Display-BlackItalic.otf */,
-				1ED368A2220AD959000A086A /* SF-Pro-Display-Black.otf */,
-				1ED368A3220AD959000A086A /* SFCompactDisplay-Ultralight.otf */,
-				1ED368A4220AD959000A086A /* SFCompactText-Heavy.otf */,
-				1ED368A5220AD959000A086A /* SF-Pro-Text-BoldItalic.otf */,
-				1ED368A6220AD959000A086A /* SF-Pro-Text-RegularItalic.otf */,
-				1ED368A7220AD959000A086A /* SF-Pro-Text-Semibold.otf */,
-				1ED368A8220AD959000A086A /* SFCompactText-HeavyItalic.otf */,
-				1ED368A9220AD959000A086A /* SF-Pro-Text-HeavyItalic.otf */,
-				1ED368AA220AD959000A086A /* SF-Pro-Display-ThinItalic.otf */,
-				1ED368AB220AD959000A086A /* SF-Pro-Text-LightItalic.otf */,
-				1ED368AC220AD959000A086A /* SFCompactText-LightItalic.otf */,
-				1ED368AD220AD959000A086A /* SF-Pro-Text-Medium.otf */,
-				1ED368AE220AD959000A086A /* gilroy-light.otf */,
-				1ED368AF220AD959000A086A /* gilroy-extrabold.otf */,
-				1ED368B0220AD959000A086A /* SFCompactDisplay-Thin.otf */,
-				1ED368B1220AD959000A086A /* SF-Pro-Display-BoldItalic.otf */,
-				1ED368B2220AD959000A086A /* SF-Pro-Text-SemiboldItalic.otf */,
 			);
 			path = font;
 			sourceTree = "<group>";
@@ -164,6 +110,7 @@
 				3C37814B220ABC9F00225723 /* final challengeTests */,
 				3C378156220ABC9F00225723 /* final challengeUITests */,
 				3C378132220ABC9F00225723 /* Products */,
+				3CDBC91F220ADE86001877C1 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -226,8 +173,6 @@
 			isa = PBXGroup;
 			children = (
 				3C378165220ABFBC00225723 /* Pelajaran.storyboard */,
-				1ED368F0220AD989000A086A /* LessonVC.swift */,
-				1ED368F1220AD989000A086A /* TopicViewController.swift */,
 			);
 			path = Pelajaran;
 			sourceTree = "<group>";
@@ -245,12 +190,16 @@
 			isa = PBXGroup;
 			children = (
 				3C37816E220AC01100225723 /* Riwayat.storyboard */,
-				1ED368E8220AD974000A086A /* DateTableViewCell.swift */,
-				1ED368EB220AD974000A086A /* HistoryDetail.swift */,
-				1ED368EA220AD974000A086A /* HistoryViewController.swift */,
-				1ED368E9220AD974000A086A /* LabelTableViewCell.swift */,
 			);
 			path = Riwayat;
+			sourceTree = "<group>";
+		};
+		3CDBC91F220ADE86001877C1 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				3C06BCCE220AD92800455D9C /* Helpers.swift */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,64 +306,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1ED368C0220AD959000A086A /* SFCompactDisplay-Light.otf in Resources */,
-				1ED368D8220AD959000A086A /* SFCompactDisplay-Ultralight.otf in Resources */,
-				1ED368E6220AD959000A086A /* SF-Pro-Display-BoldItalic.otf in Resources */,
-				1ED368D5220AD959000A086A /* SFCompactText-Bold.otf in Resources */,
-				1ED368BC220AD959000A086A /* SF-Pro-Text-MediumItalic.otf in Resources */,
-				1ED368C4220AD959000A086A /* SF-Pro-Text-Light.otf in Resources */,
-				1ED368BA220AD959000A086A /* SF-Pro-Display-Light.otf in Resources */,
-				1ED368CF220AD959000A086A /* SFCompactText-RegularItalic.otf in Resources */,
-				1ED368D3220AD959000A086A /* SF-Pro-Display-LightItalic.otf in Resources */,
-				1ED368E2220AD959000A086A /* SF-Pro-Text-Medium.otf in Resources */,
-				1ED368CE220AD959000A086A /* SFCompactText-Semibold.otf in Resources */,
-				1ED368CD220AD959000A086A /* SF-Pro-Display-HeavyItalic.otf in Resources */,
-				1ED368D2220AD959000A086A /* SF-Pro-Display-UltralightItalic.otf in Resources */,
-				1ED368B8220AD959000A086A /* SFCompactText-SemiboldItalic.otf in Resources */,
-				1ED368BF220AD959000A086A /* SF-Pro-Display-Heavy.otf in Resources */,
-				1ED368D7220AD959000A086A /* SF-Pro-Display-Black.otf in Resources */,
-				1ED368E3220AD959000A086A /* gilroy-light.otf in Resources */,
-				1ED368C8220AD959000A086A /* SF-Pro-Text-Regular.otf in Resources */,
 				3C378142220ABC9F00225723 /* LaunchScreen.storyboard in Resources */,
 				3C378167220ABFBC00225723 /* Pelajaran.storyboard in Resources */,
-				1ED368E4220AD959000A086A /* gilroy-extrabold.otf in Resources */,
-				1ED368B9220AD959000A086A /* SF-Pro-Display-RegularItalic.otf in Resources */,
-				1ED368DA220AD959000A086A /* SF-Pro-Text-BoldItalic.otf in Resources */,
-				1ED368DF220AD959000A086A /* SF-Pro-Display-ThinItalic.otf in Resources */,
-				1ED368C2220AD959000A086A /* SFCompactText-BoldItalic.otf in Resources */,
-				1ED368DD220AD959000A086A /* SFCompactText-HeavyItalic.otf in Resources */,
-				1ED368E0220AD959000A086A /* SF-Pro-Text-LightItalic.otf in Resources */,
-				1ED368CB220AD959000A086A /* SF-Pro-Display-MediumItalic.otf in Resources */,
-				1ED368E5220AD959000A086A /* SFCompactDisplay-Thin.otf in Resources */,
-				1ED368BE220AD959000A086A /* SF-Pro-Display-Medium.otf in Resources */,
-				1ED368DE220AD959000A086A /* SF-Pro-Text-HeavyItalic.otf in Resources */,
-				1ED368B5220AD959000A086A /* SF-Pro-Display-Thin.otf in Resources */,
-				1ED368DB220AD959000A086A /* SF-Pro-Text-RegularItalic.otf in Resources */,
-				1ED368B7220AD959000A086A /* SF-Pro-Text-Heavy.otf in Resources */,
-				1ED368D4220AD959000A086A /* SFCompactDisplay-Bold.otf in Resources */,
-				1ED368E7220AD959000A086A /* SF-Pro-Text-SemiboldItalic.otf in Resources */,
-				1ED368B4220AD959000A086A /* SFCompactText-Medium.otf in Resources */,
-				1ED368C6220AD959000A086A /* SFCompactDisplay-Medium.otf in Resources */,
-				1ED368D1220AD959000A086A /* SF-Pro-Display-Ultralight.otf in Resources */,
-				1ED368B6220AD959000A086A /* SF-Pro-Display-SemiboldItalic.otf in Resources */,
-				1ED368B3220AD959000A086A /* SFCompactDisplay-Heavy.otf in Resources */,
-				1ED368C9220AD959000A086A /* SFCompactDisplay-Regular.otf in Resources */,
-				1ED368C1220AD959000A086A /* SFCompactText-Regular.otf in Resources */,
-				1ED368E1220AD959000A086A /* SFCompactText-LightItalic.otf in Resources */,
 				3C37813F220ABC9F00225723 /* Assets.xcassets in Resources */,
-				1ED368C3220AD959000A086A /* SFCompactDisplay-Semibold.otf in Resources */,
 				3C37813A220ABC9F00225723 /* Main.storyboard in Resources */,
-				1ED368DC220AD959000A086A /* SF-Pro-Text-Semibold.otf in Resources */,
 				3C378170220AC01100225723 /* Riwayat.storyboard in Resources */,
-				1ED368BD220AD959000A086A /* SF-Pro-Display-Bold.otf in Resources */,
-				1ED368C5220AD959000A086A /* SF-Pro-Display-Semibold.otf in Resources */,
-				1ED368CA220AD959000A086A /* SF-Pro-Text-Bold.otf in Resources */,
-				1ED368C7220AD959000A086A /* SFCompactDisplay-Black.otf in Resources */,
-				1ED368D6220AD959000A086A /* SF-Pro-Display-BlackItalic.otf in Resources */,
-				1ED368D9220AD959000A086A /* SFCompactText-Heavy.otf in Resources */,
-				1ED368D0220AD959000A086A /* SFCompactText-Light.otf in Resources */,
-				1ED368BB220AD959000A086A /* SF-Pro-Display-Regular.otf in Resources */,
-				1ED368CC220AD959000A086A /* SFCompactText-MediumItalic.otf in Resources */,
 				3C37816D220ABFFA00225723 /* Latihan.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,14 +339,8 @@
 				3C06BCCD220AD8B600455D9C /* RecordVC.swift in Sources */,
 				3C06BCCF220AD92800455D9C /* Helpers.swift in Sources */,
 				3C378137220ABC9F00225723 /* ViewController.swift in Sources */,
-				1ED368ED220AD974000A086A /* LabelTableViewCell.swift in Sources */,
-				1ED368EF220AD974000A086A /* HistoryDetail.swift in Sources */,
-				1ED368F2220AD989000A086A /* LessonVC.swift in Sources */,
 				3C378135220ABC9F00225723 /* AppDelegate.swift in Sources */,
 				1EB5D3D8220AD0B9000A5C44 /* AlvaTesting.swift in Sources */,
-				1ED368F7220AD9C1000A086A /* FuncAndStuffs.swift in Sources */,
-				1ED368EE220AD974000A086A /* HistoryViewController.swift in Sources */,
-				1ED368F3220AD989000A086A /* TopicViewController.swift in Sources */,
 				3C37813D220ABC9F00225723 /* final_challenge.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -643,7 +533,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9NK5K8792B;
+				DEVELOPMENT_TEAM = 6QR34RC9H5;
 				INFOPLIST_FILE = "final challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -661,7 +551,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 9NK5K8792B;
+				DEVELOPMENT_TEAM = 6QR34RC9H5;
 				INFOPLIST_FILE = "final challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
