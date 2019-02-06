@@ -15,6 +15,9 @@
 		3C378142220ABC9F00225723 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C378140220ABC9F00225723 /* LaunchScreen.storyboard */; };
 		3C37814D220ABC9F00225723 /* final_challengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C37814C220ABC9F00225723 /* final_challengeTests.swift */; };
 		3C378158220ABC9F00225723 /* final_challengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C378157220ABC9F00225723 /* final_challengeUITests.swift */; };
+		3C378167220ABFBC00225723 /* Pelajaran.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C378165220ABFBC00225723 /* Pelajaran.storyboard */; };
+		3C37816D220ABFFA00225723 /* Latihan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C37816C220ABFFA00225723 /* Latihan.storyboard */; };
+		3C378170220AC01100225723 /* Riwayat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C37816E220AC01100225723 /* Riwayat.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		3C378153220ABC9F00225723 /* final challengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "final challengeUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C378157220ABC9F00225723 /* final_challengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = final_challengeUITests.swift; sourceTree = "<group>"; };
 		3C378159220ABC9F00225723 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3C378166220ABFBC00225723 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "final challenge/Base.lproj/Pelajaran.storyboard"; sourceTree = "<group>"; };
+		3C37816C220ABFFA00225723 /* Latihan.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Latihan.storyboard; sourceTree = "<group>"; };
+		3C37816F220AC01100225723 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "final challenge/Base.lproj/Riwayat.storyboard"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +105,7 @@
 		3C378133220ABC9F00225723 /* final challenge */ = {
 			isa = PBXGroup;
 			children = (
+				3C378168220ABFC500225723 /* RootTabBar */,
 				3C378134220ABC9F00225723 /* AppDelegate.swift */,
 				3C378136220ABC9F00225723 /* ViewController.swift */,
 				3C378138220ABC9F00225723 /* Main.storyboard */,
@@ -126,6 +133,40 @@
 				3C378159220ABC9F00225723 /* Info.plist */,
 			);
 			path = "final challengeUITests";
+			sourceTree = "<group>";
+		};
+		3C378168220ABFC500225723 /* RootTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				3C37816B220ABFDD00225723 /* Riwayat */,
+				3C37816A220ABFD800225723 /* Latihan */,
+				3C378169220ABFD100225723 /* Pelajaran */,
+			);
+			path = RootTabBar;
+			sourceTree = "<group>";
+		};
+		3C378169220ABFD100225723 /* Pelajaran */ = {
+			isa = PBXGroup;
+			children = (
+				3C378165220ABFBC00225723 /* Pelajaran.storyboard */,
+			);
+			path = Pelajaran;
+			sourceTree = "<group>";
+		};
+		3C37816A220ABFD800225723 /* Latihan */ = {
+			isa = PBXGroup;
+			children = (
+				3C37816C220ABFFA00225723 /* Latihan.storyboard */,
+			);
+			path = Latihan;
+			sourceTree = "<group>";
+		};
+		3C37816B220ABFDD00225723 /* Riwayat */ = {
+			isa = PBXGroup;
+			children = (
+				3C37816E220AC01100225723 /* Riwayat.storyboard */,
+			);
+			path = Riwayat;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,8 +274,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				3C378142220ABC9F00225723 /* LaunchScreen.storyboard in Resources */,
+				3C378167220ABFBC00225723 /* Pelajaran.storyboard in Resources */,
 				3C37813F220ABC9F00225723 /* Assets.xcassets in Resources */,
 				3C37813A220ABC9F00225723 /* Main.storyboard in Resources */,
+				3C378170220AC01100225723 /* Riwayat.storyboard in Resources */,
+				3C37816D220ABFFA00225723 /* Latihan.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +355,22 @@
 				3C378141220ABC9F00225723 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		3C378165220ABFBC00225723 /* Pelajaran.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3C378166220ABFBC00225723 /* Base */,
+			);
+			name = Pelajaran.storyboard;
+			sourceTree = "<group>";
+		};
+		3C37816E220AC01100225723 /* Riwayat.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3C37816F220AC01100225723 /* Base */,
+			);
+			name = Riwayat.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
