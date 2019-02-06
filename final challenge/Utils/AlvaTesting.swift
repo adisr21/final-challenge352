@@ -11,7 +11,7 @@ import Foundation
 
 class AlvaAj {
     init() {
-        
+        let alva = 10
     }
 }
 
