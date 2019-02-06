@@ -115,8 +115,8 @@
 		3C378133220ABC9F00225723 /* final challenge */ = {
 			isa = PBXGroup;
 			children = (
-				1EB5D3D6220AD074000A5C44 /* Utils */,
 				3C378168220ABFC500225723 /* RootTabBar */,
+				1EB5D3D6220AD074000A5C44 /* Utils */,
 				3C378134220ABC9F00225723 /* AppDelegate.swift */,
 				3C378136220ABC9F00225723 /* ViewController.swift */,
 				3C378138220ABC9F00225723 /* Main.storyboard */,
