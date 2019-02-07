@@ -59,9 +59,9 @@ class LessonVC: UITableViewController {
         navigationController?.navigationBar.barTintColor = UIColor.black
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         navigationController?.navigationBar.titleTextAttributes=[NSAttributedString.Key.foregroundColor:UIColor.orange]
-        navigationController?.navigationBar.tintColor=UIColor.orange
-        tabBarController?.tabBar.barTintColor=UIColor.black
-        tabBarController?.tabBar.tintColor=UIColor.orange
+        navigationController?.navigationBar.tintColor = UIColor.orange
+        tabBarController?.tabBar.barTintColor = UIColor.black
+        tabBarController?.tabBar.tintColor = UIColor.orange
         self.tableView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         
     }
