@@ -62,7 +62,7 @@ class LessonVC: UITableViewController {
         navigationController?.navigationBar.tintColor = UIColor.orange
         tabBarController?.tabBar.barTintColor = UIColor.black
         tabBarController?.tabBar.tintColor = UIColor.orange
-        self.tableView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        self.tableView.backgroundColor = .black
         
     }
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
