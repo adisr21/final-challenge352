@@ -67,7 +67,6 @@
 		1EF1D64A220BD64D00EF8BAB /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1EF1D615220BD64D00EF8BAB /* SF-Pro-Display-Semibold.otf */; };
 		1EF1D64B220BD64D00EF8BAB /* SF-Pro-Display-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1EF1D616220BD64D00EF8BAB /* SF-Pro-Display-RegularItalic.otf */; };
 		1EF1D64D220BD89600EF8BAB /* TopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF1D64C220BD89600EF8BAB /* TopicViewController.swift */; };
-		1EF1D64F220BEBE500EF8BAB /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF1D64E220BEBE500EF8BAB /* RootTabBarViewController.swift */; };
 		3C06BCCD220AD8B600455D9C /* RecordingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C06BCCC220AD8B600455D9C /* RecordingVC.swift */; };
 		3C31E69A220AE3AB00E33910 /* FuncAndStuffs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31E698220AE3AA00E33910 /* FuncAndStuffs.swift */; };
 		3C31E69B220AE3AB00E33910 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31E699220AE3AA00E33910 /* Helpers.swift */; };
@@ -371,9 +370,9 @@
 			children = (
 				3C37816E220AC01100225723 /* Riwayat.storyboard */,
 				1EF1D5D8220BD52600EF8BAB /* DateTableViewCell.swift */,
-				1EF1D5D9220BD52700EF8BAB /* HistoryDetail.swift */,
 				1EF1D5DA220BD52700EF8BAB /* HistoryViewController.swift */,
 				1EF1D5DB220BD52700EF8BAB /* LabelTableViewCell.swift */,
+				1EF1D5D9220BD52700EF8BAB /* HistoryDetail.swift */,
 			);
 			path = Riwayat;
 			sourceTree = "<group>";
