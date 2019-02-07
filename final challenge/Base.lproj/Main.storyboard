@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Root Tab Bar View Controller-->
+        <!--Tab Bar Controller-->
         <scene sceneID="ydG-0q-hqi">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="GlC-TB-BMA" customClass="RootTabBarViewController" customModule="final_challenge" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="GlC-TB-BMA" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xQ5-va-VCC">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -20,9 +20,9 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Je3-d9-TMc" kind="relationship" relationship="viewControllers" id="Bhs-mA-QjZ"/>
                         <segue destination="h97-y3-Z5F" kind="relationship" relationship="viewControllers" id="TWE-zg-aro"/>
                         <segue destination="S1Z-u9-8VV" kind="relationship" relationship="viewControllers" id="Z8x-4M-xgw"/>
+                        <segue destination="Je3-d9-TMc" kind="relationship" relationship="viewControllers" id="Bhs-mA-QjZ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C7m-2t-nna" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -33,7 +33,7 @@
         <scene sceneID="jvq-il-E24">
             <objects>
                 <viewControllerPlaceholder storyboardName="Pelajaran" id="Je3-d9-TMc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="a7J-BQ-0TR"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="a7J-BQ-0TR"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ME2-LK-ZkC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -43,7 +43,7 @@
         <scene sceneID="ItR-BU-mLZ">
             <objects>
                 <viewControllerPlaceholder storyboardName="Latihan" id="h97-y3-Z5F" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" image="record" id="ooP-TM-6WI"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="ooP-TM-6WI"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rNG-9B-c55" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -53,14 +53,11 @@
         <scene sceneID="QVm-0c-Tca">
             <objects>
                 <viewControllerPlaceholder storyboardName="Riwayat" id="S1Z-u9-8VV" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="history" id="VKs-hS-j8j"/>
+                    <tabBarItem key="tabBarItem" title="Item" id="VKs-hS-j8j"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dBx-7g-oYB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1074" y="559"/>
+            <point key="canvasLocation" x="1076" y="860"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="record" width="64" height="64"/>
-    </resources>
 </document>
