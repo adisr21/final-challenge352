@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1EB5D3D8220AD0B9000A5C44 /* AlvaTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB5D3D7220AD0B9000A5C44 /* AlvaTesting.swift */; };
+		1EF1D5DC220BD52700EF8BAB /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF1D5D8220BD52600EF8BAB /* DateTableViewCell.swift */; };
+		1EF1D5DD220BD52700EF8BAB /* HistoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF1D5D9220BD52700EF8BAB /* HistoryDetail.swift */; };
+		1EF1D5DE220BD52700EF8BAB /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF1D5DA220BD52700EF8BAB /* HistoryViewController.swift */; };
+		1EF1D5DF220BD52700EF8BAB /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF1D5DB220BD52700EF8BAB /* LabelTableViewCell.swift */; };
+		1EF1D5E1220BD54400EF8BAB /* LessonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF1D5E0220BD54400EF8BAB /* LessonVC.swift */; };
 		3C06BCCD220AD8B600455D9C /* RecordingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C06BCCC220AD8B600455D9C /* RecordingVC.swift */; };
 		3C31E69A220AE3AB00E33910 /* FuncAndStuffs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31E698220AE3AA00E33910 /* FuncAndStuffs.swift */; };
 		3C31E69B220AE3AB00E33910 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31E699220AE3AA00E33910 /* Helpers.swift */; };
@@ -43,6 +48,11 @@
 
 /* Begin PBXFileReference section */
 		1EB5D3D7220AD0B9000A5C44 /* AlvaTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlvaTesting.swift; sourceTree = "<group>"; };
+		1EF1D5D8220BD52600EF8BAB /* DateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
+		1EF1D5D9220BD52700EF8BAB /* HistoryDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDetail.swift; sourceTree = "<group>"; };
+		1EF1D5DA220BD52700EF8BAB /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		1EF1D5DB220BD52700EF8BAB /* LabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
+		1EF1D5E0220BD54400EF8BAB /* LessonVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LessonVC.swift; sourceTree = "<group>"; };
 		3C06BCCC220AD8B600455D9C /* RecordingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingVC.swift; sourceTree = "<group>"; };
 		3C31E698220AE3AA00E33910 /* FuncAndStuffs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuncAndStuffs.swift; sourceTree = "<group>"; };
 		3C31E699220AE3AA00E33910 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
@@ -177,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				3C378165220ABFBC00225723 /* Pelajaran.storyboard */,
+				1EF1D5E0220BD54400EF8BAB /* LessonVC.swift */,
 			);
 			path = Pelajaran;
 			sourceTree = "<group>";
@@ -194,6 +205,10 @@
 			isa = PBXGroup;
 			children = (
 				3C37816E220AC01100225723 /* Riwayat.storyboard */,
+				1EF1D5D8220BD52600EF8BAB /* DateTableViewCell.swift */,
+				1EF1D5D9220BD52700EF8BAB /* HistoryDetail.swift */,
+				1EF1D5DA220BD52700EF8BAB /* HistoryViewController.swift */,
+				1EF1D5DB220BD52700EF8BAB /* LabelTableViewCell.swift */,
 			);
 			path = Riwayat;
 			sourceTree = "<group>";
@@ -341,10 +356,15 @@
 			files = (
 				3C06BCCD220AD8B600455D9C /* RecordingVC.swift in Sources */,
 				3C31E69B220AE3AB00E33910 /* Helpers.swift in Sources */,
+				1EF1D5DD220BD52700EF8BAB /* HistoryDetail.swift in Sources */,
+				1EF1D5DE220BD52700EF8BAB /* HistoryViewController.swift in Sources */,
 				3C378137220ABC9F00225723 /* ViewController.swift in Sources */,
+				1EF1D5DF220BD52700EF8BAB /* LabelTableViewCell.swift in Sources */,
+				1EF1D5DC220BD52700EF8BAB /* DateTableViewCell.swift in Sources */,
 				3C31E69A220AE3AB00E33910 /* FuncAndStuffs.swift in Sources */,
 				3C378135220ABC9F00225723 /* AppDelegate.swift in Sources */,
 				1EB5D3D8220AD0B9000A5C44 /* AlvaTesting.swift in Sources */,
+				1EF1D5E1220BD54400EF8BAB /* LessonVC.swift in Sources */,
 				3C37813D220ABC9F00225723 /* final_challenge.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
