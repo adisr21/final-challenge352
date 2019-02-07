@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Root Tab Bar View Controller-->
         <scene sceneID="ydG-0q-hqi">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="GlC-TB-BMA" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="GlC-TB-BMA" customClass="RootTabBarViewController" customModule="final_challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xQ5-va-VCC">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -43,7 +43,7 @@
         <scene sceneID="ItR-BU-mLZ">
             <objects>
                 <viewControllerPlaceholder storyboardName="Latihan" id="h97-y3-Z5F" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="ooP-TM-6WI"/>
+                    <tabBarItem key="tabBarItem" image="record" id="ooP-TM-6WI"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rNG-9B-c55" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -60,4 +60,7 @@
             <point key="canvasLocation" x="1074" y="559"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="record" width="64" height="64"/>
+    </resources>
 </document>
