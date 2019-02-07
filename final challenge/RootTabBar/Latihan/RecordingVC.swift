@@ -349,7 +349,6 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
                     self.konten = result?.bestTranscription.formattedString
                     isFinal = (result?.isFinal)!
                     self.getWordsCount(kntn: self.konten)
-                    print("konten: \(self.konten)")
                 }
                 
                 if error != nil || isFinal {
