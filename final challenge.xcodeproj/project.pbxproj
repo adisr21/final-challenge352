@@ -69,6 +69,7 @@
 		1EF1D64A220BD64D00EF8BAB /* SF-Pro-Display-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1EF1D615220BD64D00EF8BAB /* SF-Pro-Display-Semibold.otf */; };
 		1EF1D64B220BD64D00EF8BAB /* SF-Pro-Display-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1EF1D616220BD64D00EF8BAB /* SF-Pro-Display-RegularItalic.otf */; };
 		1EF1D64D220BD89600EF8BAB /* TopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF1D64C220BD89600EF8BAB /* TopicViewController.swift */; };
+		1EF1D64F220BEBE500EF8BAB /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF1D64E220BEBE500EF8BAB /* RootTabBarViewController.swift */; };
 		3C06BCCD220AD8B600455D9C /* RecordingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C06BCCC220AD8B600455D9C /* RecordingVC.swift */; };
 		3C31E69A220AE3AB00E33910 /* FuncAndStuffs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31E698220AE3AA00E33910 /* FuncAndStuffs.swift */; };
 		3C31E69B220AE3AB00E33910 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C31E699220AE3AA00E33910 /* Helpers.swift */; };
@@ -165,6 +166,7 @@
 		1EF1D615220BD64D00EF8BAB /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
 		1EF1D616220BD64D00EF8BAB /* SF-Pro-Display-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-RegularItalic.otf"; sourceTree = "<group>"; };
 		1EF1D64C220BD89600EF8BAB /* TopicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopicViewController.swift; sourceTree = "<group>"; };
+		1EF1D64E220BEBE500EF8BAB /* RootTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabBarViewController.swift; sourceTree = "<group>"; };
 		3C06BCCC220AD8B600455D9C /* RecordingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingVC.swift; sourceTree = "<group>"; };
 		3C31E698220AE3AA00E33910 /* FuncAndStuffs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FuncAndStuffs.swift; sourceTree = "<group>"; };
 		3C31E699220AE3AA00E33910 /* Helpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
@@ -351,6 +353,7 @@
 		3C378168220ABFC500225723 /* RootTabBar */ = {
 			isa = PBXGroup;
 			children = (
+				1EF1D64E220BEBE500EF8BAB /* RootTabBarViewController.swift */,
 				3C37816B220ABFDD00225723 /* Riwayat */,
 				3C37816A220ABFD800225723 /* Latihan */,
 				3C378169220ABFD100225723 /* Pelajaran */,
@@ -789,7 +792,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LDH88D8FCY;
+				DEVELOPMENT_TEAM = 6QR34RC9H5;
 				INFOPLIST_FILE = "final challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -807,7 +810,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LDH88D8FCY;
+				DEVELOPMENT_TEAM = 6QR34RC9H5;
 				INFOPLIST_FILE = "final challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
