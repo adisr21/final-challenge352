@@ -13,9 +13,6 @@
         <array key="SF-Pro-Display-Medium.otf">
             <string>SFProDisplay-Medium</string>
         </array>
-        <array key="SF-Pro-Text-Medium.otf">
-            <string>SFProText-Medium</string>
-        </array>
         <array key="SF-Pro-Text-Regular.otf">
             <string>SFProText-Regular</string>
         </array>
@@ -24,7 +21,7 @@
         <!--History Detail-->
         <scene sceneID="i3f-gU-7rk">
             <objects>
-                <viewController id="fyE-Zl-eAh" customClass="HistoryDetail" customModule="spiki" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fyE-Zl-eAh" customClass="HistoryDetail" customModule="final_challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WFq-TJ-I0f">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -39,13 +36,13 @@
         <!--History-->
         <scene sceneID="49a-fo-73i">
             <objects>
-                <tableViewController id="av0-Fa-rCz" userLabel="History" customClass="HistoryViewController" customModule="spiki" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="av0-Fa-rCz" userLabel="History" customClass="HistoryViewController" customModule="final_challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fLd-XM-xIQ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCellDetail" textLabel="ers-xk-Xii" detailTextLabel="5I6-9J-V9F" style="IBUITableViewCellStyleValue1" id="rkC-D9-I6z" customClass="DateTableViewCell" customModule="spiki" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="HistoryCellDetail" textLabel="ers-xk-Xii" detailTextLabel="5I6-9J-V9F" style="IBUITableViewCellStyleValue1" id="rkC-D9-I6z" customClass="DateTableViewCell" customModule="final_challenge" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rkC-D9-I6z" id="tk0-F0-k2c">
@@ -53,14 +50,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" tag="104" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="datedatedatedate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ers-xk-Xii">
-                                            <rect key="frame" x="16" y="38" width="154" height="24"/>
+                                            <rect key="frame" x="16" y="39" width="158.66666666666666" height="23.333333333333332"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="20"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" tag="105" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="berapaX" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5I6-9J-V9F">
-                                            <rect key="frame" x="287.66666666666669" y="40" width="71.333333333333329" height="21.666666666666668"/>
+                                            <rect key="frame" x="291.33333333333331" y="41" width="67.666666666666671" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="18"/>
                                             <nil key="textColor"/>
@@ -73,7 +70,7 @@
                                     <outlet property="dateLabel" destination="ers-xk-Xii" id="brf-yi-Okl"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="LabelCell" rowHeight="100" id="uYS-cQ-Zcj" customClass="LabelTableViewCell" customModule="spiki" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="LabelCell" rowHeight="100" id="uYS-cQ-Zcj" customClass="LabelTableViewCell" customModule="final_challenge" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="128" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uYS-cQ-Zcj" id="JKX-Rz-L6E">
@@ -83,7 +80,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="recordinrecord" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8Q-Ma-76f">
                                             <rect key="frame" x="73" y="21" width="151" height="26"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" name="SFProText-Medium" family="SF Pro Text" pointSize="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
