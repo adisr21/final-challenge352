@@ -82,6 +82,8 @@
 		3C378167220ABFBC00225723 /* Pelajaran.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C378165220ABFBC00225723 /* Pelajaran.storyboard */; };
 		3C37816D220ABFFA00225723 /* Latihan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C37816C220ABFFA00225723 /* Latihan.storyboard */; };
 		3C378170220AC01100225723 /* Riwayat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C37816E220AC01100225723 /* Riwayat.storyboard */; };
+		3C83C573220C0EDC00A5DBAC /* HasilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C83C571220C0EDC00A5DBAC /* HasilViewController.swift */; };
+		3C83C574220C0EDC00A5DBAC /* Hasil.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C83C572220C0EDC00A5DBAC /* Hasil.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -183,6 +185,8 @@
 		3C378166220ABFBC00225723 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "final challenge/Base.lproj/Pelajaran.storyboard"; sourceTree = "<group>"; };
 		3C37816C220ABFFA00225723 /* Latihan.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Latihan.storyboard; sourceTree = "<group>"; };
 		3C37816F220AC01100225723 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "final challenge/Base.lproj/Riwayat.storyboard"; sourceTree = "<group>"; };
+		3C83C571220C0EDC00A5DBAC /* HasilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasilViewController.swift; sourceTree = "<group>"; };
+		3C83C572220C0EDC00A5DBAC /* Hasil.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Hasil.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,6 +308,7 @@
 		3C378133220ABC9F00225723 /* final challenge */ = {
 			isa = PBXGroup;
 			children = (
+				3C83C570220C0EDC00A5DBAC /* Hasil */,
 				3C378168220ABFC500225723 /* RootTabBar */,
 				1EB5D3D6220AD074000A5C44 /* Utils */,
 				3C37813E220ABC9F00225723 /* Assets.xcassets */,
@@ -376,6 +381,15 @@
 				1EF1D5DB220BD52700EF8BAB /* LabelTableViewCell.swift */,
 			);
 			path = Riwayat;
+			sourceTree = "<group>";
+		};
+		3C83C570220C0EDC00A5DBAC /* Hasil */ = {
+			isa = PBXGroup;
+			children = (
+				3C83C571220C0EDC00A5DBAC /* HasilViewController.swift */,
+				3C83C572220C0EDC00A5DBAC /* Hasil.storyboard */,
+			);
+			path = Hasil;
 			sourceTree = "<group>";
 		};
 		3CDBC91F220ADE86001877C1 /* Recovered References */ = {
@@ -529,6 +543,7 @@
 				1EF1D61F220BD64D00EF8BAB /* SFCompactText-Medium.otf in Resources */,
 				1EF1D638220BD64D00EF8BAB /* SFCompactDisplay-Ultralight.otf in Resources */,
 				1EF1D629220BD64D00EF8BAB /* SF-Pro-Text-LightItalic.otf in Resources */,
+				3C83C574220C0EDC00A5DBAC /* Hasil.storyboard in Resources */,
 				1EF1D639220BD64D00EF8BAB /* SF-Pro-Display-Ultralight.otf in Resources */,
 				3C37813A220ABC9F00225723 /* Main.storyboard in Resources */,
 				3C378170220AC01100225723 /* Riwayat.storyboard in Resources */,
@@ -572,6 +587,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C83C573220C0EDC00A5DBAC /* HasilViewController.swift in Sources */,
 				3C06BCCD220AD8B600455D9C /* RecordingVC.swift in Sources */,
 				3C31E69B220AE3AB00E33910 /* Helpers.swift in Sources */,
 				1EF1D64F220BEBE500EF8BAB /* RootTabBarViewController.swift in Sources */,
