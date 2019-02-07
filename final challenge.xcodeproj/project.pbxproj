@@ -368,9 +368,9 @@
 			children = (
 				3C37816E220AC01100225723 /* Riwayat.storyboard */,
 				1EF1D5D8220BD52600EF8BAB /* DateTableViewCell.swift */,
-				1EF1D5D9220BD52700EF8BAB /* HistoryDetail.swift */,
 				1EF1D5DA220BD52700EF8BAB /* HistoryViewController.swift */,
 				1EF1D5DB220BD52700EF8BAB /* LabelTableViewCell.swift */,
+				1EF1D5D9220BD52700EF8BAB /* HistoryDetail.swift */,
 			);
 			path = Riwayat;
 			sourceTree = "<group>";

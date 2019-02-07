@@ -9,10 +9,10 @@
 import UIKit
 
 class LessonVC: UITableViewController {
-    
+
     var selectedIndex : IndexPath!
     let sectionTitles = ["Kecepatan Berbicara"]
-    
+
     let dataLesson = [
         [
             LessonData(title: "Membaca Teks", subtitle: "Melatih pelafalan tiap kata"),
@@ -26,8 +26,8 @@ class LessonVC: UITableViewController {
 //         LessonData(title: "text", subtitle: "texttexttexttexttexttexttext"),
 //         LessonData(title: "text", subtitle: "texttexttexttexttexttexttext")]
     ]
-    
-    
+
+
     let dataTopic = [
         "Membaca Teks" : [
             [
@@ -51,19 +51,19 @@ class LessonVC: UITableViewController {
             ]
         ]
     ]
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         navigationController?.navigationBar.barStyle = .default
         navigationController?.navigationBar.barTintColor = UIColor.black
         navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         navigationController?.navigationBar.titleTextAttributes=[NSAttributedString.Key.foregroundColor:UIColor.orange]
-        navigationController?.navigationBar.tintColor=UIColor.orange
-        tabBarController?.tabBar.barTintColor=UIColor.black
-        tabBarController?.tabBar.tintColor=UIColor.orange
-        self.tableView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-        
+        navigationController?.navigationBar.tintColor = UIColor.orange
+        tabBarController?.tabBar.barTintColor = UIColor.black
+        tabBarController?.tabBar.tintColor = UIColor.orange
+        self.tableView.backgroundColor = .black
+
     }
     override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         (view as! UITableViewHeaderFooterView).backgroundView?.backgroundColor = UIColor.black.withAlphaComponent(0)
@@ -73,15 +73,15 @@ class LessonVC: UITableViewController {
 //    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 //        cell.backgroundColor = UIColor.clear
 //    }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles=true
         navigationItem.largeTitleDisplayMode = .automatic
         navigationItem.title="Pelajaran"
     }
-    
-    
-    
+
+
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LessonCell", for: indexPath)
         let headline = self.dataLesson[indexPath.section][indexPath.row]
@@ -96,28 +96,28 @@ class LessonVC: UITableViewController {
         cell.backgroundColor = UIColor.clear
         backgroundView.backgroundColor = .darkGray
         cell.selectedBackgroundView = backgroundView
-        
+
         return cell
     }
-    
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         return sectionTitles.count
     }
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataLesson[section].count
     }
-    
+
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         tableView.headerView(forSection: section)?.backgroundColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
         return sectionTitles[section]
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex=indexPath
         self.performSegue(withIdentifier: "PromptLesson", sender: self)
 
-        
+
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let VC=segue.destination as? TopicViewController
@@ -130,4 +130,3 @@ class LessonVC: UITableViewController {
         }
     }
 }
-
