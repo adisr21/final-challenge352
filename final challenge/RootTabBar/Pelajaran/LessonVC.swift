@@ -115,7 +115,7 @@ class LessonVC: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex=indexPath
-        self.performSegue(withIdentifier: "PromptLesson", sender: self)
+        self.performSegue(withIdentifier: "TopicVC", sender: self)
 
 
     }
