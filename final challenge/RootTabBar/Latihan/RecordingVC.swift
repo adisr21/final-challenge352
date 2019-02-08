@@ -160,8 +160,8 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
         self.my_range_wpm.text = "Yoyoyo Ganbatte!"
         self.konten = ""
         self.durationRecording = 0
-        self.circleView = UIView(frame: CGRect(x: 185.0, y: 545.0, width: 300, height: 300))
-        self.radarView = UIView(frame: CGRect(x: 185.0, y: 545.0, width: 300, height: 300))
+        self.circleView = UIView(frame: CGRect(x: 185.0, y: 495.0, width: 300, height: 300))
+        self.radarView = UIView(frame: CGRect(x: 185.0, y: 495.0, width: 300, height: 300))
         self.view.addSubview(circleView)
         self.view.addSubview(radarView)
         self.setupCircular()
@@ -397,7 +397,7 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
     }
     
     func getWPM(words: Int) -> Float {
-        let minutes = Float(durationRecording / 60)
+        let minutes = Float(Float(durationRecording) / 60.0)
         let word = Float(words)
         let wpm = Float(word / minutes)
         
