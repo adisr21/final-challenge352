@@ -83,6 +83,8 @@
 		3C378170220AC01100225723 /* Riwayat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C37816E220AC01100225723 /* Riwayat.storyboard */; };
 		3C83C573220C0EDC00A5DBAC /* HasilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C83C571220C0EDC00A5DBAC /* HasilViewController.swift */; };
 		3C83C574220C0EDC00A5DBAC /* Hasil.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C83C572220C0EDC00A5DBAC /* Hasil.storyboard */; };
+		3CB5913B220D73FB00B8926C /* LatihanWithTopic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CB5913A220D73FB00B8926C /* LatihanWithTopic.storyboard */; };
+		3CB5913D220D741900B8926C /* LatihanTopicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CB5913C220D741900B8926C /* LatihanTopicVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,6 +187,8 @@
 		3C37816F220AC01100225723 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "final challenge/Base.lproj/Riwayat.storyboard"; sourceTree = "<group>"; };
 		3C83C571220C0EDC00A5DBAC /* HasilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasilViewController.swift; sourceTree = "<group>"; };
 		3C83C572220C0EDC00A5DBAC /* Hasil.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Hasil.storyboard; sourceTree = "<group>"; };
+		3CB5913A220D73FB00B8926C /* LatihanWithTopic.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LatihanWithTopic.storyboard; sourceTree = "<group>"; };
+		3CB5913C220D741900B8926C /* LatihanTopicVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatihanTopicVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -364,6 +368,8 @@
 			children = (
 				3C37816C220ABFFA00225723 /* Latihan.storyboard */,
 				3C06BCCC220AD8B600455D9C /* RecordingVC.swift */,
+				3CB5913A220D73FB00B8926C /* LatihanWithTopic.storyboard */,
+				3CB5913C220D741900B8926C /* LatihanTopicVC.swift */,
 			);
 			path = Latihan;
 			sourceTree = "<group>";
@@ -519,6 +525,7 @@
 				1EF1D62D220BD64D00EF8BAB /* SFCompactText-MediumItalic.otf in Resources */,
 				1EF1D634220BD64D00EF8BAB /* SF-Pro-Display-Black.otf in Resources */,
 				1EF1D647220BD64D00EF8BAB /* SFCompactDisplay-Heavy.otf in Resources */,
+				3CB5913B220D73FB00B8926C /* LatihanWithTopic.storyboard in Resources */,
 				3C378167220ABFBC00225723 /* Pelajaran.storyboard in Resources */,
 				1EF1D62F220BD64D00EF8BAB /* SFCompactDisplay-Thin.otf in Resources */,
 				1EF1D63F220BD64D00EF8BAB /* SF-Pro-Text-MediumItalic.otf in Resources */,
@@ -598,6 +605,7 @@
 				1EB5D3D8220AD0B9000A5C44 /* AlvaTesting.swift in Sources */,
 				1EF1D5E1220BD54400EF8BAB /* LessonVC.swift in Sources */,
 				3C37813D220ABC9F00225723 /* final_challenge.xcdatamodeld in Sources */,
+				3CB5913D220D741900B8926C /* LatihanTopicVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -789,7 +797,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LDH88D8FCY;
+				DEVELOPMENT_TEAM = 6QR34RC9H5;
 				INFOPLIST_FILE = "final challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -807,7 +815,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LDH88D8FCY;
+				DEVELOPMENT_TEAM = 6QR34RC9H5;
 				INFOPLIST_FILE = "final challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
