@@ -176,7 +176,7 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
         alphaAnimation.toValue = 0
         
         let animations = CAAnimationGroup()
-        animations.duration = 2.5
+        animations.duration = 5.0
         animations.repeatCount = Float.infinity
         
         animations.animations = [scaleAnimation]
@@ -449,10 +449,13 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
         
         if (wpm < 120 && isPassingTime()){
             self.my_range_wpm.text = "Ayo Semangat dong"
+            self.animateCircle()
         } else if((wpm > 120 || wpm < 150)  && isPassingTime()) {
             self.my_range_wpm.text = "Sudah Pas! Pertahankan!"
+            self.animateCircle()
         } else if (isPassingTime() && wpm > 150){
             self.my_range_wpm.text = "Woah... Rileks.. Atur Nafasmu"
+            self.animateCircle()
         }
         
         return wpm

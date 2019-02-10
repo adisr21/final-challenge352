@@ -391,9 +391,6 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
             var isFinal = false
             
             if result != nil {
-                
-                
-                
                 guard let result_ = result?.bestTranscription.formattedString else {
                     return
                 }
@@ -406,11 +403,8 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
             if error != nil || isFinal {
                 self.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
-                
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
-                
-                
                 self.record_btn_ref.isEnabled = true
             }
         })
