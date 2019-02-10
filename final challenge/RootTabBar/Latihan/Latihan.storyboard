@@ -24,7 +24,7 @@
                                     <constraint firstAttribute="width" constant="64" id="KKV-j9-bac"/>
                                     <constraint firstAttribute="height" constant="64" id="dqS-D5-ZSr"/>
                                 </constraints>
-                                <state key="normal" image="record"/>
+                                <state key="normal" image="record-1"/>
                                 <connections>
                                     <action selector="startSpeech:" destination="Egl-xl-AdX" eventType="touchUpInside" id="4Gd-9D-uOy"/>
                                 </connections>
@@ -39,22 +39,8 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ie1-VC-vrp">
-                                <rect key="frame" x="37" y="178" width="301" height="75"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czP-Xk-EBi">
-                                        <rect key="frame" x="42" y="13" width="217" height="49"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your range goal : " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apv-kl-4sm">
-                                <rect key="frame" x="62" y="308" width="250" height="21"/>
+                                <rect key="frame" x="62" y="185" width="250" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -74,11 +60,9 @@
                         <barButtonItem key="backBarButtonItem" title="Topik" id="aaV-KY-BPX"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="background_text" destination="ie1-VC-vrp" id="Rto-wS-crP"/>
                         <outlet property="my_range_wpm" destination="apv-kl-4sm" id="YVc-wT-s58"/>
                         <outlet property="record_btn_ref" destination="xb0-V2-yy4" id="Ncf-AI-ULg"/>
                         <outlet property="recording_TimeLabel" destination="BIX-vb-9An" id="Hlj-eq-vVf"/>
-                        <outlet property="text_semangat" destination="czP-Xk-EBi" id="Jnt-Bo-W3q"/>
                         <outlet property="titleNavBar" destination="pkU-ax-cfx" id="JgY-h8-1le"/>
                     </connections>
                 </viewController>
@@ -106,6 +90,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="record" width="64" height="64"/>
+        <image name="record-1" width="60" height="60"/>
     </resources>
 </document>
