@@ -26,7 +26,7 @@
                                 </constraints>
                                 <state key="normal" image="record"/>
                                 <connections>
-                                    <action selector="start_recording:" destination="Egl-xl-AdX" eventType="touchUpInside" id="sLi-KX-15N"/>
+                                    <action selector="startSpeech:" destination="Egl-xl-AdX" eventType="touchUpInside" id="4Gd-9D-uOy"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01:10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIX-vb-9An">

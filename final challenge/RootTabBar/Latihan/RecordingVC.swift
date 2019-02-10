@@ -13,7 +13,7 @@ import Speech
 import Foundation
 
 
-class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsControllerDelegate, SFSpeechRecognizerDelegate{
+class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsControllerDelegate, SFSpeechRecognizerDelegate, AVSpeechSynthesizerDelegate{
     
     // atribut recording
     @IBOutlet var recording_TimeLabel: UILabel!
@@ -29,6 +29,9 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
     var audioRecorder: AVAudioRecorder!
     var audioPlayer: AVAudioPlayer!
     var meterTimer: Timer!
+    var currentTime = 0
+    var jedaWaktu = 0
+    var jeda: Timer!
     var isAudioRecordingGranted: Bool!
     var isRecording = false
     var isPlaying = false
@@ -77,26 +80,58 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
         }
     }
     
-    
-    @IBAction func start_recording(_ sender: UIButton)
+    @IBAction func startSpeech(_ sender: UIButton)
     {
-        if(isRecording && audioEngine.isRunning)
+        if(audioEngine.isRunning)
         {
-            audioEngine.stop()
-            recognitionRequest?.endAudio()
+            stopRecognitionSpeech()
+            meterTimer.invalidate()
             finishAudioRecording(success: true)
             record_btn_ref.setImage(UIImage(named: "record"), for: .normal)
             record_btn_ref.isEnabled = false
-            isRecording = false
+//            isRecording = false
         }
         else
         {
-            setup_recorder()
+            startRecognitionSpeech()
+            setupRecord()
             audioRecorder.record()
-            meterTimer = Timer.scheduledTimer(timeInterval: 0.1, target:self, selector:#selector(self.updateAudioMeter(timer:)), userInfo:nil, repeats:true)
+            meterTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector:#selector(self.updateAudioMeter(timer:)), userInfo:nil, repeats:true)
             record_btn_ref.setImage(UIImage(named: "stop"), for: .normal)
-            isRecording = true
+//            isRecording = true
         }
+    }
+    let settings = [
+        AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+        AVSampleRateKey: 44100,
+        AVNumberOfChannelsKey: 2,
+        AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+    ]
+    func setupRecord() {
+        
+        let session = AVAudioSession.sharedInstance()
+        do {
+            
+            try session.setCategory(AVAudioSession.Category.record, mode: .measurement)
+            try session.setActive(true, options: .notifyOthersOnDeactivation)
+            audioRecorder = try AVAudioRecorder(url: getFileUrl(), settings: settings)
+            audioRecorder.delegate = self
+            audioRecorder.isMeteringEnabled = true
+            audioRecorder.prepareToRecord()
+            
+        }
+        catch let error {
+//            display_alert(msg_title: "Error", msg_desc:error.localizedDescription, action_title: "OK")
+            print(error.localizedDescription)
+        }
+
+        
+    }
+    
+    
+    func stopRecognitionSpeech() {
+        audioEngine.stop()
+        recognitionRequest?.endAudio()
     }
     
     fileprivate func setupRadarLayer() {
@@ -191,7 +226,6 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
             
             audioRecorder.stop()
             audioRecorder = nil
-            meterTimer.invalidate()
             print("recorded successfully.")
         }
         else
@@ -301,90 +335,101 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
     }
     
     
-    func setup_recorder() {
-        if isAudioRecordingGranted {
-            if recognitionTask != nil {
-                recognitionTask?.cancel()
-                recognitionTask = nil
-            }
-            let session = AVAudioSession.sharedInstance()
-            do {
-                try session.setCategory(AVAudioSession.Category.playAndRecord, mode: .measurement, options: .defaultToSpeaker)
-                try session.setActive(true, options: .notifyOthersOnDeactivation)
-                let settings = [
-                    AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
-                    AVSampleRateKey: 44100,
-                    AVNumberOfChannelsKey: 2,
-                    AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
-                ]
-                
-                
-                audioRecorder = try AVAudioRecorder(url: getFileUrl(), settings: settings)
-                audioRecorder.delegate = self
-                audioRecorder.isMeteringEnabled = true
-                audioRecorder.prepareToRecord()
-            }
-            catch let error {
-                display_alert(msg_title: "Error", msg_desc:error.localizedDescription, action_title: "OK")
-            }
-            
-            recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
-            
-            let inputNode = audioEngine.inputNode
-            
-            guard let recognitionRequest = recognitionRequest else {
-                fatalError("Unable to create an SFSpeechAudioBufferRecognitionRequest object")
-            }
-            
-            recognitionRequest.shouldReportPartialResults = true
-            
-            recognitionTask = speechRecognizer!.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
-                
-                var isFinal = false
-                
-                if result != nil {
-                    
-                    
-                    self.text_semangat.text = result?.bestTranscription.formattedString
-                    self.konten = result?.bestTranscription.formattedString
-                    isFinal = (result?.isFinal)!
-                    self.getWordsCount(kntn: self.konten)
-                }
-                
-                if error != nil || isFinal {
-                    self.audioEngine.stop()
-                    inputNode.removeTap(onBus: 0)
-                    
-                    self.recognitionRequest = nil
-                    self.recognitionTask = nil
-                    
-                    
-                    self.record_btn_ref.isEnabled = true
-                }
-            })
-            
-            let recordingFormat = inputNode.outputFormat(forBus: 0)
-            inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, when) in
-                self.recognitionRequest?.append(buffer)
-            }
-            
-            audioEngine.prepare()
-            
-            do {
-                try audioEngine.start()
-            } catch {
-                print("audioEngine couldn't start because of an error.")
-            }
-            
-            
-            text_semangat.text = "Say something, I'm listening"
-            
+    func startRecognitionSpeech() {
+        self.currentTime = 0
+        startRecording()
+    }
+    
+    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        if audioEngine.isRunning {
+            stopRecognitionSpeech()
+            self.text_semangat.text = tempResult
+            audioEngine.inputNode.removeTap(onBus: 0)
+            jeda = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(jedaToRelaunch), userInfo: nil, repeats: true)
         }
-        else
-        {
-            display_alert(msg_title: "Error", msg_desc:"Don't have access to use your microphone", action_title: "OK")
-            
+    }
+    
+    @objc func jedaToRelaunch() {
+        jedaWaktu += 1
+        if jedaWaktu == 3 {
+            startRecognitionSpeech()
         }
+        if jedaWaktu > 3 {
+            jedaWaktu = 0
+            jeda.invalidate()
+        }
+    }
+    func startRecording() {
+        if recognitionTask != nil {
+            recognitionTask?.cancel()
+            recognitionTask = nil
+        }
+        let session = AVAudioSession.sharedInstance()
+        do {
+            try session.setCategory(AVAudioSession.Category.record, mode: .measurement, options: .defaultToSpeaker)
+            try session.setActive(true, options: .notifyOthersOnDeactivation)
+
+        }
+        catch let error {
+            display_alert(msg_title: "Error", msg_desc:error.localizedDescription, action_title: "OK")
+        }
+        
+        recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
+        
+        let inputNode = audioEngine.inputNode
+        
+        guard let recognitionRequest = recognitionRequest else {
+            fatalError("Unable to create an SFSpeechAudioBufferRecognitionRequest object")
+        }
+        
+        recognitionRequest.shouldReportPartialResults = true
+        
+        recognitionTask = speechRecognizer!.recognitionTask(with: recognitionRequest, resultHandler: { (result, error) in
+            
+            var isFinal = false
+            
+            if result != nil {
+                
+                
+                
+                guard let result_ = result?.bestTranscription.formattedString else {
+                    return
+                }
+                self.konten = self.tempResult+" "+result_
+                
+                isFinal = (result?.isFinal)!
+                self.getWordsCount(kntn: self.konten)
+            }
+            
+            if error != nil || isFinal {
+                self.audioEngine.stop()
+                inputNode.removeTap(onBus: 0)
+                
+                self.recognitionRequest = nil
+                self.recognitionTask = nil
+                
+                
+                self.record_btn_ref.isEnabled = true
+            }
+        })
+        
+        let recordingFormat = inputNode.outputFormat(forBus: 0)
+        inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer, when) in
+            self.recognitionRequest?.append(buffer)
+        }
+        
+        audioEngine.prepare()
+        
+        do {
+            try audioEngine.start()
+        } catch {
+            print("audioEngine couldn't start because of an error.")
+        }
+        
+        
+        text_semangat.text = "Say something, I'm listening"
+        
+        
     }
     
     func getWordsCount(kntn: String){
@@ -422,18 +467,27 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
     
     @objc func updateAudioMeter(timer: Timer)
     {
-        if audioRecorder.isRecording
-        {
-            //            let hr = Int((audioRecorder.currentTime / 60) / 60)
-            let min = Int(audioRecorder.currentTime / 60)
-            let sec = Int(audioRecorder.currentTime.truncatingRemainder(dividingBy: 60))
-            let totalTimeString = String(format: "%02d:%02d", min, sec)
-            recording_TimeLabel.text = totalTimeString
-            self.durationRecording = Int(audioRecorder.currentTime)
-            audioRecorder.updateMeters()
+        self.currentTime += 1
+        updateTimerLabel()
+        if self.currentTime == 60 {
+            self.tempResult = self.konten
+            audioEngine.inputNode.removeTap(onBus: 0)
+            stopRecognitionSpeech()
+        } else if self.currentTime == 63{
+            startRecognitionSpeech()
         }
     }
     
+    func updateTimerLabel() {
+//                    let hr = Int((audioRecorder.currentTime / 60) / 60)
+        let min = Int(audioRecorder.currentTime / 60)
+        let sec = Int(audioRecorder.currentTime.truncatingRemainder(dividingBy: 60))
+        let totalTimeString = String(format: "%02d:%02d", min, sec)
+        recording_TimeLabel.text = totalTimeString
+        self.durationRecording = Int(audioRecorder.currentTime)
+        audioRecorder.updateMeters()
+    }
+    var tempResult: String = ""
     
     func display_alert(msg_title : String , msg_desc : String ,action_title : String)
     {
