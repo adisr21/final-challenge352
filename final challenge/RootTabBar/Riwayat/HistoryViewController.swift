@@ -3,7 +3,7 @@ import CoreData
 class HistoryViewController: UITableViewController, NSFetchedResultsControllerDelegate
 {
     
-    let sectionTitles = ["date", "date", "date"]
+    let sectionTitles = ["Januari 2019", "Februari 2019", "Maret 2019"]
     let modelName = "final_challenge"
     let dataHistory = [
         [
@@ -39,6 +39,7 @@ class HistoryViewController: UITableViewController, NSFetchedResultsControllerDe
         tabBarController?.tabBar.barTintColor=UIColor.black
         tabBarController?.tabBar.tintColor=UIColor.orange
         self.tableView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        
         
         
     }
@@ -126,10 +127,14 @@ class HistoryViewController: UITableViewController, NSFetchedResultsControllerDe
         
         
         let audio = fetchedResultsController.object(at: indexPath)
+        let dateFormatter = DateFormatter()
         
+        dateFormatter.dateFormat = "dd-MM-yyyy"
+        
+        let stringDate: String = dateFormatter.string(from: audio.date as! Date)
         
         cell.labelTitle.text = audio.titleRecording
-        cell.labelDetail.text = String(describing: audio.date)
+        cell.labelDetail.text = stringDate
         cell.labelSubtitle.text = String(describing: "durasi : \(audio.durasi) detik ")
         
 //        if let audioName = audio.value(forKey: "titleRecording") as? String, let dateRecording = audio.value(forKey: "date") as? Date {
@@ -141,6 +146,16 @@ class HistoryViewController: UITableViewController, NSFetchedResultsControllerDe
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        struct Formatter {
+            static let formatter : DateFormatter = {
+                let fmt = DateFormatter()
+                let dateFormat = DateFormatter.dateFormat(fromTemplate: "MMMM yyyy", options: 0, locale: NSLocale.current)
+                fmt.dateFormat = dateFormat
+                return fmt
+            }()
+        }
+        
         if let sections = fetchedResultsController.sections {
             let currentSection = sections[section]
             return currentSection.name
