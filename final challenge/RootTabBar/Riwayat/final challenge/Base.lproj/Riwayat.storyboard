@@ -70,7 +70,7 @@
                                     <outlet property="dateLabel" destination="ers-xk-Xii" id="brf-yi-Okl"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="LabelCell" rowHeight="100" id="uYS-cQ-Zcj" customClass="LabelTableViewCell" customModule="final_challenge" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="LabelCell" rowHeight="100" id="uYS-cQ-Zcj" customClass="LabelTableViewCell" customModule="final_challenge" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="128" width="375" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uYS-cQ-Zcj" id="JKX-Rz-L6E">
@@ -91,7 +91,7 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PLAYBUTTONwithshadow" translatesAutoresizingMaskIntoConstraints="NO" id="Ly8-Ty-K22">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="PLAY BUTTON with shadow" translatesAutoresizingMaskIntoConstraints="NO" id="Ly8-Ty-K22">
                                             <rect key="frame" x="6" y="21" width="59" height="57"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
@@ -143,6 +143,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="PLAYBUTTONwithshadow" width="16" height="16"/>
+        <image name="PLAY BUTTON with shadow" width="52" height="52"/>
     </resources>
 </document>

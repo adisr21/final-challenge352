@@ -7,8 +7,9 @@
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="konten" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="titleRecording" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wpm" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Audio" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="Audio" positionX="-63" positionY="-18" width="128" height="150"/>
     </elements>
 </model>

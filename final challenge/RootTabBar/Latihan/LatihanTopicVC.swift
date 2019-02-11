@@ -257,8 +257,8 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
         }
         //        let uuid = UUID().uuid
         newRec.id = UUID()
-        newRec.audio = mediaData as NSData as Data
-        newRec.date = Date()
+        newRec.audio = mediaData as NSData
+        newRec.date = NSDate()
         newRec.durasi = Int16(durationRecording)
         newRec.titleRecording = "Title Recording"
         newRec.konten = self.konten

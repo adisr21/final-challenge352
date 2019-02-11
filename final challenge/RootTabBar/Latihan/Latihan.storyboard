@@ -29,7 +29,7 @@
                                     <action selector="startSpeech:" destination="Egl-xl-AdX" eventType="touchUpInside" id="4Gd-9D-uOy"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="01:10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIX-vb-9An">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIX-vb-9An">
                                 <rect key="frame" x="294" y="690" width="65" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="0PF-nE-eJk"/>
@@ -64,11 +64,20 @@
                         <outlet property="record_btn_ref" destination="xb0-V2-yy4" id="Ncf-AI-ULg"/>
                         <outlet property="recording_TimeLabel" destination="BIX-vb-9An" id="Hlj-eq-vVf"/>
                         <outlet property="titleNavBar" destination="pkU-ax-cfx" id="JgY-h8-1le"/>
+                        <segue destination="IJh-DP-UbL" kind="show" id="tWB-Pd-ved"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lyK-jz-enF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1583.2" y="135.96059113300493"/>
+        </scene>
+        <!--Hasil-->
+        <scene sceneID="KBe-gN-2GN">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Hasil" id="IJh-DP-UbL" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7pR-pC-akp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2234" y="123"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lni-dB-gae">

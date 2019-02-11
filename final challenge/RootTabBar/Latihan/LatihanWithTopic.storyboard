@@ -47,9 +47,9 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ayo semangat dongs" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltx-bD-iql">
-                                <rect key="frame" x="31" y="550" width="208" height="21"/>
+                                <rect key="frame" x="31" y="499" width="208" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="k3S-z4-cHN"/>
+                                    <constraint firstAttribute="height" constant="21" id="yao-fY-RFO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -58,17 +58,17 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ltx-bD-iql" firstAttribute="trailing" secondItem="iT9-bz-sCR" secondAttribute="trailing" id="7WC-4S-TLh"/>
-                            <constraint firstItem="ltx-bD-iql" firstAttribute="leading" secondItem="zxc-VP-4Fh" secondAttribute="leading" constant="31" id="CcO-Je-eyq"/>
                             <constraint firstItem="C1b-II-ti5" firstAttribute="leading" secondItem="zxc-VP-4Fh" secondAttribute="leading" constant="10" id="DDP-Og-210"/>
                             <constraint firstItem="zxc-VP-4Fh" firstAttribute="trailing" secondItem="ht6-iw-aIL" secondAttribute="trailing" constant="30" id="FX6-9h-VLt"/>
                             <constraint firstItem="zxc-VP-4Fh" firstAttribute="bottom" secondItem="ht6-iw-aIL" secondAttribute="bottom" constant="51" id="LEV-es-ktn"/>
+                            <constraint firstItem="ltx-bD-iql" firstAttribute="trailing" secondItem="iT9-bz-sCR" secondAttribute="trailing" id="Pz9-gu-76N"/>
                             <constraint firstItem="iT9-bz-sCR" firstAttribute="centerX" secondItem="xP7-LU-mif" secondAttribute="centerX" id="YiZ-uS-oYb"/>
-                            <constraint firstItem="ltx-bD-iql" firstAttribute="top" secondItem="C1b-II-ti5" secondAttribute="bottom" constant="75" id="g6g-Ir-Of4"/>
+                            <constraint firstItem="ltx-bD-iql" firstAttribute="top" secondItem="C1b-II-ti5" secondAttribute="bottom" constant="24" id="lc1-in-Wqe"/>
                             <constraint firstItem="zxc-VP-4Fh" firstAttribute="trailing" secondItem="C1b-II-ti5" secondAttribute="trailing" constant="10" id="oit-cq-e3Y"/>
                             <constraint firstItem="zxc-VP-4Fh" firstAttribute="bottom" secondItem="ht6-iw-aIL" secondAttribute="bottom" constant="51" id="thF-Ni-ZxR"/>
                             <constraint firstItem="C1b-II-ti5" firstAttribute="top" secondItem="zxc-VP-4Fh" secondAttribute="top" constant="20" id="uHZ-R1-225"/>
                             <constraint firstItem="zxc-VP-4Fh" firstAttribute="bottom" secondItem="iT9-bz-sCR" secondAttribute="bottom" constant="30" id="w50-hr-8I6"/>
+                            <constraint firstItem="ltx-bD-iql" firstAttribute="leading" secondItem="zxc-VP-4Fh" secondAttribute="leading" constant="31" id="wfc-kv-VZO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zxc-VP-4Fh"/>
                     </view>

@@ -39,12 +39,38 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
     var circleView: UIView!
     var radarView:UIView!
     var konten: String!
+    var titleRecordings: String!
+    
+    var audios = [Audio]()
+    var fetchedResultsController: NSFetchedResultsController<Audio>!
     
     let audioEngine = AVAudioEngine()
     var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     var recognitionTask: SFSpeechRecognitionTask?
     let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "id-ID"))  //1
     
+    
+    let coreDataAudio = CoreDataAudio(modelName: "final_challenge")
+    
+    func initializeFetchedResultsController(){
+        let request = NSFetchRequest<Audio>(entityName: "Audio")
+        let dateSort = NSSortDescriptor(key: "id", ascending: true)
+        
+        
+        request.sortDescriptors = [dateSort]
+        
+        
+        let moc = coreDataAudio.managedObjectContext
+        fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: moc, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = self
+        
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            fatalError("Failed to initialize FetchedResultsController: \(error)")
+        }
+    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,8 +112,10 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
         {
             stopRecognitionSpeech()
             meterTimer.invalidate()
+            removeAnimateCircleAndRadarLayer()
+            addTitleRecording()
             finishAudioRecording(success: true)
-            record_btn_ref.setImage(UIImage(named: "record"), for: .normal)
+            record_btn_ref.setImage(UIImage(named: "record-1"), for: .normal)
             record_btn_ref.isEnabled = false
 //            isRecording = false
         }
@@ -97,10 +125,16 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
             setupRecord()
             audioRecorder.record()
             meterTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector:#selector(self.updateAudioMeter(timer:)), userInfo:nil, repeats:true)
-            record_btn_ref.setImage(UIImage(named: "stop"), for: .normal)
+            record_btn_ref.setImage(UIImage(named: "stop-1"), for: .normal)
 //            isRecording = true
         }
     }
+    
+    func removeAnimateCircleAndRadarLayer() {
+        self.radarLayer.removeAllAnimations()
+//        setupCircular()
+    }
+    
     let settings = [
         AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
         AVSampleRateKey: 44100,
@@ -181,7 +215,7 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
         
         animations.animations = [scaleAnimation]
         
-        circleLayer.add(animations, forKey: "scale")
+//        circleLayer.add(animations, forKey: "scale")
         radarLayer.add(animations, forKey: "scale radar")
         
     }
@@ -222,6 +256,8 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
                 print("Error...")
             }
             
+            
+            
             addMediaCaptureToDB(audioTrack!, mediaType: "Recording")
             
             audioRecorder.stop()
@@ -237,49 +273,47 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
     func addMediaCaptureToDB(_ mediaData: Data, mediaType: String)
     {
         
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        
-        
+//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         
         
         //        let coreDataManager = NSPersistentContainer(name: "RecordingData")
         
         
+//        let context = appDelegate.persistentContainer.viewContext
+        let moc = coreDataAudio.managedObjectContext
         
-        let context = appDelegate.persistentContainer.viewContext
-        
-        guard let newRec = NSEntityDescription.insertNewObject(forEntityName: "Audio", into: context) as? Audio else
+        guard let newRec = NSEntityDescription.insertNewObject(forEntityName: "Audio", into: moc) as? Audio else
         {
             print("Error add media to DB")
             return
         }
         //        let uuid = UUID().uuid
         newRec.id = UUID()
-        newRec.audio = mediaData as NSData as Data
-        newRec.date = Date()
+        newRec.audio = mediaData as NSData
+        newRec.date = NSDate()
         newRec.durasi = Int16(durationRecording)
-        newRec.titleRecording = "Title Recording"
+        newRec.titleRecording = self.titleRecordings
         newRec.konten = self.konten
         //        newRec.speech = mediaData.description
         // Save the new MediaCapture record to the database
         
-        let userentity = NSEntityDescription.entity(forEntityName: "Audio", in: context)
+//        let userentity = NSEntityDescription.entity(forEntityName: "Audio", in: moc)
         
         
         
-        let newRec1 = NSManagedObject(entity: userentity!, insertInto: context)
-        newRec1.setValue(newRec.date, forKey: "date")
-        newRec1.setValue(newRec.titleRecording, forKey: "titleRecording")
-        newRec1.setValue(newRec.audio, forKey: "audio")
-        newRec1.setValue(newRec.durasi, forKey: "durasi")
-        newRec1.setValue(newRec.konten, forKey: "konten")
+//        let newRec1 = NSManagedObject(entity: userentity!, insertInto: moc)
+//        newRec1.setValue(newRec.date, forKey: "date")
+//        newRec1.setValue(newRec.titleRecording, forKey: "titleRecording")
+//        newRec1.setValue(newRec.audio, forKey: "audio")
+//        newRec1.setValue(newRec.durasi, forKey: "durasi")
+//        newRec1.setValue(newRec.konten, forKey: "konten")
         //        newRec1.setValue(newRec.speech, forKey: "speech")
         //        newRec1.setValue(newRec.id, forKey: "id")
         
         
         
         do {
-            try context.save()
+            try moc.save()
             print("Sukses save di core data gan!")
             
             //print
@@ -428,7 +462,7 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
         }
         
         
-        text_semangat.text = "Say something, I'm listening"
+//        text_semangat.text = "Say something, I'm listening"
         
         
     }
@@ -502,5 +536,25 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
             _ = self.navigationController?.popViewController(animated: true)
         })
         present(ac, animated: true)
+    }
+    
+    func addTitleRecording() {
+        
+        let alertController = UIAlertController(title: "Nama Rekaman", message: "Isi nama rekaman Anda", preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = "Nama Rekamaan"
+            self.titleRecordings = textField.text
+        }
+        let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
+            guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
+            print("Current title recording \(String(describing: textField.text))")
+            self.titleRecordings = textField.text
+            //compare the current password and do action here
+        }
+        alertController.addAction(confirmAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
 }

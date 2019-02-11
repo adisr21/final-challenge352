@@ -85,9 +85,11 @@ class TopicViewController: UITableViewController {
         let alert = UIAlertController(title: "Konfirmasi", message: "Apakah anda yakin dengan topik yang anda pilih", preferredStyle: UIAlertController.Style.alert)
         
         // add the actions (buttons)
-        alert.addAction(UIAlertAction(title: "Ya", style: UIAlertAction.Style.default, handler: nil/*{ action in
-            self.performSegue(withIdentifier: "PromptLesson", sender: self)
-        }*/))
+        alert.addAction(UIAlertAction(title: "Ya", style: UIAlertAction.Style.default, handler: { action -> Void in
+            self.performSegue(withIdentifier: "recordTopic", sender: self)
+        }))
+        
+        
         alert.addAction(UIAlertAction(title: "Tidak", style: UIAlertAction.Style.default, handler: nil))
         
         // show the alert
