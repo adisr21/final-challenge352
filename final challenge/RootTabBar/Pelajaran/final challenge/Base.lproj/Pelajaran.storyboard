@@ -93,9 +93,6 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="tGP-oV-XJe" kind="show" identifier="recordTopic" id="2qW-fA-PS2"/>
-                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -103,6 +100,9 @@
                             <outlet property="delegate" destination="mkn-G6-vqs" id="2tJ-JR-ebR"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="tGP-oV-XJe" kind="show" identifier="recordTopic" id="oWq-SI-Fcd"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M2p-UI-9m7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -114,7 +114,7 @@
                 <viewControllerPlaceholder storyboardName="LatihanWithTopic" id="tGP-oV-XJe" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ruk-dn-JCx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3562" y="1132"/>
+            <point key="canvasLocation" x="3658" y="1026"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TEC-qp-F6p">
