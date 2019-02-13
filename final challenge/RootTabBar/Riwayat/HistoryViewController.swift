@@ -3,7 +3,7 @@ import CoreData
 class HistoryViewController: UITableViewController, NSFetchedResultsControllerDelegate
 {
     
-    let sectionTitles = ["Januari 2019", "Februari 2019", "Maret 2019"]
+    let sectionTitles = [" ", "Februari 2019", "Maret 2019"]
     let modelName = "final_challenge"
     let dataHistory = [
         [
@@ -48,7 +48,7 @@ class HistoryViewController: UITableViewController, NSFetchedResultsControllerDe
 
     func initializeFetchedResultsController(){
         let request = NSFetchRequest<Audio>(entityName: "Audio")
-        let dateSort = NSSortDescriptor(key: "date", ascending: true)
+        let dateSort = NSSortDescriptor(key: "date", ascending: false)
         
         
         request.sortDescriptors = [dateSort]
@@ -70,7 +70,10 @@ class HistoryViewController: UITableViewController, NSFetchedResultsControllerDe
         
         let moc = coreDataAudio.managedObjectContext
         do {
-            if let results = try moc.execute(fetchRequest) as? [Audio]{
+//            if let results = try moc.execute(fetchRequest) as? [Audio]{
+//                audios = results
+//            }
+            if let results = try moc.execute(fetchRequest) as? [Audio] {
                 audios = results
             }
         } catch {
@@ -89,25 +92,24 @@ class HistoryViewController: UITableViewController, NSFetchedResultsControllerDe
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles=true
         navigationItem.largeTitleDisplayMode = .automatic
-        navigationItem.title="History"
+        navigationItem.title="Riwayat"
 //        reloadData()
         initializeFetchedResultsController()
         tableView.reloadData()
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCellDetail") as! DateTableViewCell
-        cell.dateLabel.text = sectionTitles[section]
-        cell.berapaLabel.text = "\(dataHistory[section].count) rekaman"
-        cell.berapaLabel.textColor = .white
-        cell.dateLabel.textColor = .white
-        cell.backgroundColor=UIColor.black
-        
-        
-        
-        return cell
-    }
+//    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryCellDetail") as! DateTableViewCell
+//        cell.dateLabel.text = sectionTitles[section]
+////        cell.berapaLabel.text = "\(dataHistory[section].count) rekaman"
+//        cell.berapaLabel.text = " "
+//        cell.berapaLabel.textColor = .white
+//        cell.dateLabel.textColor = .white
+//        cell.backgroundColor = UIColor.black
+//        
+//        return cell
+//    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath) as! LabelTableViewCell
@@ -135,7 +137,7 @@ class HistoryViewController: UITableViewController, NSFetchedResultsControllerDe
         
         cell.labelTitle.text = audio.titleRecording
         cell.labelDetail.text = stringDate
-        cell.labelSubtitle.text = String(describing: "durasi : \(audio.durasi) detik ")
+        cell.labelSubtitle.text = "durasi : \(audio.durasi) detik "
         
 //        if let audioName = audio.value(forKey: "titleRecording") as? String, let dateRecording = audio.value(forKey: "date") as? Date {
 //            cell.labelTitle.text = audioName
@@ -181,25 +183,40 @@ class HistoryViewController: UITableViewController, NSFetchedResultsControllerDe
         
     }
     
-//    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//
-//        let moc = coreDataAudio.managedObjectContext
-//        if editingStyle == .delete {
-//            
-//
-//            do {
-//                let audio = audios[indexPath.row]
-//                moc.delete(audio)
-//                try moc.save()
-//
-//            } catch {
-//                fatalError("gagal delete")
-//            }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let sections = fetchedResultsController.sections else {
+            fatalError("No selected")
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+
+        let moc = coreDataAudio.managedObjectContext
+        if editingStyle == .delete {
+
+
+            do {
+                self.reloadData()
+                let audio = fetchedResultsController.object(at: indexPath)
+                moc.delete(audio)
+
+                
+                self.initializeFetchedResultsController()
+                
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                try moc.save()
+            } catch {
+                fatalError("gagal delete")
+            }
 //            tableView.reloadData()
-//        }
+        }
+    }
+    
+    
+//    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+//        tableView.beginUpdates()
 //    }
-    
-    
+
     
     // if tableView is set in attribute inspector with selection to multiple Selection it should work.
     

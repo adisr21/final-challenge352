@@ -114,9 +114,10 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
             meterTimer.invalidate()
             removeAnimateCircleAndRadarLayer()
             addTitleRecording()
-            finishAudioRecording(success: true)
+            
             record_btn_ref.setImage(UIImage(named: "record-1"), for: .normal)
             record_btn_ref.isEnabled = false
+            self.recording_TimeLabel.text = "00:00"
 //            isRecording = false
         }
         else
@@ -199,24 +200,32 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
         //        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(animateCircle)))
     }
     
-    @objc func animateCircle(){
+    @objc func animateCircle(from lastValue: CGFloat, to value: CGFloat){
+        let animation = CABasicAnimation(keyPath: "transform.scale")
         
-        let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
-        scaleAnimation.fromValue = 0
-        scaleAnimation.toValue = 1
         
-        let alphaAnimation = CABasicAnimation(keyPath: "transform.scale")
-        alphaAnimation.fromValue = 1
-        alphaAnimation.toValue = 0
+        animation.fromValue = lastValue
+        animation.toValue = value
+        animation.duration = 0.3
+        animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
         
-        let animations = CAAnimationGroup()
-        animations.duration = 5.0
-        animations.repeatCount = Float.infinity
+//        let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
+//        scaleAnimation.fromValue = 0
+//        scaleAnimation.toValue = 1
+//
+//        let alphaAnimation = CABasicAnimation(keyPath: "transform.scale")
+//        alphaAnimation.fromValue = 1
+//        alphaAnimation.toValue = 0
+//
+//        let animations = CAAnimationGroup()
+//        animations.duration = 5.0
+//        animations.repeatCount = Float.infinity
         
-        animations.animations = [scaleAnimation]
+//        animations.animations = [scaleAnimation]
         
 //        circleLayer.add(animations, forKey: "scale")
-        radarLayer.add(animations, forKey: "scale radar")
+//        radarLayer.add(animations, forKey: "scale radar")
+        radarLayer.add(animation, forKey: "pulsating")
         
     }
     
@@ -227,10 +236,11 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
 //        self.background_text.shapedBackground()
 //        self.text_semangat.text = "Try to keep your speed within your range goal!"
         self.my_range_wpm.text = "Yoyoyo Ganbatte!"
+        self.my_range_wpm.textColor = UIColor.orangeS
         self.konten = ""
         self.durationRecording = 0
-        self.circleView = UIView(frame: CGRect(x: 185.0, y: 450.0, width: 300, height: 300))
-        self.radarView = UIView(frame: CGRect(x: 185.0, y: 450.0, width: 300, height: 300))
+        self.circleView = UIView(frame: CGRect(x: 185.0, y: 300.0, width: 300, height: 300))
+        self.radarView = UIView(frame: CGRect(x: 185.0, y: 300.0, width: 300, height: 300))
         self.view.addSubview(circleView)
         self.view.addSubview(radarView)
         self.setupCircular()
@@ -330,6 +340,9 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
         } catch {
             print("Error save media to DB")
         }
+        
+        self.recording_TimeLabel.text = "00:00"
+
     }
     
     
@@ -433,7 +446,6 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
                 self.konten = self.tempResult+" "+result_
                 
                 isFinal = (result?.isFinal)!
-                self.getWordsCount(kntn: self.konten)
             }
             
             if error != nil || isFinal {
@@ -481,15 +493,15 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
         let word = Float(words)
         let wpm = Float(word / minutes)
         
-        if (wpm < 120 && isPassingTime()){
+        if (wpm < 120 ){
             self.my_range_wpm.text = "Ayo Semangat dong"
-            self.animateCircle()
-        } else if((wpm > 120 || wpm < 150)  && isPassingTime()) {
+            self.animateCircle(from: 0.4,to: 0.1)
+        } else if((wpm > 120 || wpm < 150)) {
             self.my_range_wpm.text = "Sudah Pas! Pertahankan!"
-            self.animateCircle()
-        } else if (isPassingTime() && wpm > 150){
+            self.animateCircle(from: 0.6,to: 1.4)
+        } else if (wpm > 150){
             self.my_range_wpm.text = "Woah... Rileks.. Atur Nafasmu"
-            self.animateCircle()
+            self.animateCircle(from: 1.4,to: 2.0)
         }
         
         return wpm
@@ -517,6 +529,8 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
     }
     
     func updateTimerLabel() {
+        
+        self.getWordsCount(kntn: self.konten)
 //                    let hr = Int((audioRecorder.currentTime / 60) / 60)
         let min = Int(audioRecorder.currentTime / 60)
         let sec = Int(audioRecorder.currentTime.truncatingRemainder(dividingBy: 60))
@@ -543,13 +557,14 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
         let alertController = UIAlertController(title: "Nama Rekaman", message: "Isi nama rekaman Anda", preferredStyle: .alert)
         alertController.addTextField { textField in
             textField.placeholder = "Nama Rekamaan"
-            self.titleRecordings = textField.text
+//            self.titleRecordings = textField.text
         }
         let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
             guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
             print("Current title recording \(String(describing: textField.text))")
             self.titleRecordings = textField.text
             //compare the current password and do action here
+            self.finishAudioRecording(success: true)
         }
         alertController.addAction(confirmAction)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)

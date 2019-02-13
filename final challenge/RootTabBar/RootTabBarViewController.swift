@@ -16,6 +16,18 @@ class RootTabBarViewController: UITabBarController {
     }
     
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tabBar.items?[0].image = #imageLiteral(resourceName: "Lesson active")
+        self.tabBar.items?[0].title = "Pelajaran"
+        
+        self.tabBar.items?[1].image = #imageLiteral(resourceName: "practice active")
+        self.tabBar.items?[1].title = "Latihan"
+        
+        self.tabBar.items?[2].image = #imageLiteral(resourceName: "history active")
+        self.tabBar.items?[2].title = "Riwayat"
+    }
     /*
     // MARK: - Navigation
 

@@ -15,6 +15,15 @@ import Foundation
 
 class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsControllerDelegate, SFSpeechRecognizerDelegate, AVSpeechSynthesizerDelegate{
     
+    var dataTopic = [
+        [
+            LessonData(title: "Alam", subtitle: "Komodo adalah reptil spesies kadal terbesar di dunia, komodo dewasa di alam bebas pada umumnya memiliki berat 70 kilogram dengan panjang antara 2 sampai 3 meter. Nama dari reptil ini diambil dari nama habitat alaminya yaitu Pulau Komodo yang merupakan bagian dari Provinsi Nusa Tenggara Timur. Pulau Komodo mempunyai luas 390 kilometer persegi dan jumlah populasi lebih dari 2000 jiwa. Di pulau ini terdapat satu dari tujuh Pantai Merah Muda di dunia yang dikenal karena keindahan warna pasirnya yang berwarna merah muda. Pada tahun 1980, Taman Nasional Komodo didirikan dengan tujuan melindungi komodo dari kepunahan sekaligus mencegah habitat alaminya mengalami kerusakan, taman nasional ini mencakup dua pulau besar lainnya yaitu Pulau Rinca dan Pulau Padar. Pada tahun 2011, Taman Nasional Komodo dinobatkan sebagai salah satu dari Tujuh Keajaiban Dunia Baru."),
+            LessonData(title: "Kesehatan", subtitle: "Kesehatan fisik merupakan suatu hal yang sangat penting, akan tetapi menjaga kesehatan mental juga merupakan hal yang tidak kalah pentingnya. Kesehatan mental yang buruk seringkali membawa orang ke jurang depresi dan memicu bunuh diri. Pada tahun 2018, Organisasi Kesehatan Dunia memperkirakan bahwa setiap 40 detik, seseorang di dunia mengakhiri hidupnya. Orang yang mengalami depresi sering kali tidak menyadari kemunculan gangguan tersebut. Depresi dapat dicegah dengan menjaga kesehatan mental dengan baik, kesehatan mental dapat dijaga dengan beberapa cara seperti lebih menerima dan menghargai diri, aktif berkegiatan seperti olahraga atau bergabung di suatu komunitas, dan mau membuka diri untuk bercerita pada orang lain."),
+            LessonData(title: "", subtitle: "")
+        ]
+    ]
+    var selectedIndex: IndexPath!
+    
     // atribut recording
     @IBOutlet weak var text_Topic: UITextView!
     
@@ -41,11 +50,15 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
     var circleView: UIView!
     var radarView:UIView!
     var konten: String!
+    var titleRecordings: String!
     
     let audioEngine = AVAudioEngine()
     var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     var recognitionTask: SFSpeechRecognitionTask?
     let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "id-ID"))  //1
+    
+    
+    let coreDataAudio = CoreDataAudio(modelName: "final_challenge")
     
     
     override func viewDidLoad() {
@@ -88,10 +101,12 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
         {
             stopRecognitionSpeech()
             meterTimer.invalidate()
-            finishAudioRecording(success: true)
+            removeAnimateCircleAndRadarLayer()
+            addTitleRecording()
+            
             record_btn_ref.setImage(UIImage(named: "record-1"), for: .normal)
             record_btn_ref.isEnabled = false
-            //            isRecording = false
+            self.record_TimeLabel.text = "00:00"
         }
         else
         {
@@ -103,6 +118,13 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
             //            isRecording = true
         }
     }
+    
+    
+    func removeAnimateCircleAndRadarLayer() {
+        self.radarLayer.removeAllAnimations()
+        //        setupCircular()
+    }
+    
     let settings = [
         AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
         AVSampleRateKey: 44100,
@@ -167,38 +189,66 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
         //        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(animateCircle)))
     }
     
-    @objc func animateCircle(){
+    @objc func animateCircle(from lastValue: CGFloat, to value: CGFloat){
+        let animation = CABasicAnimation(keyPath: "transform.scale")
         
-        let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
-        scaleAnimation.fromValue = 0
-        scaleAnimation.toValue = 1
         
-        let alphaAnimation = CABasicAnimation(keyPath: "transform.scale")
-        alphaAnimation.fromValue = 1
-        alphaAnimation.toValue = 0
+        animation.fromValue = lastValue
+        animation.toValue = value
+        animation.duration = 0.5
+        animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
         
-        let animations = CAAnimationGroup()
-        animations.duration = 2.5
-        animations.repeatCount = Float.infinity
+        //        let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
+        //        scaleAnimation.fromValue = 0
+        //        scaleAnimation.toValue = 1
+        //
+        //        let alphaAnimation = CABasicAnimation(keyPath: "transform.scale")
+        //        alphaAnimation.fromValue = 1
+        //        alphaAnimation.toValue = 0
+        //
+        //        let animations = CAAnimationGroup()
+        //        animations.duration = 5.0
+        //        animations.repeatCount = Float.infinity
         
-        animations.animations = [scaleAnimation]
+        //        animations.animations = [scaleAnimation]
         
-        circleLayer.add(animations, forKey: "scale")
-        radarLayer.add(animations, forKey: "scale radar")
+        //        circleLayer.add(animations, forKey: "scale")
+        //        radarLayer.add(animations, forKey: "scale radar")
+        radarLayer.add(animation, forKey: "pulsating")
         
+    }
+    
+    fileprivate func setupTopic() {
+        //        self.titleNavBar.title = "Latihan"
+        //        self.background_text.addRoundedBorder(ofWidth: 1, radius: 11, color: UIColor.orangeS.cgColor)
+        //        self.background_text.shapedBackground()
+        //        self.text_semangat.text = "Try to keep your speed within your range goal!"
+        
+        self.defineTopic()
+        self.text_Topic.text = self.dataTopic[selectedIndex.section][selectedIndex.row].subtitle
+        print(self.text_Topic.text)
+        self.text_Topic.isEditable = false
+        self.text_Topic.isScrollEnabled = true
+    }
+    
+    fileprivate func defineTopic(){
+        self.dataTopic = [
+            [
+                LessonData(title: "Alam", subtitle: "Komodo adalah reptil spesies kadal terbesar di dunia, komodo dewasa di alam bebas pada umumnya memiliki berat 70 kilogram dengan panjang antara 2 sampai 3 meter. Nama dari reptil ini diambil dari nama habitat alaminya yaitu Pulau Komodo yang merupakan bagian dari Provinsi Nusa Tenggara Timur. Pulau Komodo mempunyai luas 390 kilometer persegi dan jumlah populasi lebih dari 2000 jiwa. Di pulau ini terdapat satu dari tujuh Pantai Merah Muda di dunia yang dikenal karena keindahan warna pasirnya yang berwarna merah muda. Pada tahun 1980, Taman Nasional Komodo didirikan dengan tujuan melindungi komodo dari kepunahan sekaligus mencegah habitat alaminya mengalami kerusakan, taman nasional ini mencakup dua pulau besar lainnya yaitu Pulau Rinca dan Pulau Padar. Pada tahun 2011, Taman Nasional Komodo dinobatkan sebagai salah satu dari Tujuh Keajaiban Dunia Baru."),
+                LessonData(title: "Kesehatan", subtitle: "Kesehatan fisik merupakan suatu hal yang sangat penting, akan tetapi menjaga kesehatan mental juga merupakan hal yang tidak kalah pentingnya. Kesehatan mental yang buruk seringkali membawa orang ke jurang depresi dan memicu bunuh diri. Pada tahun 2018, Organisasi Kesehatan Dunia memperkirakan bahwa setiap 40 detik, seseorang di dunia mengakhiri hidupnya. Orang yang mengalami depresi sering kali tidak menyadari kemunculan gangguan tersebut. Depresi dapat dicegah dengan menjaga kesehatan mental dengan baik, kesehatan mental dapat dijaga dengan beberapa cara seperti lebih menerima dan menghargai diri, aktif berkegiatan seperti olahraga atau bergabung di suatu komunitas, dan mau membuka diri untuk bercerita pada orang lain."),
+                LessonData(title: "", subtitle: "")
+            ]
+        ]
     }
     
     override func viewWillAppear(_ animated: Bool) {
         self.check_record_permission()
-//        self.titleNavBar.title = "Latihan"
-//        self.background_text.addRoundedBorder(ofWidth: 1, radius: 11, color: UIColor.orangeS.cgColor)
-//        self.background_text.shapedBackground()
-//        self.text_semangat.text = "Try to keep your speed within your range goal!"
+        setupTopic()
         self.my_range_wpm.text = "Yoyoyo Ganbatte!"
         self.konten = ""
         self.durationRecording = 0
-        self.circleView = UIView(frame: CGRect(x: view.frame.maxX - 75.0, y: view.frame.maxY - 250.0, width: 150, height: 150))
-        self.radarView = UIView(frame: CGRect(x: view.frame.maxX - 75.0, y: view.frame.maxY - 250.0, width: 150, height: 150))
+        self.circleView = UIView(frame: CGRect(x: view.frame.maxX - 50, y: view.frame.maxY - 250, width: 300, height: 300))
+        self.radarView = UIView(frame: CGRect(x: view.frame.maxX - 50, y: view.frame.maxY - 250, width: 300, height: 300))
         self.view.addSubview(circleView)
         self.view.addSubview(radarView)
         self.setupCircular()
@@ -224,6 +274,8 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
                 print("Error...")
             }
             
+            
+            
             addMediaCaptureToDB(audioTrack!, mediaType: "Recording")
             
             audioRecorder.stop()
@@ -239,18 +291,16 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
     func addMediaCaptureToDB(_ mediaData: Data, mediaType: String)
     {
         
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        
-        
+        //        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         
         
         //        let coreDataManager = NSPersistentContainer(name: "RecordingData")
         
         
+        //        let context = appDelegate.persistentContainer.viewContext
+        let moc = coreDataAudio.managedObjectContext
         
-        let context = appDelegate.persistentContainer.viewContext
-        
-        guard let newRec = NSEntityDescription.insertNewObject(forEntityName: "Audio", into: context) as? Audio else
+        guard let newRec = NSEntityDescription.insertNewObject(forEntityName: "Audio", into: moc) as? Audio else
         {
             print("Error add media to DB")
             return
@@ -260,28 +310,28 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
         newRec.audio = mediaData as NSData
         newRec.date = NSDate()
         newRec.durasi = Int16(durationRecording)
-        newRec.titleRecording = "Title Recording"
+        newRec.titleRecording = self.titleRecordings
         newRec.konten = self.konten
         //        newRec.speech = mediaData.description
         // Save the new MediaCapture record to the database
         
-        let userentity = NSEntityDescription.entity(forEntityName: "Audio", in: context)
+        //        let userentity = NSEntityDescription.entity(forEntityName: "Audio", in: moc)
         
         
         
-        let newRec1 = NSManagedObject(entity: userentity!, insertInto: context)
-        newRec1.setValue(newRec.date, forKey: "date")
-        newRec1.setValue(newRec.titleRecording, forKey: "titleRecording")
-        newRec1.setValue(newRec.audio, forKey: "audio")
-        newRec1.setValue(newRec.durasi, forKey: "durasi")
-        newRec1.setValue(newRec.konten, forKey: "konten")
+        //        let newRec1 = NSManagedObject(entity: userentity!, insertInto: moc)
+        //        newRec1.setValue(newRec.date, forKey: "date")
+        //        newRec1.setValue(newRec.titleRecording, forKey: "titleRecording")
+        //        newRec1.setValue(newRec.audio, forKey: "audio")
+        //        newRec1.setValue(newRec.durasi, forKey: "durasi")
+        //        newRec1.setValue(newRec.konten, forKey: "konten")
         //        newRec1.setValue(newRec.speech, forKey: "speech")
         //        newRec1.setValue(newRec.id, forKey: "id")
         
         
         
         do {
-            try context.save()
+            try moc.save()
             print("Sukses save di core data gan!")
             
             //print
@@ -298,6 +348,7 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
         } catch {
             print("Error save media to DB")
         }
+        
     }
     
     
@@ -345,6 +396,7 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
     func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
         if audioEngine.isRunning {
             stopRecognitionSpeech()
+//            self.text_Topic.text = tempResult
             self.konten = tempResult
             audioEngine.inputNode.removeTap(onBus: 0)
             jeda = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(jedaToRelaunch), userInfo: nil, repeats: true)
@@ -368,12 +420,13 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
         }
         let session = AVAudioSession.sharedInstance()
         do {
-            try session.setCategory(AVAudioSession.Category.record, mode: .measurement)
+            try session.setCategory(AVAudioSession.Category.record, mode: .measurement, options: .defaultToSpeaker)
             try session.setActive(true, options: .notifyOthersOnDeactivation)
             
         }
         catch let error {
-            display_alert(msg_title: "Error", msg_desc:error.localizedDescription, action_title: "OK")
+            //            display_alert(msg_title: "Error", msg_desc:error.localizedDescription, action_title: "OK")
+            print(error.localizedDescription)
         }
         
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
@@ -391,20 +444,25 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
             var isFinal = false
             
             if result != nil {
+                
+                
+                
                 guard let result_ = result?.bestTranscription.formattedString else {
                     return
                 }
                 self.konten = self.tempResult+" "+result_
                 
                 isFinal = (result?.isFinal)!
-                self.getWordsCount(kntn: self.konten)
             }
             
             if error != nil || isFinal {
                 self.audioEngine.stop()
                 inputNode.removeTap(onBus: 0)
+                
                 self.recognitionRequest = nil
                 self.recognitionTask = nil
+                
+                
                 self.record_btn_ref.isEnabled = true
             }
         })
@@ -423,7 +481,7 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
         }
         
         
-//        my_range_wpm.text = "Say something, I'm listening"
+        //        text_semangat.text = "Say something, I'm listening"
         
         
     }
@@ -442,12 +500,15 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
         let word = Float(words)
         let wpm = Float(word / minutes)
         
-        if (wpm < 120 && isPassingTime()){
+        if (wpm < 120){
             self.my_range_wpm.text = "Ayo Semangat dong"
-        } else if((wpm > 120 || wpm < 150)  && isPassingTime()) {
+            self.animateCircle(from: 0.6,to: 0.1)
+        } else if((wpm > 120 || wpm < 150)  ) {
             self.my_range_wpm.text = "Sudah Pas! Pertahankan!"
-        } else if (isPassingTime() && wpm > 150){
+            self.animateCircle(from: 0.6,to: 1.4)
+        } else if ( wpm > 150){
             self.my_range_wpm.text = "Woah... Rileks.. Atur Nafasmu"
+            self.animateCircle(from: 0.6,to: 1.4)
         }
         
         return wpm
@@ -475,6 +536,8 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
     }
     
     func updateTimerLabel() {
+        
+        self.getWordsCount(kntn: self.konten)
         //                    let hr = Int((audioRecorder.currentTime / 60) / 60)
         let min = Int(audioRecorder.currentTime / 60)
         let sec = Int(audioRecorder.currentTime.truncatingRemainder(dividingBy: 60))
@@ -495,4 +558,26 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
         })
         present(ac, animated: true)
     }
+    
+    func addTitleRecording() {
+        
+        let alertController = UIAlertController(title: "Nama Rekaman", message: "Isi nama rekaman Anda", preferredStyle: .alert)
+        alertController.addTextField { textField in
+            textField.placeholder = "Nama Rekamaan"
+            //            self.titleRecordings = textField.text
+        }
+        let confirmAction = UIAlertAction(title: "OK", style: .default) { [weak alertController] _ in
+            guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
+            print("Current title recording \(String(describing: textField.text))")
+            self.titleRecordings = textField.text
+            //compare the current password and do action here
+            self.finishAudioRecording(success: true)
+        }
+        alertController.addAction(confirmAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
 }
+
