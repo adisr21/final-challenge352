@@ -74,7 +74,12 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.barStyle = .default
+        navigationController?.navigationBar.barTintColor = UIColor.black
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes=[NSAttributedString.Key.foregroundColor:UIColor.white]
         
+        navigationController?.navigationBar.tintColor=UIColor.orange
         // Do any additional setup after loading the view.
         speechRecognizer?.delegate = self
         
