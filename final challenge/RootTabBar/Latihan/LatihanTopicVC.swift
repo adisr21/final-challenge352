@@ -51,6 +51,7 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
     var radarView:UIView!
     var konten: String!
     var titleRecordings: String!
+    var nilaiWPM: Float!
     
     let audioEngine = AVAudioEngine()
     var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
@@ -317,6 +318,7 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
         newRec.durasi = Int16(durationRecording)
         newRec.titleRecording = self.titleRecordings
         newRec.konten = self.konten
+        newRec.wpm = self.nilaiWPM
         //        newRec.speech = mediaData.description
         // Save the new MediaCapture record to the database
         
@@ -504,6 +506,7 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
         let minutes = Float(Float(durationRecording) / 60.0)
         let word = Float(words)
         let wpm = Float(word / minutes)
+        self.nilaiWPM = wpm
         
         if (wpm < 120){
             self.my_range_wpm.text = "Ayo Semangat dong"

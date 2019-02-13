@@ -50,14 +50,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" tag="104" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="datedatedatedate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ers-xk-Xii">
-                                            <rect key="frame" x="16" y="38" width="154" height="24"/>
+                                            <rect key="frame" x="16" y="39" width="158.66666666666666" height="23.333333333333332"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="20"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" tag="105" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="berapaX" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5I6-9J-V9F">
-                                            <rect key="frame" x="287.66666666666669" y="40" width="71.333333333333329" height="21.666666666666668"/>
+                                            <rect key="frame" x="291.33333333333331" y="41" width="67.666666666666671" height="21"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="18"/>
                                             <nil key="textColor"/>

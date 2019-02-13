@@ -70,7 +70,7 @@
                                         <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="e4y-FY-a7F">
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e4y-FY-a7F">
                                         <rect key="frame" x="58.666666666666686" y="27" width="228" height="2"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="228" id="JMz-NI-eud"/>
