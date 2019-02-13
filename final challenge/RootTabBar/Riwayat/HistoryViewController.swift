@@ -135,7 +135,7 @@ class HistoryViewController: UITableViewController, NSFetchedResultsControllerDe
         let stringDate: String = dateFormatter.string(from: audio.date as! Date)
         
         cell.labelTitle.text = audio.titleRecording
-        cell.labelDetail.text = String(describing: audio.date)
+        cell.labelDetail.text = stringDate
         cell.labelSubtitle.text = String(describing: "durasi : \(audio.durasi) detik ")
         cell.labelTitle.textColor = .white
         
