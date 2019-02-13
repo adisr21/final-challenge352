@@ -3,13 +3,13 @@ import CoreData
 class HistoryViewController: UITableViewController, NSFetchedResultsControllerDelegate
 {
     
-    let sectionTitles = ["date", "date", "date"]
+    let sectionTitles = ["date"]
     let modelName = "final_challenge"
     let dataHistory = [
         [
             HistoryData(title: "text", detail:"datedet", subtitle: "texttexttexttext"),
             HistoryData(title: "text", detail:"datede1t", subtitle: "textte1xttexttext"),
-            HistoryData(title: "te2xt", detail:"date2det", subtitle: "texttexttexttext2")
+            //HistoryData(title: "te2xt", detail:"date2det", subtitle: "texttexttexttext2")
         ],
         [
             HistoryData(title: "text", detail:"datedet", subtitle: "texttexttexttext"),
@@ -76,19 +76,19 @@ class HistoryViewController: UITableViewController, NSFetchedResultsControllerDe
             fatalError("There was an error fetching the list of devices")
         }
     }
-    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+//    override func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
 //        (view as! UITableViewHeaderFooterView).backgroundView?.backgroundColor = UIColor.darkGray.withAlphaComponent(0.5)
 //        (view as! UITableViewHeaderFooterView).textLabel?.textColor=UIColor.white
-    }
-    
-    //    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-    //        cell.backgroundColor = UIColor.clear
-    //    }
+//    }
+//
+//        override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+//            cell.backgroundColor = UIColor.clear
+//        }
     
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles=true
         navigationItem.largeTitleDisplayMode = .automatic
-        navigationItem.title="History"
+        navigationItem.title="Riwayat"
 //        reloadData()
         initializeFetchedResultsController()
         tableView.reloadData()
@@ -110,6 +110,7 @@ class HistoryViewController: UITableViewController, NSFetchedResultsControllerDe
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath) as! LabelTableViewCell
+        
 //        let backgroundView = UIView()
 //        cell.labelTitle.text=dataHistory[section]
 //        let headline = self.dataHistory[indexPath.section][indexPath.row]
@@ -123,14 +124,13 @@ class HistoryViewController: UITableViewController, NSFetchedResultsControllerDe
 //        backgroundView.backgroundColor = .darkGray
 //        cell.selectedBackgroundView = backgroundView
         
-        
-        
         let audio = fetchedResultsController.object(at: indexPath)
         
         
         cell.labelTitle.text = audio.titleRecording
         cell.labelDetail.text = String(describing: audio.date)
         cell.labelSubtitle.text = String(describing: "durasi : \(audio.durasi) detik ")
+        cell.labelTitle.textColor = .white
         
 //        if let audioName = audio.value(forKey: "titleRecording") as? String, let dateRecording = audio.value(forKey: "date") as? Date {
 //            cell.labelTitle.text = audioName

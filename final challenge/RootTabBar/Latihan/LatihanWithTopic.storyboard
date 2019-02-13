@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Latihan TopicVC-->
+        <!--Latihan Pake Topik-->
         <scene sceneID="Q4u-kh-Yb5">
             <objects>
-                <viewController id="PVY-eN-gJU" customClass="LatihanTopicVC" customModule="final_challenge" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="PVY-eN-gJU" customClass="LatihanPakeTopik" customModule="final_challenge" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xP7-LU-mif">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

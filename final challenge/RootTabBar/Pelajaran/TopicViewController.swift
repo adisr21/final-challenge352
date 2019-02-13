@@ -46,7 +46,7 @@ class TopicViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles=false
         navigationItem.largeTitleDisplayMode = .never
-        navigationItem.title="Topic"
+        navigationItem.title="Topik"
     }
     
     

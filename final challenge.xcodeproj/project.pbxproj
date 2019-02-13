@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E1B62B0221404AE005B59AA /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1B62AF221404AE005B59AA /* TabBar.swift */; };
+		1E1B62B2221413AC005B59AA /* LatihanPakeTopik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1B62B1221413AC005B59AA /* LatihanPakeTopik.swift */; };
 		1EB5D3D8220AD0B9000A5C44 /* AlvaTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB5D3D7220AD0B9000A5C44 /* AlvaTesting.swift */; };
 		1EF1D5DC220BD52700EF8BAB /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF1D5D8220BD52600EF8BAB /* DateTableViewCell.swift */; };
 		1EF1D5DD220BD52700EF8BAB /* HistoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF1D5D9220BD52700EF8BAB /* HistoryDetail.swift */; };
@@ -108,6 +110,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E1B62AF221404AE005B59AA /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		1E1B62B1221413AC005B59AA /* LatihanPakeTopik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatihanPakeTopik.swift; sourceTree = "<group>"; };
 		1EB5D3D7220AD0B9000A5C44 /* AlvaTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlvaTesting.swift; sourceTree = "<group>"; };
 		1EF1D5D8220BD52600EF8BAB /* DateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
 		1EF1D5D9220BD52700EF8BAB /* HistoryDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDetail.swift; sourceTree = "<group>"; };
@@ -363,6 +367,7 @@
 		3C378168220ABFC500225723 /* RootTabBar */ = {
 			isa = PBXGroup;
 			children = (
+				1E1B62AF221404AE005B59AA /* TabBar.swift */,
 				3C37816B220ABFDD00225723 /* Riwayat */,
 				3C37816A220ABFD800225723 /* Latihan */,
 				3C378169220ABFD100225723 /* Pelajaran */,
@@ -383,10 +388,11 @@
 		3C37816A220ABFD800225723 /* Latihan */ = {
 			isa = PBXGroup;
 			children = (
-				3C37816C220ABFFA00225723 /* Latihan.storyboard */,
 				3C06BCCC220AD8B600455D9C /* RecordingVC.swift */,
-				3CB5913A220D73FB00B8926C /* LatihanWithTopic.storyboard */,
+				1E1B62B1221413AC005B59AA /* LatihanPakeTopik.swift */,
 				3CB5913C220D741900B8926C /* LatihanTopicVC.swift */,
+				3C37816C220ABFFA00225723 /* Latihan.storyboard */,
+				3CB5913A220D73FB00B8926C /* LatihanWithTopic.storyboard */,
 			);
 			path = Latihan;
 			sourceTree = "<group>";
@@ -394,11 +400,11 @@
 		3C37816B220ABFDD00225723 /* Riwayat */ = {
 			isa = PBXGroup;
 			children = (
-				3C37816E220AC01100225723 /* Riwayat.storyboard */,
 				1EF1D5D8220BD52600EF8BAB /* DateTableViewCell.swift */,
 				1EF1D5DA220BD52700EF8BAB /* HistoryViewController.swift */,
 				1EF1D5DB220BD52700EF8BAB /* LabelTableViewCell.swift */,
 				1EF1D5D9220BD52700EF8BAB /* HistoryDetail.swift */,
+				3C37816E220AC01100225723 /* Riwayat.storyboard */,
 			);
 			path = Riwayat;
 			sourceTree = "<group>";
@@ -618,11 +624,13 @@
 				1EF1D5DE220BD52700EF8BAB /* HistoryViewController.swift in Sources */,
 				3C378137220ABC9F00225723 /* ViewController.swift in Sources */,
 				3C0EFC9A22111A9400FEB948 /* Audio+CoreDataProperties.swift in Sources */,
+				1E1B62B0221404AE005B59AA /* TabBar.swift in Sources */,
 				1EF1D5DF220BD52700EF8BAB /* LabelTableViewCell.swift in Sources */,
 				1EF1D5DC220BD52700EF8BAB /* DateTableViewCell.swift in Sources */,
 				1EF1D64D220BD89600EF8BAB /* TopicViewController.swift in Sources */,
 				3C31E69A220AE3AB00E33910 /* FuncAndStuffs.swift in Sources */,
 				3C378135220ABC9F00225723 /* AppDelegate.swift in Sources */,
+				1E1B62B2221413AC005B59AA /* LatihanPakeTopik.swift in Sources */,
 				1EB5D3D8220AD0B9000A5C44 /* AlvaTesting.swift in Sources */,
 				1EF1D5E1220BD54400EF8BAB /* LessonVC.swift in Sources */,
 				3CB5913D220D741900B8926C /* LatihanTopicVC.swift in Sources */,
