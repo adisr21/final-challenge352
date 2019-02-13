@@ -84,6 +84,7 @@
 		3C378167220ABFBC00225723 /* Pelajaran.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C378165220ABFBC00225723 /* Pelajaran.storyboard */; };
 		3C37816D220ABFFA00225723 /* Latihan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C37816C220ABFFA00225723 /* Latihan.storyboard */; };
 		3C378170220AC01100225723 /* Riwayat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C37816E220AC01100225723 /* Riwayat.storyboard */; };
+		3C6E38A1221265FC00F0FB44 /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6E38A0221265FC00F0FB44 /* RootTabBarViewController.swift */; };
 		3C83C573220C0EDC00A5DBAC /* HasilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C83C571220C0EDC00A5DBAC /* HasilViewController.swift */; };
 		3C83C574220C0EDC00A5DBAC /* Hasil.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C83C572220C0EDC00A5DBAC /* Hasil.storyboard */; };
 		3C934630221141FE007BEFB9 /* final_challenge.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 3C37813B220ABC9F00225723 /* final_challenge.xcdatamodeld */; };
@@ -194,6 +195,7 @@
 		3C378166220ABFBC00225723 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "final challenge/Base.lproj/Pelajaran.storyboard"; sourceTree = "<group>"; };
 		3C37816C220ABFFA00225723 /* Latihan.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Latihan.storyboard; sourceTree = "<group>"; };
 		3C37816F220AC01100225723 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "final challenge/Base.lproj/Riwayat.storyboard"; sourceTree = "<group>"; };
+		3C6E38A0221265FC00F0FB44 /* RootTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootTabBarViewController.swift; path = RootTabBar/RootTabBarViewController.swift; sourceTree = "<group>"; };
 		3C83C571220C0EDC00A5DBAC /* HasilViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HasilViewController.swift; sourceTree = "<group>"; };
 		3C83C572220C0EDC00A5DBAC /* Hasil.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Hasil.storyboard; sourceTree = "<group>"; };
 		3C93463122116DFA007BEFB9 /* CoreDataAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataAudio.swift; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 		3C378133220ABC9F00225723 /* final challenge */ = {
 			isa = PBXGroup;
 			children = (
+				3C6E38A0221265FC00F0FB44 /* RootTabBarViewController.swift */,
 				3C0EFC942211188600FEB948 /* Model */,
 				3C83C570220C0EDC00A5DBAC /* Hasil */,
 				3C378168220ABFC500225723 /* RootTabBar */,
@@ -633,6 +636,7 @@
 				1E1B62B2221413AC005B59AA /* LatihanPakeTopik.swift in Sources */,
 				1EB5D3D8220AD0B9000A5C44 /* AlvaTesting.swift in Sources */,
 				1EF1D5E1220BD54400EF8BAB /* LessonVC.swift in Sources */,
+				3C6E38A1221265FC00F0FB44 /* RootTabBarViewController.swift in Sources */,
 				3CB5913D220D741900B8926C /* LatihanTopicVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

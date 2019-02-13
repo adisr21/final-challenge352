@@ -101,7 +101,7 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <segue destination="tGP-oV-XJe" kind="show" identifier="recordTopic" id="oWq-SI-Fcd"/>
+                        <segue destination="tGP-oV-XJe" kind="show" identifier="recordTopic" id="2Hw-xD-wSM"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M2p-UI-9m7" userLabel="First Responder" sceneMemberID="firstResponder"/>
