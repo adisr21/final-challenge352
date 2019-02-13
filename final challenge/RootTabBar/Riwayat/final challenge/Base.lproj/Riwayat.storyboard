@@ -50,14 +50,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" tag="104" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="datedatedatedate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ers-xk-Xii">
-                                            <rect key="frame" x="16" y="39" width="158.66666666666666" height="23.333333333333332"/>
+                                            <rect key="frame" x="16" y="38" width="154" height="24"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="20"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" tag="105" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="berapaX" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5I6-9J-V9F">
-                                            <rect key="frame" x="291.33333333333331" y="41" width="67.666666666666671" height="21"/>
+                                            <rect key="frame" x="287.66666666666669" y="40" width="71.333333333333329" height="21.666666666666668"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="18"/>
                                             <nil key="textColor"/>
@@ -109,7 +109,6 @@
                                     <outlet property="labelDetail" destination="dkd-eJ-A4s" id="v7D-XS-yes"/>
                                     <outlet property="labelSubtitle" destination="xOW-Wa-Bgm" id="fNX-kK-T1G"/>
                                     <outlet property="labelTitle" destination="g8Q-Ma-76f" id="JXf-s4-fHG"/>
-                                    <segue destination="fyE-Zl-eAh" kind="show" id="JHw-vC-Set"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -119,6 +118,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="History" largeTitleDisplayMode="always" id="bNX-Hp-utX"/>
+                    <connections>
+                        <segue destination="Oue-mI-1yh" kind="show" identifier="historyToHasil" id="cmE-WV-f8s"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2MG-7G-UIQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -127,10 +129,12 @@
         <!--Hasil-->
         <scene sceneID="QFB-8Y-2lc">
             <objects>
-                <viewControllerPlaceholder storyboardName="Hasil" id="Oue-mI-1yh" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Hasil" id="Oue-mI-1yh" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="qno-3V-SUt"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3UC-NN-VwN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3458" y="967"/>
+            <point key="canvasLocation" x="4010" y="978"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bRI-el-bjY">
@@ -150,8 +154,29 @@
             </objects>
             <point key="canvasLocation" x="1545" y="913"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="v7P-XA-bdS">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ual-Kg-9gJ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pYn-1D-vGg">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Oue-mI-1yh" kind="relationship" relationship="rootViewController" id="o0B-P8-NW0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G1n-Ts-MNe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3421.5999999999999" y="978.32512315270935"/>
+        </scene>
     </scenes>
     <resources>
         <image name="PLAY BUTTON with shadow" width="52" height="52"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="cmE-WV-f8s"/>
+    </inferredMetricsTieBreakers>
 </document>
