@@ -80,6 +80,9 @@
                                         <rect key="frame" x="152" y="52" width="45" height="45"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="PLAY BUTTON with shadow"/>
+                                        <connections>
+                                            <action selector="playAudio:" destination="5yX-3U-yuS" eventType="touchUpInside" id="b9N-jt-q88"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -133,7 +136,10 @@
                         <viewLayoutGuide key="safeArea" id="gwB-Er-WPw"/>
                     </view>
                     <connections>
+                        <outlet property="end_label" destination="bVj-QP-GXN" id="FqV-MF-0Bv"/>
                         <outlet property="kontenHasil" destination="d60-Yo-2FF" id="JdW-3n-pxe"/>
+                        <outlet property="play_btn" destination="mKg-gK-97M" id="3Oz-Tz-I0y"/>
+                        <outlet property="start_label" destination="fbE-ge-Q3I" id="lrW-C1-8jw"/>
                         <outlet property="viewHasil" destination="5TT-ue-X9a" id="pOI-CU-Qnq"/>
                         <outlet property="viewRecording" destination="yJx-wg-AoL" id="ITD-uw-Aof"/>
                     </connections>

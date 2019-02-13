@@ -10,17 +10,25 @@ import UIKit
 import AVFoundation
 import CoreData
 
-class HasilViewController: UIViewController, NSFetchedResultsControllerDelegate {
+class HasilViewController: UIViewController, NSFetchedResultsControllerDelegate, AVAudioPlayerDelegate {
     
     
+    @IBOutlet weak var end_label: UILabel!
+    @IBOutlet weak var start_label: UILabel!
     @IBOutlet weak var viewHasil: UIView!
     @IBOutlet weak var viewRecording: UIView!
     @IBOutlet weak var kontenHasil: UITextView!
+    @IBOutlet weak var play_btn: UIButton!
+    
     
     var selectedIndexPath: IndexPath!
     var audioData: Data!
     var valueWpm: Float!
     var durasiAudio: Float!
+    var isPlaying = false
+    var timer: Timer!
+    var audioPlayer: AVAudioPlayer!
+    
     
     fileprivate func setupReview() {
         if valueWpm >= 200 { kontenHasil.text = "Rata-rata kecepatan bicaramu adalah \(self.valueWpm) kata per menit.\n\nKecepatan bicara ini tergolong terlalu cepat untuk presentasi pada umumnya, jika tidak diperlambat, pendengar akan merasa sangat kesulitan mengikuti alur pembicaraanmu. Kecepatan ini pada umumnya hanya digunakan oleh juru lelang yang ingin menciptakan rasa mendesak pada para pendengarnya."} else
@@ -65,14 +73,15 @@ class HasilViewController: UIViewController, NSFetchedResultsControllerDelegate 
         viewRecording.layer.cornerRadius = 10.0
         kontenHasil.isEditable = false
         
+        self.initializeFetchedResultsController()
+        self.setupData()
+        self.setupReview()
         // Do any additional setup after loading the view.
     }
     
 
     override func viewWillAppear(_ animated: Bool) {
-        self.initializeFetchedResultsController()
-        self.setupData()
-        self.setupReview()
+        
     }
     
     func setupData(){
@@ -81,15 +90,33 @@ class HasilViewController: UIViewController, NSFetchedResultsControllerDelegate 
         
         valueWpm = audio.wpm
         print("nilai wpm: \(valueWpm)")
+        
+        let session = AVAudioSession.sharedInstance()
+        do {
+            try session.setCategory(AVAudioSession.Category.playAndRecord, mode: .default)
+            try session.setActive(true, options: .notifyOthersOnDeactivation)
+            
+            
+            audioPlayer = try AVAudioPlayer(data: audio.audio as! Data, fileTypeHint: AVFileType.m4a.rawValue)
+            
+            audioPlayer.prepareToPlay()
+            
+        } catch let error as NSError{
+            print("error: \(error.localizedDescription)")
+        }
+        
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+    @IBAction func playAudio(_ sender: Any){
+        if isPlaying {
+            audioPlayer.pause()
+            play_btn.setImage(UIImage(imageLiteralResourceName: "pause button"), for: .normal)
+        } else {
+           audioPlayer.play()
+            play_btn.setImage(UIImage(imageLiteralResourceName: "PLAY BUTTON with shadow"), for: .normal)
+            
+            
+        }
     }
-    */
 
 }

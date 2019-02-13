@@ -24,5 +24,6 @@ extension Audio {
     @NSManaged public var konten: String?
     @NSManaged public var titleRecording: String?
     @NSManaged public var wpm: Float
+//    @NSManaged public var urlAudio: URL
 
 }
