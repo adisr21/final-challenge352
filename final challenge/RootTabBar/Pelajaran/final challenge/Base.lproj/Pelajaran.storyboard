@@ -114,7 +114,7 @@
                 <viewControllerPlaceholder storyboardName="LatihanWithTopic" id="tGP-oV-XJe" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ruk-dn-JCx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3562" y="1132"/>
+            <point key="canvasLocation" x="3658" y="1026"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TEC-qp-F6p">
