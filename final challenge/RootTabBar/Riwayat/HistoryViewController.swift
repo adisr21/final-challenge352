@@ -2,6 +2,7 @@ import UIKit
 import CoreData
 class HistoryViewController: UITableViewController, NSFetchedResultsControllerDelegate
 {
+    var selectedIndex: IndexPath!
     
     let sectionTitles = ["date"]
     let modelName = "final_challenge"
@@ -187,6 +188,8 @@ class HistoryViewController: UITableViewController, NSFetchedResultsControllerDe
         guard let sections = fetchedResultsController.sections else {
             fatalError("No selected")
         }
+//        self.selectedIndex = indexPath
+        performSegue(withIdentifier: "historyToHasil", sender: self)
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -210,6 +213,23 @@ class HistoryViewController: UITableViewController, NSFetchedResultsControllerDe
             }
 //            tableView.reloadData()
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        switch segue.identifier {
+        case "historyToHasil":
+            
+            if let indexPat = self.tableView.indexPathForSelectedRow {
+                
+                let controller = segue.destination as! HasilViewController
+                controller.selectedIndexPath = indexPat
+            }
+        default:
+            print("failed segue")
+        }
+        
+        
     }
     
     

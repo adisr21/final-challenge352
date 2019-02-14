@@ -40,6 +40,7 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
     var radarView:UIView!
     var konten: String!
     var titleRecordings: String!
+    var nilaiWPM: Float!
     
     var audios = [Audio]()
     var fetchedResultsController: NSFetchedResultsController<Audio>!
@@ -309,6 +310,7 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
         newRec.durasi = Int16(durationRecording)
         newRec.titleRecording = self.titleRecordings
         newRec.konten = self.konten
+        newRec.wpm = self.nilaiWPM
         //        newRec.speech = mediaData.description
         // Save the new MediaCapture record to the database
         
@@ -498,6 +500,7 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
         let word = Float(words)
         let wpm = Float(word / minutes)
         
+        self.nilaiWPM = wpm 
         if (wpm < 120 ){
             self.my_range_wpm.text = "Ayo Semangat dong"
             self.animateCircle(from: 0.4,to: 0.1)

@@ -70,29 +70,30 @@
                                         <color key="textColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" ambiguous="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="e4y-FY-a7F">
+                                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e4y-FY-a7F">
                                         <rect key="frame" x="58.666666666666686" y="27" width="228" height="2"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="228" id="JMz-NI-eud"/>
                                         </constraints>
                                     </progressView>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mKg-gK-97M">
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mKg-gK-97M">
                                         <rect key="frame" x="152" y="52" width="45" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" image="PLAY BUTTON with shadow"/>
+                                        <connections>
+                                            <action selector="playAudio:" destination="5yX-3U-yuS" eventType="touchUpInside" id="b9N-jt-q88"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="11o-ZF-HPX"/>
-                                    <constraint firstAttribute="bottom" secondItem="mKg-gK-97M" secondAttribute="bottom" constant="3" id="6Kh-GF-pQ6"/>
                                     <constraint firstItem="bVj-QP-GXN" firstAttribute="top" secondItem="yJx-wg-AoL" secondAttribute="top" constant="17" id="9Pr-AT-GV9"/>
                                     <constraint firstItem="e4y-FY-a7F" firstAttribute="top" secondItem="yJx-wg-AoL" secondAttribute="top" constant="27" id="9lv-wA-rvB"/>
                                     <constraint firstAttribute="trailing" secondItem="bVj-QP-GXN" secondAttribute="trailing" constant="8" id="LYh-cX-MOx"/>
                                     <constraint firstAttribute="width" constant="345" id="NL9-24-bWl"/>
-                                    <constraint firstItem="mKg-gK-97M" firstAttribute="top" secondItem="e4y-FY-a7F" secondAttribute="bottom" constant="23" id="Von-7e-NKm"/>
                                     <constraint firstItem="e4y-FY-a7F" firstAttribute="centerX" secondItem="yJx-wg-AoL" secondAttribute="centerX" id="XRk-5e-rYn"/>
                                     <constraint firstItem="fbE-ge-Q3I" firstAttribute="top" secondItem="yJx-wg-AoL" secondAttribute="top" constant="18" id="YTl-aG-JEP"/>
                                     <constraint firstItem="fbE-ge-Q3I" firstAttribute="leading" secondItem="yJx-wg-AoL" secondAttribute="leading" constant="8" id="kPj-EU-pxf"/>
-                                    <constraint firstItem="mKg-gK-97M" firstAttribute="centerX" secondItem="yJx-wg-AoL" secondAttribute="centerX" constant="2" id="uLB-dR-bbz"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5TT-ue-X9a">
@@ -135,7 +136,10 @@
                         <viewLayoutGuide key="safeArea" id="gwB-Er-WPw"/>
                     </view>
                     <connections>
+                        <outlet property="end_label" destination="bVj-QP-GXN" id="FqV-MF-0Bv"/>
                         <outlet property="kontenHasil" destination="d60-Yo-2FF" id="JdW-3n-pxe"/>
+                        <outlet property="play_btn" destination="mKg-gK-97M" id="3Oz-Tz-I0y"/>
+                        <outlet property="start_label" destination="fbE-ge-Q3I" id="lrW-C1-8jw"/>
                         <outlet property="viewHasil" destination="5TT-ue-X9a" id="pOI-CU-Qnq"/>
                         <outlet property="viewRecording" destination="yJx-wg-AoL" id="ITD-uw-Aof"/>
                     </connections>
