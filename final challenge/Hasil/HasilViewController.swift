@@ -13,6 +13,7 @@ import CoreData
 class HasilViewController: UIViewController, NSFetchedResultsControllerDelegate, AVAudioPlayerDelegate {
     
     
+    @IBOutlet weak var progressBarHasil: UIProgressView!
     @IBOutlet weak var end_label: UILabel!
     @IBOutlet weak var start_label: UILabel!
     @IBOutlet weak var viewHasil: UIView!
@@ -90,7 +91,7 @@ class HasilViewController: UIViewController, NSFetchedResultsControllerDelegate,
         
         valueWpm = audio.wpm
         print("nilai wpm: \(valueWpm)")
-        
+        end_label.text = getCurrentTimeAsString(angka: Int(audio.durasi))
         
     }
     
@@ -102,42 +103,106 @@ class HasilViewController: UIViewController, NSFetchedResultsControllerDelegate,
             try session.setCategory(AVAudioSession.Category.playback, mode: .default)
             try session.setActive(true)
             
-            
-            
-            
             print("url AB:\(audio.urlAudio)")
             
+            self.audioPlayer = try AVAudioPlayer(contentsOf: audio.urlAudio, fileTypeHint: AVFileType.m4a.rawValue)
             
-
-            let url = audio.urlAudio
-                
-
-            
-            self.audioPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.m4a.rawValue)
-
             
             
             
             audioPlayer.delegate = self
             self.audioPlayer.prepareToPlay()
-            self.audioPlayer.play()
+            
             
         } catch let error as NSError{
             print("error: \(error.localizedDescription)")
         }
     }
+    func play(){
+        if audioPlayer.isPlaying == false {
+            audioPlayer.play()
+        }
+    }
+    
+    func stop() {
+        if audioPlayer.isPlaying == true {
+            audioPlayer.stop()
+            audioPlayer.currentTime = 0
+        }
+    }
+    func pause() {
+        if audioPlayer.isPlaying == true {
+            audioPlayer.pause()
+        }
+    }
+    
+    func getCurrentTimeAsString(angka: Int) -> String {
+        var seconds = 0
+        var minutes = 0
+        
+            seconds = Int(angka) % 60
+            minutes = (Int(angka) / 60) % 60
+        
+        
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
+    
+    
+    func getCurrentTimeAsString() -> String {
+        var seconds = 0
+        var minutes = 0
+        if let time = audioPlayer?.currentTime {
+            seconds = Int(time) % 60
+            minutes = (Int(time) / 60) % 60
+        }
+        
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
+    
+    
+    func getProgress() -> Float {
+        var theCurrentTime = 0.0
+        var theCurrentDuration = 0.0
+        if let currentTime = audioPlayer?.currentTime, let duration = audioPlayer?.duration {
+            theCurrentTime = currentTime
+            theCurrentDuration = duration
+        }
+        return Float(theCurrentTime / theCurrentDuration)
+    }
+    
+    func startTimer(){
+        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateViewsWithTimer(theTimer:)), userInfo: nil, repeats: true)
+    }
+    
+    @objc func updateViewsWithTimer(theTimer: Timer) {
+        updateView()
+    }
+    
+    func updateView() {
+        start_label.text = self.getCurrentTimeAsString()
+        let progress = self.getProgress()
+        progressBarHasil.progress = progress
+    }
     
     @IBAction func playAudio(_ sender: Any){
         if isPlaying {
-            self.audioPlayer.pause()
-            self.play_btn.setImage(UIImage(imageLiteralResourceName: "pause button"), for: .normal)
-        } else {
-
-            self.setupAudio()
+//            self.audioPlayer.pause()
+            stop()
             self.play_btn.setImage(UIImage(imageLiteralResourceName: "PLAY BUTTON with shadow"), for: .normal)
+            timer.invalidate()
+            progressBarHasil.progress = 0.0
+            isPlaying = false
+        } else {
             
+            self.setupAudio()
+            play()
+            self.play_btn.setImage(UIImage(imageLiteralResourceName: "pause button"), for: .normal)
+            isPlaying = true
+            startTimer()
             
         }
     }
+    
+    
 
 }

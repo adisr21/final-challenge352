@@ -81,9 +81,8 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
             
             try session.setCategory(AVAudioSession.Category.record, mode: .measurement)
             try session.setActive(true, options: .notifyOthersOnDeactivation)
-            guard let getURL = self.getFileUrl() else {
-                return
-            }
+            
+            let getURL = self.getFileUrl()
             self.urlTemp = getURL
             
             guard let urlTemp = self.urlTemp else {

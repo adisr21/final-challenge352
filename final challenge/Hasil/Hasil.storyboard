@@ -139,6 +139,7 @@
                         <outlet property="end_label" destination="bVj-QP-GXN" id="FqV-MF-0Bv"/>
                         <outlet property="kontenHasil" destination="d60-Yo-2FF" id="JdW-3n-pxe"/>
                         <outlet property="play_btn" destination="mKg-gK-97M" id="3Oz-Tz-I0y"/>
+                        <outlet property="progressBarHasil" destination="e4y-FY-a7F" id="4T7-9U-DHR"/>
                         <outlet property="start_label" destination="fbE-ge-Q3I" id="lrW-C1-8jw"/>
                         <outlet property="viewHasil" destination="5TT-ue-X9a" id="pOI-CU-Qnq"/>
                         <outlet property="viewRecording" destination="yJx-wg-AoL" id="ITD-uw-Aof"/>
