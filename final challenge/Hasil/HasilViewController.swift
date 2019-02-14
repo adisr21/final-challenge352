@@ -103,25 +103,25 @@ class HasilViewController: UIViewController, NSFetchedResultsControllerDelegate,
             try session.setActive(true)
             
             
-            //            audioPlayer = try AVAudioPlayer(data: audio.audio as! Data, fileTypeHint: AVFileType.m4a.rawValue)
+            
             
             print("url AB:\(audio.urlAudio)")
             
             
-//            self.audioPlayer.delegate = self
+
             let url = audio.urlAudio
-//            let url = Bundle.main.url(forResource: "Optional(%22yyyy%22)", withExtension: "m4a")
-            let data = NSData(contentsOf: url)
-//            print("Data:: ", audio.audio)
+                
+
             
             self.audioPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.m4a.rawValue)
-//            self.audioPlayer = try AVAudioPlayer(data: audio.audio! as Data, fileTypeHint: AVFileType.m4a.rawValue)
+
             
             
             
-            self.audioPlayer.delegate = self
+            audioPlayer.delegate = self
             self.audioPlayer.prepareToPlay()
             self.audioPlayer.play()
+            
         } catch let error as NSError{
             print("error: \(error.localizedDescription)")
         }
@@ -131,11 +131,9 @@ class HasilViewController: UIViewController, NSFetchedResultsControllerDelegate,
         if isPlaying {
             self.audioPlayer.pause()
             self.play_btn.setImage(UIImage(imageLiteralResourceName: "pause button"), for: .normal)
-            
         } else {
-//            self.setupData()
+
             self.setupAudio()
-//           self.audioPlayer.play()
             self.play_btn.setImage(UIImage(imageLiteralResourceName: "PLAY BUTTON with shadow"), for: .normal)
             
             

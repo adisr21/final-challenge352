@@ -52,6 +52,7 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
     var konten: String!
     var titleRecordings: String!
     var nilaiWPM: Float!
+    var urlTemp: URL?
     
     let audioEngine = AVAudioEngine()
     var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
@@ -80,7 +81,17 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
             
             try session.setCategory(AVAudioSession.Category.record, mode: .measurement)
             try session.setActive(true, options: .notifyOthersOnDeactivation)
-            audioRecorder = try AVAudioRecorder(url: getFileUrl(), settings: settings)
+            guard let getURL = self.getFileUrl() else {
+                return
+            }
+            self.urlTemp = getURL
+            
+            guard let urlTemp = self.urlTemp else {
+                return
+            }
+            
+            
+            audioRecorder = try AVAudioRecorder(url: urlTemp, settings: settings)
             audioRecorder.delegate = self
             audioRecorder.isMeteringEnabled = true
             audioRecorder.prepareToRecord()
@@ -242,6 +253,11 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
         newRec.titleRecording = self.titleRecordings
         newRec.konten = self.konten
         newRec.wpm = self.nilaiWPM
+        guard let getURL = self.urlTemp else {
+            return
+        }
+        newRec.urlAudio = getURL
+        
         //        newRec.speech = mediaData.description
         // Save the new MediaCapture record to the database
         

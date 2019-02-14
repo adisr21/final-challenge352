@@ -41,6 +41,7 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
     var konten: String!
     var titleRecordings: String!
     var nilaiWPM: Float!
+    var urlTemp: URL?
     
     var audios = [Audio]()
     var fetchedResultsController: NSFetchedResultsController<Audio>!
@@ -297,7 +298,7 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
         }
     }
     
-    var urlTemp: URL?
+    
     
     func addMediaCaptureToDB(_ mediaData: Data, mediaType: String)
     {
