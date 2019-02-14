@@ -148,6 +148,8 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
         AVNumberOfChannelsKey: 2,
         AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
     ]
+    
+    
     func setupRecord() {
         
         let session = AVAudioSession.sharedInstance()
@@ -155,7 +157,15 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
             
             try session.setCategory(AVAudioSession.Category.record, mode: .measurement)
             try session.setActive(true, options: .notifyOthersOnDeactivation)
-            audioRecorder = try AVAudioRecorder(url: getFileUrl(), settings: settings)
+            guard let getURL = self.getFileUrl() else {
+                return
+            }
+            self.urlTemp = getURL
+            
+            guard let urlTemp = self.urlTemp else {
+                return
+            }
+            audioRecorder = try AVAudioRecorder(url: urlTemp, settings: settings)
             audioRecorder.delegate = self
             audioRecorder.isMeteringEnabled = true
             audioRecorder.prepareToRecord()
@@ -286,6 +296,8 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
         }
     }
     
+    var urlTemp: URL?
+    
     func addMediaCaptureToDB(_ mediaData: Data, mediaType: String)
     {
         
@@ -308,9 +320,15 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
         newRec.audio = mediaData as NSData
         newRec.date = NSDate()
         newRec.durasi = Int16(durationRecording)
-        newRec.titleRecording = self.titleRecordings
+        newRec.titleRecording = self.titleRecordings!
         newRec.konten = self.konten
-        newRec.wpm = self.nilaiWPM
+        newRec.wpm = self.nilaiWPM!
+        guard let getURL = self.urlTemp else {
+            return
+        }
+        newRec.urlAudio = getURL
+        
+        
         //        newRec.speech = mediaData.description
         // Save the new MediaCapture record to the database
         
@@ -382,8 +400,12 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
         return documentsDirectory
     }
     
-    func getFileUrl() -> URL {
-        let filename = "myRecording.m4a"
+    func getFileUrl() -> URL? {
+//        guard let titleRecording = self.titleRecordings else {
+//            return nil
+//        }
+        let filename = "\(UUID().uuidString).m4a"
+        self.titleRecordings = filename
         let filepath = getDocumentsDirectory().appendingPathComponent(filename)
         return filepath
     }

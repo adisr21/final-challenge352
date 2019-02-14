@@ -31,10 +31,10 @@ class HasilViewController: UIViewController, NSFetchedResultsControllerDelegate,
     
     
     fileprivate func setupReview() {
-        if valueWpm >= 200 { kontenHasil.text = "Rata-rata kecepatan bicaramu adalah \(self.valueWpm) kata per menit.\n\nKecepatan bicara ini tergolong terlalu cepat untuk presentasi pada umumnya, jika tidak diperlambat, pendengar akan merasa sangat kesulitan mengikuti alur pembicaraanmu. Kecepatan ini pada umumnya hanya digunakan oleh juru lelang yang ingin menciptakan rasa mendesak pada para pendengarnya."} else
-            if valueWpm >= 150 { kontenHasil.text = "Rata-rata kecepatan bicaramu adalah \(self.valueWpm) kata per menit.\n\nKecepatan bicara ini tergolong cepat untuk presentasi pada umumnya, jika tidak diperlambat, pendengar akan merasa kesulitan mengikuti alur pembicaraanmu. Kecepatan ini sebaiknya digunakan untuk menyampaikan poin-poin yang bersemangat atau antusiasme yang kuat."} else
-                if valueWpm >= 120 { kontenHasil.text = "Rata-rata kecepatan bicaramu adalah \(self.valueWpm) kata per menit.\n\nKecepatan bicara anda sangat baik untuk presentasi pada umumnya, kecepatan ini membuat pendengar merasa sedang diajak dalam percakapan sehari-hari."} else
-                    if valueWpm < 120 { kontenHasil.text = "Rata-rata kecepatan bicaramu adalah \(self.valueWpm) kata per menit.\n\nKecepatan bicara ini tergolong lambat untuk presentasi pada umumnya, jika tidak dipercepat, pendengar dapat merasa bosan bahkan mengantuk. Kecepatan ini sebaiknya digunakan untuk menyampaikan poin-poin krusial yang perlu dipahami dengan dalam oleh pendengar."} else
+        if valueWpm >= 200 { kontenHasil.text = "Rata-rata kecepatan bicaramu adalah \(self.valueWpm!) kata per menit.\n\nKecepatan bicara ini tergolong terlalu cepat untuk presentasi pada umumnya, jika tidak diperlambat, pendengar akan merasa sangat kesulitan mengikuti alur pembicaraanmu. Kecepatan ini pada umumnya hanya digunakan oleh juru lelang yang ingin menciptakan rasa mendesak pada para pendengarnya."} else
+            if valueWpm >= 150 { kontenHasil.text = "Rata-rata kecepatan bicaramu adalah \(self.valueWpm!) kata per menit.\n\nKecepatan bicara ini tergolong cepat untuk presentasi pada umumnya, jika tidak diperlambat, pendengar akan merasa kesulitan mengikuti alur pembicaraanmu. Kecepatan ini sebaiknya digunakan untuk menyampaikan poin-poin yang bersemangat atau antusiasme yang kuat."} else
+                if valueWpm >= 120 { kontenHasil.text = "Rata-rata kecepatan bicaramu adalah \(self.valueWpm!) kata per menit.\n\nKecepatan bicara anda sangat baik untuk presentasi pada umumnya, kecepatan ini membuat pendengar merasa sedang diajak dalam percakapan sehari-hari."} else
+                    if valueWpm < 120 { kontenHasil.text = "Rata-rata kecepatan bicaramu adalah \(self.valueWpm!) kata per menit.\n\nKecepatan bicara ini tergolong lambat untuk presentasi pada umumnya, jika tidak dipercepat, pendengar dapat merasa bosan bahkan mengantuk. Kecepatan ini sebaiknya digunakan untuk menyampaikan poin-poin krusial yang perlu dipahami dengan dalam oleh pendengar."} else
                     {kontenHasil.text = "Unidentified."}
     }
     
@@ -91,29 +91,52 @@ class HasilViewController: UIViewController, NSFetchedResultsControllerDelegate,
         valueWpm = audio.wpm
         print("nilai wpm: \(valueWpm)")
         
+        
+    }
+    
+    func setupAudio() {
+        let audio = fetchedResultsController.object(at: self.selectedIndexPath)
+        
         let session = AVAudioSession.sharedInstance()
         do {
-            try session.setCategory(AVAudioSession.Category.playAndRecord, mode: .default)
-            try session.setActive(true, options: .notifyOthersOnDeactivation)
+            try session.setCategory(AVAudioSession.Category.playback, mode: .default)
+            try session.setActive(true)
             
             
-            audioPlayer = try AVAudioPlayer(data: audio.audio as! Data, fileTypeHint: AVFileType.m4a.rawValue)
+            //            audioPlayer = try AVAudioPlayer(data: audio.audio as! Data, fileTypeHint: AVFileType.m4a.rawValue)
             
-            audioPlayer.prepareToPlay()
+            print("url AB:\(audio.urlAudio)")
             
+            
+//            self.audioPlayer.delegate = self
+            let url = audio.urlAudio
+//            let url = Bundle.main.url(forResource: "Optional(%22yyyy%22)", withExtension: "m4a")
+            let data = NSData(contentsOf: url)
+//            print("Data:: ", audio.audio)
+            
+            self.audioPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.m4a.rawValue)
+//            self.audioPlayer = try AVAudioPlayer(data: audio.audio! as Data, fileTypeHint: AVFileType.m4a.rawValue)
+            
+            
+            
+            self.audioPlayer.delegate = self
+            self.audioPlayer.prepareToPlay()
+            self.audioPlayer.play()
         } catch let error as NSError{
             print("error: \(error.localizedDescription)")
         }
-        
     }
     
     @IBAction func playAudio(_ sender: Any){
         if isPlaying {
-            audioPlayer.pause()
-            play_btn.setImage(UIImage(imageLiteralResourceName: "pause button"), for: .normal)
+            self.audioPlayer.pause()
+            self.play_btn.setImage(UIImage(imageLiteralResourceName: "pause button"), for: .normal)
+            
         } else {
-           audioPlayer.play()
-            play_btn.setImage(UIImage(imageLiteralResourceName: "PLAY BUTTON with shadow"), for: .normal)
+//            self.setupData()
+            self.setupAudio()
+//           self.audioPlayer.play()
+            self.play_btn.setImage(UIImage(imageLiteralResourceName: "PLAY BUTTON with shadow"), for: .normal)
             
             
         }
