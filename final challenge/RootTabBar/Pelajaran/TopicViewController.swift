@@ -109,7 +109,8 @@ class TopicViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = indexPath
-        selectedTopic()
+        //selectedTopic()
+        self.performSegue(withIdentifier: "recordTopic", sender: self)
         
         
     }
