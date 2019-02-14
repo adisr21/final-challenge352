@@ -64,7 +64,7 @@
                         <outlet property="record_btn_ref" destination="xb0-V2-yy4" id="Ncf-AI-ULg"/>
                         <outlet property="recording_TimeLabel" destination="BIX-vb-9An" id="Hlj-eq-vVf"/>
                         <outlet property="titleNavBar" destination="pkU-ax-cfx" id="JgY-h8-1le"/>
-                        <segue destination="IJh-DP-UbL" kind="show" id="tWB-Pd-ved"/>
+                        <segue destination="IJh-DP-UbL" kind="show" identifier="latihanHasil" id="tWB-Pd-ved"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lyK-jz-enF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -77,7 +77,7 @@
                 <viewControllerPlaceholder storyboardName="Hasil" id="IJh-DP-UbL" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7pR-pC-akp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2234" y="123"/>
+            <point key="canvasLocation" x="2263" y="136"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lni-dB-gae">

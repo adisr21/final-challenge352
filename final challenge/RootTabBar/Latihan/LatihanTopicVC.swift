@@ -60,83 +60,19 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
     
     
     let coreDataAudio = CoreDataAudio(modelName: "final_challenge")
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationController?.navigationBar.barStyle = .default
-        navigationController?.navigationBar.barTintColor = UIColor.black
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
-        navigationController?.navigationBar.titleTextAttributes=[NSAttributedString.Key.foregroundColor:UIColor.white]
-        
-        navigationController?.navigationBar.tintColor=UIColor.orange
-        // Do any additional setup after loading the view.
-        speechRecognizer?.delegate = self
-        
-        SFSpeechRecognizer.requestAuthorization { (authStatus) in  //4
-            
-            var isButtonEnabled = false
-            
-            switch authStatus {  //5
-            case .authorized:
-                isButtonEnabled = true
-                
-            case .denied:
-                isButtonEnabled = false
-                print("User denied access to speech recognition")
-                
-            case .restricted:
-                isButtonEnabled = false
-                print("Speech recognition restricted on this device")
-                
-            case .notDetermined:
-                isButtonEnabled = false
-                print("Speech recognition not yet authorized")
-            }
-            
-            OperationQueue.main.addOperation() {
-                //                self.microphoneButton.isEnabled = isButtonEnabled
-                self.record_btn_ref.isEnabled = isButtonEnabled
-            }
-        }
-    }
-    
-    @IBAction func startSpeech(_ sender: UIButton)
-    {
-        if(audioEngine.isRunning)
-        {
-            stopRecognitionSpeech()
-            meterTimer.invalidate()
-            removeAnimateCircleAndRadarLayer()
-            addTitleRecording()
-            
-            record_btn_ref.setImage(UIImage(named: "record-1"), for: .normal)
-            record_btn_ref.isEnabled = false
-            self.record_TimeLabel.text = "00:00"
-        }
-        else
-        {
-            startRecognitionSpeech()
-            setupRecord()
-            audioRecorder.record()
-            meterTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector:#selector(self.updateAudioMeter(timer:)), userInfo:nil, repeats:true)
-            record_btn_ref.setImage(UIImage(named: "stop-1"), for: .normal)
-            //            isRecording = true
-        }
-    }
-    
-    
-    func removeAnimateCircleAndRadarLayer() {
-        self.radarLayer.removeAllAnimations()
-        //        setupCircular()
-    }
-    
     let settings = [
         AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
         AVSampleRateKey: 44100,
         AVNumberOfChannelsKey: 2,
         AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
     ]
+    
+    func removeAnimateCircleAndRadarLayer() {
+        self.radarLayer.removeAllAnimations()
+        //        setupCircular()
+    }
+    
+    
     func setupRecord() {
         
         let session = AVAudioSession.sharedInstance()
@@ -247,20 +183,7 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
         ]
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.check_record_permission()
-        setupTopic()
-        self.my_range_wpm.text = "Yoyoyo Ganbatte!"
-        self.konten = ""
-        self.durationRecording = 0
-        self.circleView = UIView(frame: CGRect(x: view.frame.maxX - 50, y: view.frame.maxY - 250, width: 300, height: 300))
-        self.radarView = UIView(frame: CGRect(x: view.frame.maxX - 50, y: view.frame.maxY - 250, width: 300, height: 300))
-        self.view.addSubview(circleView)
-        self.view.addSubview(radarView)
-        self.setupCircular()
-        
-        
-    }
+    
     
     func finishAudioRecording(success: Bool)
     {
@@ -587,5 +510,96 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
         
         present(alertController, animated: true, completion: nil)
     }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationController?.navigationBar.barStyle = .default
+        navigationController?.navigationBar.barTintColor = UIColor.black
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
+        navigationController?.navigationBar.titleTextAttributes=[NSAttributedString.Key.foregroundColor:UIColor.white]
+        
+        navigationController?.navigationBar.tintColor=UIColor.orange
+        // Do any additional setup after loading the view.
+        speechRecognizer?.delegate = self
+        
+        SFSpeechRecognizer.requestAuthorization { (authStatus) in  //4
+            
+            var isButtonEnabled = false
+            
+            switch authStatus {  //5
+            case .authorized:
+                isButtonEnabled = true
+                
+            case .denied:
+                isButtonEnabled = false
+                print("User denied access to speech recognition")
+                
+            case .restricted:
+                isButtonEnabled = false
+                print("Speech recognition restricted on this device")
+                
+            case .notDetermined:
+                isButtonEnabled = false
+                print("Speech recognition not yet authorized")
+            }
+            
+            OperationQueue.main.addOperation() {
+                //                self.microphoneButton.isEnabled = isButtonEnabled
+                self.record_btn_ref.isEnabled = isButtonEnabled
+            }
+        }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.check_record_permission()
+        setupTopic()
+        //self.my_range_wpm.text = "Yoyoyo Ganbatte!"
+        self.konten = ""
+        self.durationRecording = 0
+        self.circleView = UIView(frame: CGRect(x: view.frame.maxX - 50, y: view.frame.maxY - 250, width: 300, height: 300))
+        self.radarView = UIView(frame: CGRect(x: view.frame.maxX - 50, y: view.frame.maxY - 250, width: 300, height: 300))
+        self.view.addSubview(circleView)
+        self.view.addSubview(radarView)
+        self.setupCircular()
+        
+        
+    }
+    @IBAction func startSpeech(_ sender: UIButton)
+    {
+        if(audioEngine.isRunning)
+        {
+            stopRecognitionSpeech()
+            meterTimer.invalidate()
+            removeAnimateCircleAndRadarLayer()
+            addTitleRecording()
+            
+            record_btn_ref.setImage(UIImage(named: "record-1"), for: .normal)
+            record_btn_ref.isEnabled = false
+            self.record_TimeLabel.text = "00:00"
+        }
+        else
+        {
+            startRecognitionSpeech()
+            setupRecord()
+            audioRecorder.record()
+            meterTimer = Timer.scheduledTimer(timeInterval: 1, target:self, selector:#selector(self.updateAudioMeter(timer:)), userInfo:nil, repeats:true)
+            record_btn_ref.setImage(UIImage(named: "stop-1"), for: .normal)
+            //            isRecording = true
+        }
+    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//        switch segue.identifier {
+//        case "latihanHasil":
+//
+//            if let indexPat = self.circleView.indexPathForSelectedRow {
+//
+//                let controller = segue.destination as! HasilViewController
+//                controller.selectedIndexPath = indexPat
+//            }
+//        default:
+//            print("failed segue")
+//        }
+//
+//
+//    }
 }
 

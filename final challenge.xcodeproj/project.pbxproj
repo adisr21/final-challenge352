@@ -378,6 +378,7 @@
 		3C378169220ABFD100225723 /* Pelajaran */ = {
 			isa = PBXGroup;
 			children = (
+				1E1B62B1221413AC005B59AA /* LatihanPakeTopik.swift */,
 				1EF1D64C220BD89600EF8BAB /* TopicViewController.swift */,
 				1EF1D5E0220BD54400EF8BAB /* LessonVC.swift */,
 				3C378165220ABFBC00225723 /* Pelajaran.storyboard */,
@@ -389,7 +390,6 @@
 			isa = PBXGroup;
 			children = (
 				3C06BCCC220AD8B600455D9C /* RecordingVC.swift */,
-				1E1B62B1221413AC005B59AA /* LatihanPakeTopik.swift */,
 				3CB5913C220D741900B8926C /* LatihanTopicVC.swift */,
 				3C37816C220ABFFA00225723 /* Latihan.storyboard */,
 				3CB5913A220D73FB00B8926C /* LatihanWithTopic.storyboard */,
