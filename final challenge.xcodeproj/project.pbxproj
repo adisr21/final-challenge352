@@ -76,7 +76,6 @@
 		3C378135220ABC9F00225723 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C378134220ABC9F00225723 /* AppDelegate.swift */; };
 		3C378137220ABC9F00225723 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C378136220ABC9F00225723 /* ViewController.swift */; };
 		3C37813A220ABC9F00225723 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C378138220ABC9F00225723 /* Main.storyboard */; };
-		3C37813F220ABC9F00225723 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C37813E220ABC9F00225723 /* Assets.xcassets */; };
 		3C378142220ABC9F00225723 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C378140220ABC9F00225723 /* LaunchScreen.storyboard */; };
 		3C37814D220ABC9F00225723 /* final_challengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C37814C220ABC9F00225723 /* final_challengeTests.swift */; };
 		3C378158220ABC9F00225723 /* final_challengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C378157220ABC9F00225723 /* final_challengeUITests.swift */; };
@@ -84,6 +83,7 @@
 		3C37816D220ABFFA00225723 /* Latihan.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C37816C220ABFFA00225723 /* Latihan.storyboard */; };
 		3C378170220AC01100225723 /* Riwayat.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C37816E220AC01100225723 /* Riwayat.storyboard */; };
 		3C6E38A1221265FC00F0FB44 /* RootTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C6E38A0221265FC00F0FB44 /* RootTabBarViewController.swift */; };
+		3C7E3E9522158C5F0031F532 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3C37813E220ABC9F00225723 /* Assets.xcassets */; };
 		3C83C573220C0EDC00A5DBAC /* HasilViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C83C571220C0EDC00A5DBAC /* HasilViewController.swift */; };
 		3C83C574220C0EDC00A5DBAC /* Hasil.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3C83C572220C0EDC00A5DBAC /* Hasil.storyboard */; };
 		3C934630221141FE007BEFB9 /* final_challenge.xcdatamodeld in Resources */ = {isa = PBXBuildFile; fileRef = 3C37813B220ABC9F00225723 /* final_challenge.xcdatamodeld */; };
@@ -553,6 +553,7 @@
 				3C378167220ABFBC00225723 /* Pelajaran.storyboard in Resources */,
 				1EF1D62F220BD64D00EF8BAB /* SFCompactDisplay-Thin.otf in Resources */,
 				1EF1D63F220BD64D00EF8BAB /* SF-Pro-Text-MediumItalic.otf in Resources */,
+				3C7E3E9522158C5F0031F532 /* Assets.xcassets in Resources */,
 				1EF1D648220BD64D00EF8BAB /* SF-Pro-Text-Semibold.otf in Resources */,
 				1EF1D63A220BD64D00EF8BAB /* SF-Pro-Display-Thin.otf in Resources */,
 				1EF1D621220BD64D00EF8BAB /* SF-Pro-Display-BoldItalic.otf in Resources */,
@@ -561,7 +562,6 @@
 				1EF1D61A220BD64D00EF8BAB /* gilroy-extrabold.otf in Resources */,
 				1EF1D62C220BD64D00EF8BAB /* SFCompactText-HeavyItalic.otf in Resources */,
 				1EF1D646220BD64D00EF8BAB /* SF-Pro-Display-HeavyItalic.otf in Resources */,
-				3C37813F220ABC9F00225723 /* Assets.xcassets in Resources */,
 				1EF1D644220BD64D00EF8BAB /* SF-Pro-Text-BoldItalic.otf in Resources */,
 				1EF1D633220BD64D00EF8BAB /* SF-Pro-Text-Light.otf in Resources */,
 				1EF1D62A220BD64D00EF8BAB /* SFCompactDisplay-Medium.otf in Resources */,
@@ -834,7 +834,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "iosda.final-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -852,7 +852,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "iosda.final-challenge";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

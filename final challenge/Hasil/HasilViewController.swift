@@ -77,6 +77,7 @@ class HasilViewController: UIViewController, NSFetchedResultsControllerDelegate,
         self.initializeFetchedResultsController()
         self.setupData()
         self.setupReview()
+        self.setupAudio()
         // Do any additional setup after loading the view.
     }
     
@@ -106,10 +107,6 @@ class HasilViewController: UIViewController, NSFetchedResultsControllerDelegate,
             print("url AB:\(audio.urlAudio)")
             
             self.audioPlayer = try AVAudioPlayer(contentsOf: audio.urlAudio, fileTypeHint: AVFileType.m4a.rawValue)
-            
-            
-            
-            
             audioPlayer.delegate = self
             self.audioPlayer.prepareToPlay()
             
@@ -119,19 +116,19 @@ class HasilViewController: UIViewController, NSFetchedResultsControllerDelegate,
         }
     }
     func play(){
-        if audioPlayer.isPlaying == false {
+        if isPlaying == false {
             audioPlayer.play()
         }
     }
     
     func stop() {
-        if audioPlayer.isPlaying == true {
+        if isPlaying == true {
             audioPlayer.stop()
             audioPlayer.currentTime = 0
         }
     }
     func pause() {
-        if audioPlayer.isPlaying == true {
+        if isPlaying == true {
             audioPlayer.pause()
         }
     }
@@ -187,15 +184,21 @@ class HasilViewController: UIViewController, NSFetchedResultsControllerDelegate,
     @IBAction func playAudio(_ sender: Any){
         if isPlaying {
 //            self.audioPlayer.pause()
-            stop()
+            if audioPlayer != nil {
+                audioPlayer.stop()
+            } else {
+                // do nothing
+            }
             self.play_btn.setImage(UIImage(imageLiteralResourceName: "PLAY BUTTON with shadow"), for: .normal)
             timer.invalidate()
             progressBarHasil.progress = 0.0
             isPlaying = false
         } else {
-            
-            self.setupAudio()
-            play()
+            if audioPlayer != nil {
+                audioPlayer.play()
+            } else {
+                
+            }
             self.play_btn.setImage(UIImage(imageLiteralResourceName: "pause button"), for: .normal)
             isPlaying = true
             startTimer()

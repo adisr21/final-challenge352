@@ -137,8 +137,7 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
         setupRadarLayer()
         setupCircleLayer()
         
-        // add tap gesture
-        //        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(animateCircle)))
+        
     }
     
     @objc func animateCircle(from lastValue: CGFloat, to value: CGFloat){
@@ -150,31 +149,13 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
         animation.duration = 0.5
         animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
         
-        //        let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
-        //        scaleAnimation.fromValue = 0
-        //        scaleAnimation.toValue = 1
-        //
-        //        let alphaAnimation = CABasicAnimation(keyPath: "transform.scale")
-        //        alphaAnimation.fromValue = 1
-        //        alphaAnimation.toValue = 0
-        //
-        //        let animations = CAAnimationGroup()
-        //        animations.duration = 5.0
-        //        animations.repeatCount = Float.infinity
         
-        //        animations.animations = [scaleAnimation]
-        
-        //        circleLayer.add(animations, forKey: "scale")
-        //        radarLayer.add(animations, forKey: "scale radar")
         radarLayer.add(animation, forKey: "pulsating")
         
     }
     
     fileprivate func setupTopic() {
-        //        self.titleNavBar.title = "Latihan"
-        //        self.background_text.addRoundedBorder(ofWidth: 1, radius: 11, color: UIColor.orangeS.cgColor)
-        //        self.background_text.shapedBackground()
-        //        self.text_semangat.text = "Try to keep your speed within your range goal!"
+        
         
         self.defineTopic()
         self.text_Topic.text = self.dataTopic[selectedIndex.section][selectedIndex.row].subtitle
@@ -230,13 +211,6 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
     func addMediaCaptureToDB(_ mediaData: Data, mediaType: String)
     {
         
-        //        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        
-        
-        //        let coreDataManager = NSPersistentContainer(name: "RecordingData")
-        
-        
-        //        let context = appDelegate.persistentContainer.viewContext
         let moc = coreDataAudio.managedObjectContext
         
         guard let newRec = NSEntityDescription.insertNewObject(forEntityName: "Audio", into: moc) as? Audio else
@@ -256,23 +230,6 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
             return
         }
         newRec.urlAudio = getURL
-        
-        //        newRec.speech = mediaData.description
-        // Save the new MediaCapture record to the database
-        
-        //        let userentity = NSEntityDescription.entity(forEntityName: "Audio", in: moc)
-        
-        
-        
-        //        let newRec1 = NSManagedObject(entity: userentity!, insertInto: moc)
-        //        newRec1.setValue(newRec.date, forKey: "date")
-        //        newRec1.setValue(newRec.titleRecording, forKey: "titleRecording")
-        //        newRec1.setValue(newRec.audio, forKey: "audio")
-        //        newRec1.setValue(newRec.durasi, forKey: "durasi")
-        //        newRec1.setValue(newRec.konten, forKey: "konten")
-        //        newRec1.setValue(newRec.speech, forKey: "speech")
-        //        newRec1.setValue(newRec.id, forKey: "id")
-        
         
         
         do {
@@ -327,7 +284,8 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
     }
     
     func getFileUrl() -> URL {
-        let filename = "myRecording.m4a"
+        let filename = "\(UUID().uuidString).m4a"
+        self.titleRecordings = filename
         let filepath = getDocumentsDirectory().appendingPathComponent(filename)
         return filepath
     }
@@ -566,7 +524,7 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
     override func viewWillAppear(_ animated: Bool) {
         self.check_record_permission()
         setupTopic()
-        //self.my_range_wpm.text = "Yoyoyo Ganbatte!"
+        self.my_range_wpm.text = "Silahkan baca teks diatas"
         self.konten = ""
         self.durationRecording = 0
         self.circleView = UIView(frame: CGRect(x: view.frame.maxX - 50, y: view.frame.maxY - 250, width: 300, height: 300))

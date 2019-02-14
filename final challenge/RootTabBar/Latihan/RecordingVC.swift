@@ -156,7 +156,7 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
         let session = AVAudioSession.sharedInstance()
         do {
             
-            try session.setCategory(AVAudioSession.Category.record, mode: .measurement)
+            try session.setCategory(AVAudioSession.Category.playAndRecord, mode: .measurement)
             try session.setActive(true, options: .notifyOthersOnDeactivation)
             guard let getURL = self.getFileUrl() else {
                 return
