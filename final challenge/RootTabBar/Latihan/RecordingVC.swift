@@ -203,14 +203,14 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
         let circularPath = UIBezierPath(arcCenter: .zero, radius: 100, startAngle: 0, endAngle: 2*CGFloat.pi, clockwise: false)
         
         circleLayer.path = circularPath.cgPath
-        circleLayer.lineWidth = 10
-        circleLayer.fillColor = UIColor.orangeS.cgColor
-        circleLayer.strokeColor = UIColor.clear.cgColor
+        circleLayer.lineWidth = 2
+        circleLayer.fillColor = UIColor.clear.cgColor
+        circleLayer.strokeColor = UIColor.orangeS.cgColor
         circleView.layer.addSublayer(circleLayer)
     }
     
     func setupCircular() {
-        setupRadarLayer()
+//        setupRadarLayer()
         setupCircleLayer()
         
         // add tap gesture
@@ -252,14 +252,14 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
 //        self.background_text.addRoundedBorder(ofWidth: 1, radius: 11, color: UIColor.orangeS.cgColor)
 //        self.background_text.shapedBackground()
 //        self.text_semangat.text = "Try to keep your speed within your range goal!"
-        self.my_range_wpm.text = "Yoyoyo Ganbatte!"
+        self.my_range_wpm.text = " "
         self.my_range_wpm.textColor = UIColor.orangeS
         self.konten = ""
         self.durationRecording = 0
         self.circleView = UIView(frame: CGRect(x: 185.0, y: 300.0, width: 300, height: 300))
         self.radarView = UIView(frame: CGRect(x: 185.0, y: 300.0, width: 300, height: 300))
         self.view.addSubview(circleView)
-        self.view.addSubview(radarView)
+//        self.view.addSubview(radarView)
         self.setupCircular()
         
         

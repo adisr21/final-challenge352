@@ -35,41 +35,49 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C1b-II-ti5">
-                                <rect key="frame" x="10" y="64" width="394" height="411"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lI9-bB-xvq">
+                                <rect key="frame" x="96.666666666666686" y="364.66666666666669" width="221" height="20.333333333333314"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="411" id="AmB-8q-CAD"/>
+                                    <constraint firstAttribute="width" constant="221" id="ZII-pm-4tv"/>
                                 </constraints>
-                                <attributedString key="attributedText">
-                                    <fragment>
-                                        <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                        <attributes>
-                                            <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <font key="NSFont" size="17" name=".AppleSystemUIFont"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.3" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lI9-bB-xvq">
-                                <rect key="frame" x="20" y="566" width="219" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gnH-LS-LX8">
+                                <rect key="frame" x="20" y="423" width="374" height="309"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="9am-ZC-NWO">
+                                        <rect key="frame" x="8" y="2" width="358" height="305"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="9am-ZC-NWO" firstAttribute="top" secondItem="gnH-LS-LX8" secondAttribute="top" constant="2" id="ITO-17-zXu"/>
+                                    <constraint firstAttribute="trailing" secondItem="9am-ZC-NWO" secondAttribute="trailing" constant="8" id="N5j-fa-9Dg"/>
+                                    <constraint firstAttribute="bottom" secondItem="9am-ZC-NWO" secondAttribute="bottom" constant="2" id="X6b-cf-oLO"/>
+                                    <constraint firstItem="9am-ZC-NWO" firstAttribute="leading" secondItem="gnH-LS-LX8" secondAttribute="leading" constant="8" id="cZl-3a-1sQ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="C1b-II-ti5" firstAttribute="leading" secondItem="zxc-VP-4Fh" secondAttribute="leading" constant="10" id="DDP-Og-210"/>
+                            <constraint firstItem="gnH-LS-LX8" firstAttribute="leading" secondItem="zxc-VP-4Fh" secondAttribute="leading" constant="20" id="2BV-uc-PHM"/>
+                            <constraint firstItem="zxc-VP-4Fh" firstAttribute="trailing" secondItem="gnH-LS-LX8" secondAttribute="trailing" constant="20" id="2wP-Z7-Tlq"/>
+                            <constraint firstItem="gnH-LS-LX8" firstAttribute="top" secondItem="xP7-LU-mif" secondAttribute="top" constant="423" id="5WR-2A-Hoy"/>
+                            <constraint firstItem="iT9-bz-sCR" firstAttribute="top" secondItem="gnH-LS-LX8" secondAttribute="bottom" constant="36" id="5sl-dI-ff8"/>
+                            <constraint firstItem="gnH-LS-LX8" firstAttribute="centerX" secondItem="lI9-bB-xvq" secondAttribute="centerX" id="C6J-rp-0aQ"/>
                             <constraint firstItem="zxc-VP-4Fh" firstAttribute="trailing" secondItem="ht6-iw-aIL" secondAttribute="trailing" constant="30" id="FX6-9h-VLt"/>
+                            <constraint firstItem="gnH-LS-LX8" firstAttribute="top" secondItem="lI9-bB-xvq" secondAttribute="bottom" constant="38" id="JL6-KS-1m1"/>
                             <constraint firstItem="zxc-VP-4Fh" firstAttribute="bottom" secondItem="ht6-iw-aIL" secondAttribute="bottom" constant="51" id="LEV-es-ktn"/>
                             <constraint firstItem="iT9-bz-sCR" firstAttribute="centerX" secondItem="xP7-LU-mif" secondAttribute="centerX" id="YiZ-uS-oYb"/>
-                            <constraint firstItem="zxc-VP-4Fh" firstAttribute="trailing" secondItem="C1b-II-ti5" secondAttribute="trailing" constant="10" id="oit-cq-e3Y"/>
+                            <constraint firstItem="gnH-LS-LX8" firstAttribute="top" secondItem="lI9-bB-xvq" secondAttribute="bottom" constant="38" id="a7f-AR-cWz"/>
                             <constraint firstItem="zxc-VP-4Fh" firstAttribute="bottom" secondItem="ht6-iw-aIL" secondAttribute="bottom" constant="51" id="thF-Ni-ZxR"/>
-                            <constraint firstItem="C1b-II-ti5" firstAttribute="top" secondItem="zxc-VP-4Fh" secondAttribute="top" constant="20" id="uHZ-R1-225"/>
                             <constraint firstItem="zxc-VP-4Fh" firstAttribute="bottom" secondItem="iT9-bz-sCR" secondAttribute="bottom" constant="30" id="w50-hr-8I6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="zxc-VP-4Fh"/>
@@ -78,7 +86,8 @@
                         <outlet property="my_range_wpm" destination="lI9-bB-xvq" id="cSL-9E-eRs"/>
                         <outlet property="record_TimeLabel" destination="ht6-iw-aIL" id="i3q-kJ-44n"/>
                         <outlet property="record_btn_ref" destination="iT9-bz-sCR" id="Xlp-3m-0Zb"/>
-                        <outlet property="text_Topic" destination="C1b-II-ti5" id="kSU-ep-9DA"/>
+                        <outlet property="text_Topic" destination="9am-ZC-NWO" id="3a0-en-Sdm"/>
+                        <outlet property="view_text_topic" destination="gnH-LS-LX8" id="toQ-Na-7tP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hqs-8a-dXh" userLabel="First Responder" sceneMemberID="firstResponder"/>

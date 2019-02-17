@@ -316,6 +316,7 @@
 				3CDBC91F220ADE86001877C1 /* Recovered References */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		3C378132220ABC9F00225723 /* Products */ = {
 			isa = PBXGroup;

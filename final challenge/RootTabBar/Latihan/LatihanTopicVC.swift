@@ -26,7 +26,7 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
     
     // atribut recording
     @IBOutlet weak var text_Topic: UITextView!
-    
+    @IBOutlet weak var view_text_topic: UIView!
     @IBOutlet weak var record_btn_ref: UIButton!
     @IBOutlet weak var record_TimeLabel: UILabel!
 //    @IBOutlet var play_btn_ref: UIButton!
@@ -124,17 +124,17 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
     
     fileprivate func setupCircleLayer() {
         //setup circle layer
-        let circularPath = UIBezierPath(arcCenter: .zero, radius: 50, startAngle: 0, endAngle: 2*CGFloat.pi, clockwise: false)
+        let circularPath = UIBezierPath(arcCenter: .zero, radius: 100, startAngle: 0, endAngle: 2*CGFloat.pi, clockwise: false)
         
         circleLayer.path = circularPath.cgPath
-        circleLayer.lineWidth = 10
-        circleLayer.fillColor = UIColor.orangeS.cgColor
-        circleLayer.strokeColor = UIColor.clear.cgColor
+        circleLayer.lineWidth = 2
+        circleLayer.fillColor = UIColor.clear.cgColor
+        circleLayer.strokeColor = UIColor.orangeS.cgColor
         circleView.layer.addSublayer(circleLayer)
     }
     
     func setupCircular() {
-        setupRadarLayer()
+//        setupRadarLayer()
         setupCircleLayer()
         
         
@@ -522,15 +522,21 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
         }
     }
     override func viewWillAppear(_ animated: Bool) {
+        view_text_topic.layer.borderWidth = 2
+        view_text_topic.layer.borderColor = UIColor.orange.cgColor
+        view_text_topic.clipsToBounds = true
+        view_text_topic.layer.cornerRadius = 10.0
+        
         self.check_record_permission()
         setupTopic()
-        self.my_range_wpm.text = "Silahkan baca teks diatas"
+        self.my_range_wpm.text = "Silahkan baca teks dibawah"
+        self.my_range_wpm.textColor = UIColor.orangeS
         self.konten = ""
         self.durationRecording = 0
-        self.circleView = UIView(frame: CGRect(x: view.frame.maxX - 50, y: view.frame.maxY - 250, width: 300, height: 300))
-        self.radarView = UIView(frame: CGRect(x: view.frame.maxX - 50, y: view.frame.maxY - 250, width: 300, height: 300))
+        self.circleView = UIView(frame: CGRect(x: view.frame.maxX / 2, y: view.frame.maxY - 600, width: 300, height: 300))
+//        self.radarView = UIView(frame: CGRect(x: view.frame.maxX - 50, y: view.frame.maxY - 250, width: 300, height: 300))
         self.view.addSubview(circleView)
-        self.view.addSubview(radarView)
+//        self.view.addSubview(radarView)
         self.setupCircular()
         
         
@@ -541,7 +547,7 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
         {
             stopRecognitionSpeech()
             meterTimer.invalidate()
-            removeAnimateCircleAndRadarLayer()
+//            removeAnimateCircleAndRadarLayer()
             addTitleRecording()
             
             record_btn_ref.setImage(UIImage(named: "record-1"), for: .normal)
