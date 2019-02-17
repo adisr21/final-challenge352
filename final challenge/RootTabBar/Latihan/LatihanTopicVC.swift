@@ -24,6 +24,28 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
     ]
     var selectedIndex: IndexPath!
     
+    
+    let visualizerAnimationDuration = 0.15
+    var lowPassReslts: Float = 0.0
+    var lowPassReslts1: Float = 0.0
+    
+    // draw circle
+    var midViewX: CGFloat!
+    var midViewY: CGFloat!
+    
+    let animateDuration = 0.30
+    let visualizerColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    var barsNumber = 0
+    let barWidth = 4 // width of bar
+    let radius: CGFloat = 40
+    
+    var radians = [CGFloat]()
+    var barPoints = [CGPoint]()
+    
+    private var rectArray = [UIView]()
+    private var waveFormArray = [Int]()
+    private var initialBarHeight: CGFloat = 0.0
+    
     // atribut recording
     @IBOutlet weak var text_Topic: UITextView!
     @IBOutlet weak var view_text_topic: UIView!
@@ -129,8 +151,99 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
         circleLayer.path = circularPath.cgPath
         circleLayer.lineWidth = 2
         circleLayer.fillColor = UIColor.clear.cgColor
-        circleLayer.strokeColor = UIColor.orangeS.cgColor
+        circleLayer.strokeColor = UIColor.fadedBlue.cgColor
         circleView.layer.addSublayer(circleLayer)
+        
+        
+        // Draw Bars
+        rectArray = [UIView]()
+        
+        for i in 0..<barsNumber {
+            let angle = ((360 / barsNumber) * i) - 90
+            let point = calculatePoints(angle: angle, radius: radius)
+            let radian = angle.degreesToRadians
+            radians.append(radian)
+            barPoints.append(point)
+            
+            let rectangle = UIView(frame: CGRect(x: barPoints[i].x, y: barPoints[i].y, width: CGFloat(barWidth), height: CGFloat(barWidth)))
+            
+            initialBarHeight = CGFloat(self.barWidth)
+            print("BEFORE : width: \(rectangle.frame.width), height: \(rectangle.frame.height)")
+            rectangle.setAnchorPoint(anchorPoint: CGPoint.zero)
+            let rotationAngle = (CGFloat(( 360/barsNumber) * i)).degreesToRadians + 180.degreesToRadians
+            
+            rectangle.transform = CGAffineTransform(rotationAngle: rotationAngle)
+            
+            print("AFTER : width: \(rectangle.frame.width), height: \(rectangle.frame.height)")
+            rectangle.backgroundColor = visualizerColor
+            rectangle.layer.cornerRadius = CGFloat(rectangle.bounds.width / 2)
+            rectangle.tag = i
+            self.circleView.addSubview(rectangle)
+//            self.addSubview(rectangle)
+            rectArray.append(rectangle)
+            
+            var values = [5, 10, 15, 10, 5, 1]
+            waveFormArray = [Int]()
+            var j: Int = 0
+            for _ in 0..<barsNumber {
+                waveFormArray.append(values[j])
+                j += 1
+                if j == values.count {
+                    j = 0
+                }
+            }
+        }
+    }
+    
+    func animateAudioVisualizerWithChannel(level0: Float, level1: Float ) {
+        DispatchQueue.main.async {
+            UIView.animateKeyframes(withDuration: self.animateDuration, delay: 0, options: .beginFromCurrentState, animations: {
+                
+                for i in 0..<self.barsNumber {
+                    let channelValue: Int = Int(arc4random_uniform(2))
+                    
+                    let wavePeak: Int = Int(arc4random_uniform(UInt32(self.waveFormArray[i])))
+                    let barViewUn: UIView = self.rectArray[i]
+                    
+                    let barH = (self.circleView.frame.height / 2 ) - self.radius
+                    let scaled0 = (CGFloat(level0) * barH) / 60
+                    let scaled1 = (CGFloat(level1) * barH) / 60
+                    let calc0 = barH - scaled0
+                    let calc1 = barH - scaled1
+                    
+                    if channelValue == 0 {
+                        barViewUn.bounds.size.height = calc0
+                    } else {
+                        barViewUn.bounds.size.height = calc1
+                    }
+                    
+                    if barViewUn.bounds.height < CGFloat(4) || barViewUn.bounds.height > ((self.circleView.bounds.size.height / 2) - self.radius) {
+                        barViewUn.bounds.size.height = self.initialBarHeight + CGFloat(wavePeak)
+                    }
+                }
+                
+            }, completion: nil)
+        }
+    }
+    
+    
+    func stop() {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: self.animateDuration, delay: 0, options: .beginFromCurrentState, animations: {
+                for i in 0..<self.barsNumber {
+                    let barView = self.rectArray[i]
+                    barView.bounds.size.height = self.initialBarHeight
+                    barView.bounds.origin.y = 120 - barView.bounds.size.height
+                }
+            }, completion: nil)
+        }
+    }
+    
+    func calculatePoints(angle: Int, radius: CGFloat) -> CGPoint {
+        let barX = midViewX + cos((angle).degreesToRadians) * radius
+        let barY = midViewY + sin((angle).degreesToRadians) * radius
+        
+        return CGPoint(x: barX, y: barY)
     }
     
     func setupCircular() {
@@ -533,7 +646,9 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
         self.my_range_wpm.textColor = UIColor.orangeS
         self.konten = ""
         self.durationRecording = 0
-        self.circleView = UIView(frame: CGRect(x: view.frame.maxX / 2, y: view.frame.maxY - 600, width: 300, height: 300))
+        self.midViewX = self.view.frame.maxX / 2
+        self.midViewY = view.frame.maxY - 600
+        self.circleView = UIView(frame: CGRect(x: midViewX, y: midViewY, width: 300, height: 300))
 //        self.radarView = UIView(frame: CGRect(x: view.frame.maxX - 50, y: view.frame.maxY - 250, width: 300, height: 300))
         self.view.addSubview(circleView)
 //        self.view.addSubview(radarView)

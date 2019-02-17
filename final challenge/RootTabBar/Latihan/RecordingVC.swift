@@ -15,6 +15,29 @@ import Foundation
 
 class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsControllerDelegate, SFSpeechRecognizerDelegate, AVSpeechSynthesizerDelegate{
     
+    
+    
+    let visualizerAnimationDuration = 0.15
+    var lowPassReslts: Float = 0.0
+    var lowPassReslts1: Float = 0.0
+    
+    // draw circle
+    var midViewX: CGFloat!
+    var midViewY: CGFloat!
+    
+    let animateDuration = 0.75
+    let visualizerColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    var barsNumber = 0
+    let barWidth = 4 // width of bar
+    let radius: CGFloat = 100
+    
+    var radians = [CGFloat]()
+    var barPoints = [CGPoint]()
+    
+    private var rectArray = [UIView]()
+    private var waveFormArray = [Int]()
+    private var initialBarHeight: CGFloat = 0.0
+    
     // atribut recording
     @IBOutlet var recording_TimeLabel: UILabel!
     @IBOutlet var record_btn_ref: UIButton!
@@ -125,6 +148,7 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
             record_btn_ref.setImage(UIImage(named: "record-1"), for: .normal)
             record_btn_ref.isEnabled = false
             self.recording_TimeLabel.text = "00:00"
+            self.stop()
 //            isRecording = false
         }
         else
@@ -186,6 +210,57 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
         recognitionRequest?.endAudio()
     }
     
+    func animateAudioVisualizerWithChannel(level0: Float, level1: Float ) {
+        DispatchQueue.main.async {
+            UIView.animateKeyframes(withDuration: self.animateDuration, delay: 0, options: .beginFromCurrentState, animations: {
+                
+                for i in 0..<self.barsNumber {
+                    let channelValue: Int = Int(arc4random_uniform(2))
+                    
+                    let wavePeak: Int = Int(arc4random_uniform(UInt32(self.waveFormArray[i])))
+                    let barViewUn: UIView = self.rectArray[i]
+                    
+                    let barH = (self.circleView.frame.height / 2 ) - self.radius
+                    let scaled0 = (CGFloat(level0) * barH) / 60
+                    let scaled1 = (CGFloat(level1) * barH) / 60
+                    let calc0 = barH - scaled0
+                    let calc1 = barH - scaled1
+                    
+                    if channelValue == 0 {
+                        barViewUn.bounds.size.height = calc0
+                    } else {
+                        barViewUn.bounds.size.height = calc1
+                    }
+                    
+                    if barViewUn.bounds.height < CGFloat(4) || barViewUn.bounds.height > ((self.circleView.bounds.size.height / 2) - self.radius) {
+                        barViewUn.bounds.size.height = self.initialBarHeight + CGFloat(wavePeak)
+                    }
+                }
+                
+            }, completion: nil)
+        }
+    }
+    
+    
+    func stop() {
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: self.animateDuration, delay: 0, options: .beginFromCurrentState, animations: {
+                for i in 0..<self.barsNumber {
+                    let barView = self.rectArray[i]
+                    barView.bounds.size.height = self.initialBarHeight
+                    barView.bounds.origin.y = 120 - barView.bounds.size.height
+                }
+            }, completion: nil)
+        }
+    }
+    
+    func calculatePoints(angle: Int, radius: CGFloat) -> CGPoint {
+        let barX = midViewX + cos((angle).degreesToRadians) * radius
+        let barY = midViewY + sin((angle).degreesToRadians) * radius
+        
+        return CGPoint(x: barX, y: barY)
+    }
+    
     fileprivate func setupRadarLayer() {
         //setup radar layer
         //        let center = CGPoint(x: 185.0, y: 545.0)
@@ -205,17 +280,61 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
         circleLayer.path = circularPath.cgPath
         circleLayer.lineWidth = 2
         circleLayer.fillColor = UIColor.clear.cgColor
-        circleLayer.strokeColor = UIColor.orangeS.cgColor
+        circleLayer.strokeColor = UIColor.fadedBlue.cgColor
         circleView.layer.addSublayer(circleLayer)
+        
+        
+        // Draw Bars
+        rectArray = [UIView]()
+        
+        for i in 0..<barsNumber {
+            let angle = ((360 / barsNumber) * i) - 90
+            let point = calculatePoints(angle: angle, radius: radius)
+            let radian = angle.degreesToRadians
+            radians.append(radian)
+            barPoints.append(point)
+            
+            let rectangle = UIView(frame: CGRect(x: barPoints[i].x, y: barPoints[i].y, width: CGFloat(barWidth), height: CGFloat(barWidth)))
+            
+            initialBarHeight = CGFloat(self.barWidth)
+            print("BEFORE : width: \(rectangle.frame.width), height: \(rectangle.frame.height)")
+            rectangle.setAnchorPoint(anchorPoint: CGPoint.zero)
+            let rotationAngle = (CGFloat(( 360/barsNumber) * i)).degreesToRadians + 180.degreesToRadians
+            
+            rectangle.transform = CGAffineTransform(rotationAngle: rotationAngle)
+            
+            print("AFTER : width: \(rectangle.frame.width), height: \(rectangle.frame.height)")
+            rectangle.backgroundColor = visualizerColor
+            rectangle.layer.cornerRadius = CGFloat(rectangle.bounds.width / 2)
+            rectangle.tag = i
+            self.circleView.addSubview(rectangle)
+            
+            rectArray.append(rectangle)
+            
+            var values = [5, 10, 15, 10, 5, 1]
+            waveFormArray = [Int]()
+            var j: Int = 0
+            for _ in 0..<barsNumber {
+                waveFormArray.append(values[j])
+                j += 1
+                if j == values.count {
+                    j = 0
+                }
+            }
+        }
     }
     
     func setupCircular() {
 //        setupRadarLayer()
+        
+        self.barsNumber = 100
         setupCircleLayer()
         
         // add tap gesture
         //        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(animateCircle)))
     }
+    
+    
     
     @objc func animateCircle(from lastValue: CGFloat, to value: CGFloat){
         let animation = CABasicAnimation(keyPath: "transform.scale")
@@ -256,11 +375,15 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
         self.my_range_wpm.textColor = UIColor.orangeS
         self.konten = ""
         self.durationRecording = 0
-        self.circleView = UIView(frame: CGRect(x: 185.0, y: 300.0, width: 300, height: 300))
+        self.midViewX = 185.0
+        self.midViewY = 300.0
+        self.circleView = UIView(frame: CGRect(x: midViewX, y: midViewY, width: 300, height: 300))
         self.radarView = UIView(frame: CGRect(x: 185.0, y: 300.0, width: 300, height: 300))
         self.view.addSubview(circleView)
 //        self.view.addSubview(radarView)
         self.setupCircular()
+        
+        self.barsNumber = 30
         
         
     }
@@ -558,6 +681,7 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
         } else if self.currentTime == 63{
             startRecognitionSpeech()
         }
+        
     }
     
     func updateTimerLabel() {
@@ -570,6 +694,18 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
         recording_TimeLabel.text = totalTimeString
         self.durationRecording = Int(audioRecorder.currentTime)
         audioRecorder.updateMeters()
+        
+        
+        let ALPHA: Float = 1.05
+        let averagePowerForChannel = pow(10, (0.05 * self.audioRecorder.averagePower(forChannel: 0)))
+        
+        lowPassReslts = ALPHA * averagePowerForChannel + (1.0 - ALPHA) * lowPassReslts
+        
+        
+        let averagePowerForChannel1 = pow(10, (0.05 * self.audioRecorder.averagePower(forChannel: 1)))
+        lowPassReslts1 = ALPHA * averagePowerForChannel1 + (1.0 - ALPHA) * lowPassReslts1
+        
+        self.animateAudioVisualizerWithChannel(level0: -lowPassReslts, level1: -lowPassReslts1)
     }
     var tempResult: String = ""
     
