@@ -34,10 +34,10 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
     var midViewY: CGFloat!
     
     let animateDuration = 0.30
-    let visualizerColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    let visualizerColor = UIColor.fadedBlue
     var barsNumber = 0
     let barWidth = 4 // width of bar
-    let radius: CGFloat = 40
+    let radius: CGFloat = 100
     
     var radians = [CGFloat]()
     var barPoints = [CGPoint]()
@@ -178,7 +178,7 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
             rectangle.backgroundColor = visualizerColor
             rectangle.layer.cornerRadius = CGFloat(rectangle.bounds.width / 2)
             rectangle.tag = i
-            self.circleView.addSubview(rectangle)
+            self.view.addSubview(rectangle)
 //            self.addSubview(rectangle)
             rectArray.append(rectangle)
             
@@ -248,6 +248,7 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
     
     func setupCircular() {
 //        setupRadarLayer()
+        self.barsNumber = 90
         setupCircleLayer()
         
         
@@ -275,6 +276,13 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
         print(self.text_Topic.text)
         self.text_Topic.isEditable = false
         self.text_Topic.isScrollEnabled = true
+        
+        
+    }
+    
+    override func viewWillLayoutSubviews() {
+        
+        self.text_Topic.setContentOffset(.zero, animated: true)
     }
     
     fileprivate func defineTopic(){
@@ -562,6 +570,18 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
         record_TimeLabel.text = totalTimeString
         self.durationRecording = Int(audioRecorder.currentTime)
         audioRecorder.updateMeters()
+        
+        
+        let ALPHA: Float = 1.05
+        let averagePowerForChannel = pow(10, (0.05 * self.audioRecorder.averagePower(forChannel: 0)))
+        
+        lowPassReslts = ALPHA * averagePowerForChannel + (1.0 - ALPHA) * lowPassReslts
+        
+        
+        let averagePowerForChannel1 = pow(10, (0.05 * self.audioRecorder.averagePower(forChannel: 1)))
+        lowPassReslts1 = ALPHA * averagePowerForChannel1 + (1.0 - ALPHA) * lowPassReslts1
+        
+        self.animateAudioVisualizerWithChannel(level0: -lowPassReslts, level1: -lowPassReslts1)
     }
     var tempResult: String = ""
     
@@ -652,6 +672,7 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
 //        self.radarView = UIView(frame: CGRect(x: view.frame.maxX - 50, y: view.frame.maxY - 250, width: 300, height: 300))
         self.view.addSubview(circleView)
 //        self.view.addSubview(radarView)
+        self.barsNumber = 90
         self.setupCircular()
         
         
@@ -667,6 +688,7 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
             
             record_btn_ref.setImage(UIImage(named: "record-1"), for: .normal)
             record_btn_ref.isEnabled = false
+            self.stop()
             self.record_TimeLabel.text = "00:00"
         }
         else

@@ -35,7 +35,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lI9-bB-xvq">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lI9-bB-xvq">
                                 <rect key="frame" x="96.666666666666686" y="364.66666666666669" width="221" height="20.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="221" id="ZII-pm-4tv"/>
@@ -69,6 +69,7 @@
                         <constraints>
                             <constraint firstItem="gnH-LS-LX8" firstAttribute="leading" secondItem="zxc-VP-4Fh" secondAttribute="leading" constant="20" id="2BV-uc-PHM"/>
                             <constraint firstItem="zxc-VP-4Fh" firstAttribute="trailing" secondItem="gnH-LS-LX8" secondAttribute="trailing" constant="20" id="2wP-Z7-Tlq"/>
+                            <constraint firstItem="lI9-bB-xvq" firstAttribute="centerX" secondItem="xP7-LU-mif" secondAttribute="centerX" id="4ob-od-oiq"/>
                             <constraint firstItem="gnH-LS-LX8" firstAttribute="top" secondItem="xP7-LU-mif" secondAttribute="top" constant="423" id="5WR-2A-Hoy"/>
                             <constraint firstItem="iT9-bz-sCR" firstAttribute="top" secondItem="gnH-LS-LX8" secondAttribute="bottom" constant="36" id="5sl-dI-ff8"/>
                             <constraint firstItem="gnH-LS-LX8" firstAttribute="centerX" secondItem="lI9-bB-xvq" secondAttribute="centerX" id="C6J-rp-0aQ"/>
