@@ -20,12 +20,22 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
             LessonData(title: "Alam", subtitle: "Komodo adalah reptil spesies kadal terbesar di dunia, komodo dewasa di alam bebas pada umumnya memiliki berat 70 kilogram dengan panjang antara 2 sampai 3 meter. Nama dari reptil ini diambil dari nama habitat alaminya yaitu Pulau Komodo yang merupakan bagian dari Provinsi Nusa Tenggara Timur. Pulau Komodo mempunyai luas 390 kilometer persegi dan jumlah populasi lebih dari 2000 jiwa. Di pulau ini terdapat satu dari tujuh Pantai Merah Muda di dunia yang dikenal karena keindahan warna pasirnya yang berwarna merah muda. Pada tahun 1980, Taman Nasional Komodo didirikan dengan tujuan melindungi komodo dari kepunahan sekaligus mencegah habitat alaminya mengalami kerusakan, taman nasional ini mencakup dua pulau besar lainnya yaitu Pulau Rinca dan Pulau Padar. Pada tahun 2011, Taman Nasional Komodo dinobatkan sebagai salah satu dari Tujuh Keajaiban Dunia Baru."),
             LessonData(title: "Kesehatan", subtitle: "Kesehatan fisik merupakan suatu hal yang sangat penting, akan tetapi menjaga kesehatan mental juga merupakan hal yang tidak kalah pentingnya. Kesehatan mental yang buruk seringkali membawa orang ke jurang depresi dan memicu bunuh diri. Pada tahun 2018, Organisasi Kesehatan Dunia memperkirakan bahwa setiap 40 detik, seseorang di dunia mengakhiri hidupnya. Orang yang mengalami depresi sering kali tidak menyadari kemunculan gangguan tersebut. Depresi dapat dicegah dengan menjaga kesehatan mental dengan baik, kesehatan mental dapat dijaga dengan beberapa cara seperti lebih menerima dan menghargai diri, aktif berkegiatan seperti olahraga atau bergabung di suatu komunitas, dan mau membuka diri untuk bercerita pada orang lain."),
             LessonData(title: "", subtitle: "")
+        ],
+        [
+            LessonData(title: "Kesehatan", subtitle: "1. Angka kematian ibu melahirkan di Indonesia. \n 2. Penyebab \n \t a. Kurangnya kualitas pelayanan \n \t b. Hipertensi kehamilan \n \t c. Pernikahan dini \n 3. Solusi \n \t a. Sumber daya manusia di puskesmas \n \t b. Perbaikan edukasi \n \t c. Peran pemerintahan daerah"),
+            LessonData(title: "Budaya", subtitle: "1. Tari Saman \n 2. Asal \n 3. Arti"),
+            LessonData(title: "Ekonomi", subtitle: "1. Korupsi \n 2. Penyebab\n\t a. Faktor internal\n\t\t i. Rasa tamak\n\t\t ii. Gaya hidup boros \n\t\t iii. Moral yang lemah \n\t b. Faktor eksternal \n\t\t i. Ketidakpuasan dengan pangkat politik \n\t\t ii. Pendapatan yang dirasa kurang \n\t\t iii. Hukum yang kurang tegas.\n 3. Dampak \n\t a. Kepercayaan masyarakat menurun \n\t b. Pendapatan negara berkurang \n\t c. Pengembangan infrastruktur negara melambat \n\t d. Budaya korupsi berlanjut")
+        ],
+        [
+            LessonData(title: "Kesehatan", subtitle: "1. Angka kematian ibu melahirkan di Indonesia. \n 2. Penyebab \n \t a. Kurangnya kualitas pelayanan \n \t b. Hipertensi kehamilan \n \t c. Pernikahan dini \n 3. Solusi \n \t a. Sumber daya manusia di puskesmas \n \t b. Perbaikan edukasi \n \t c. Peran pemerintahan daerah"),
+            LessonData(title: "Budaya", subtitle: "1. Tari Saman \n2. Asal \n3. Arti"),
+            LessonData(title: "Ekonomi", subtitle: "1. Korupsi \n 2. Penyebab\n\t a. Faktor internal\n\t\t i. Rasa tamak\n\t\t ii. Gaya hidup boros \n\t\t iii. Moral yang lemah \n\t b. Faktor eksternal \n\t\t i. Ketidakpuasan dengan pangkat politik \n\t\t ii. Pendapatan yang dirasa kurang \n\t\t iii. Hukum yang kurang tegas.\n 3. Dampak \n\t a. Kepercayaan masyarakat menurun \n\t b. Pendapatan negara berkurang \n\t c. Pengembangan infrastruktur negara melambat \n\t d. Budaya korupsi berlanjut")
         ]
     ]
     var selectedIndex: IndexPath!
     
     
-    let visualizerAnimationDuration = 0.15
+    let visualizerAnimationDuration = 0.9
     var lowPassReslts: Float = 0.0
     var lowPassReslts1: Float = 0.0
     
@@ -33,7 +43,7 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
     var midViewX: CGFloat!
     var midViewY: CGFloat!
     
-    let animateDuration = 0.30
+    let animateDuration = 0.9
     let visualizerColor = UIColor.fadedBlue
     var barsNumber = 0
     let barWidth = 4 // width of bar
@@ -279,10 +289,9 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
         
         
     }
-    
-    override func viewWillLayoutSubviews() {
+    override func viewDidAppear(_ animated: Bool) {
         
-        self.text_Topic.setContentOffset(.zero, animated: true)
+        self.text_Topic.setContentOffset(.zero, animated: false)
     }
     
     fileprivate func defineTopic(){
@@ -290,7 +299,17 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
             [
                 LessonData(title: "Alam", subtitle: "Komodo adalah reptil spesies kadal terbesar di dunia, komodo dewasa di alam bebas pada umumnya memiliki berat 70 kilogram dengan panjang antara 2 sampai 3 meter. Nama dari reptil ini diambil dari nama habitat alaminya yaitu Pulau Komodo yang merupakan bagian dari Provinsi Nusa Tenggara Timur. Pulau Komodo mempunyai luas 390 kilometer persegi dan jumlah populasi lebih dari 2000 jiwa. Di pulau ini terdapat satu dari tujuh Pantai Merah Muda di dunia yang dikenal karena keindahan warna pasirnya yang berwarna merah muda. Pada tahun 1980, Taman Nasional Komodo didirikan dengan tujuan melindungi komodo dari kepunahan sekaligus mencegah habitat alaminya mengalami kerusakan, taman nasional ini mencakup dua pulau besar lainnya yaitu Pulau Rinca dan Pulau Padar. Pada tahun 2011, Taman Nasional Komodo dinobatkan sebagai salah satu dari Tujuh Keajaiban Dunia Baru."),
                 LessonData(title: "Kesehatan", subtitle: "Kesehatan fisik merupakan suatu hal yang sangat penting, akan tetapi menjaga kesehatan mental juga merupakan hal yang tidak kalah pentingnya. Kesehatan mental yang buruk seringkali membawa orang ke jurang depresi dan memicu bunuh diri. Pada tahun 2018, Organisasi Kesehatan Dunia memperkirakan bahwa setiap 40 detik, seseorang di dunia mengakhiri hidupnya. Orang yang mengalami depresi sering kali tidak menyadari kemunculan gangguan tersebut. Depresi dapat dicegah dengan menjaga kesehatan mental dengan baik, kesehatan mental dapat dijaga dengan beberapa cara seperti lebih menerima dan menghargai diri, aktif berkegiatan seperti olahraga atau bergabung di suatu komunitas, dan mau membuka diri untuk bercerita pada orang lain."),
-                LessonData(title: "", subtitle: "")
+                LessonData(title: "Sosial", subtitle: "Pengangguran merupakan isu nasional bangsa Indonesia yang hingga kini masih dalam proses menemukan solusi yang lebih baik dan efektif. Seiring pergantian presiden, banyak sekali solusi-solusi yang sudah dilakukan seperti pengadaan pelatihan untuk masyarakat umur produktif dan menggalakan program usaha bagi daerah-daerah potensi. Namun pengangguran tetap meningkat dari tahun ke tahun. Terdapat beberapa faktor yang menyebabkan adanya pengangguran seperti pertumbuhan ekonomi Indonesia tidak seimbang dengan jumlah pencari kerja yang meningkat setiap tahun, kemampuan SDM yang belum memadai, jumlah PHK yang tinggi, dan sebagainya. Adanya pengangguran yang meningkat ini tentu saja memberikan dampak negatif. Dampak tersebut diantaranya adalah meningkatnya kemiskinan dan kriminalitas serta semakin menurunnya tingkat kesehatan.Pengangguran bisa dikatakan sebagai salah satu sebab masalah-masalah lain bermunculan. Oleh karena itu harus segera ditemukan solusi pemecahan yang sesuai agar dapat meminimalisir dampak-dampak negatif di atas. Cara yang bisa dilakukan yaitu dengan memperbaiki kualitas pendidikan dan meningkatkan kesadaran orang tua agar dapat mengarahkan anak-anaknya serta mendukung minat dan bakatnya. Melalui cara ini diharapkan pengangguran dapat berkurang.")
+            ],
+            [
+                LessonData(title: "Kesehatan", subtitle: "1. Angka kematian ibu melahirkan di Indonesia. \n 2. Penyebab \n \t a. Kurangnya kualitas pelayanan \n \t b. Hipertensi kehamilan \n \t c. Pernikahan dini \n 3. Solusi \n \t a. Sumber daya manusia di puskesmas \n \t b. Perbaikan edukasi \n \t c. Peran pemerintahan daerah"),
+                LessonData(title: "Budaya", subtitle: "1. Tari Saman \n 2. Asal \n 3. Arti"),
+                LessonData(title: "Ekonomi", subtitle: "1. Korupsi \n 2. Penyebab\n\t a. Faktor internal\n\t\t i. Rasa tamak\n\t\t ii. Gaya hidup boros \n\t\t iii. Moral yang lemah \n\t b. Faktor eksternal \n\t\t i. Ketidakpuasan dengan pangkat politik \n\t\t ii. Pendapatan yang dirasa kurang \n\t\t iii. Hukum yang kurang tegas.\n 3. Dampak \n\t a. Kepercayaan masyarakat menurun \n\t b. Pendapatan negara berkurang \n\t c. Pengembangan infrastruktur negara melambat \n\t d. Budaya korupsi berlanjut")
+            ],
+            [
+                LessonData(title: "Kesehatan", subtitle: "1. Angka kematian ibu melahirkan di Indonesia. \n 2. Penyebab \n \t a. Kurangnya kualitas pelayanan \n \t b. Hipertensi kehamilan \n \t c. Pernikahan dini \n 3. Solusi \n \t a. Sumber daya manusia di puskesmas \n \t b. Perbaikan edukasi \n \t c. Peran pemerintahan daerah"),
+                LessonData(title: "Budaya", subtitle: "1. Tari Saman \n2. Asal \n3. Arti"),
+                LessonData(title: "Ekonomi", subtitle: "1. Korupsi \n 2. Penyebab\n\t a. Faktor internal\n\t\t i. Rasa tamak\n\t\t ii. Gaya hidup boros \n\t\t iii. Moral yang lemah \n\t b. Faktor eksternal \n\t\t i. Ketidakpuasan dengan pangkat politik \n\t\t ii. Pendapatan yang dirasa kurang \n\t\t iii. Hukum yang kurang tegas.\n 3. Dampak \n\t a. Kepercayaan masyarakat menurun \n\t b. Pendapatan negara berkurang \n\t c. Pengembangan infrastruktur negara melambat \n\t d. Budaya korupsi berlanjut")
             ]
         ]
     }
@@ -653,6 +672,7 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
                 self.record_btn_ref.isEnabled = isButtonEnabled
             }
         }
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         view_text_topic.layer.borderWidth = 2

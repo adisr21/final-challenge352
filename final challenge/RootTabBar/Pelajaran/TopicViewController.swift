@@ -18,6 +18,11 @@ class TopicViewController: UITableViewController {
             LessonData(title: "Alam", subtitle: "Komodo adalah reptil spesies kadal terbesar di dunia, komodo dewasa di alam bebas pada umumnya memiliki berat 70 kilogram dengan panjang antara 2 sampai 3 meter. Nama dari reptil ini diambil dari nama habitat alaminya yaitu Pulau Komodo yang merupakan bagian dari Provinsi Nusa Tenggara Timur. Pulau Komodo mempunyai luas 390 kilometer persegi dan jumlah populasi lebih dari 2000 jiwa. Di pulau ini terdapat satu dari tujuh Pantai Merah Muda di dunia yang dikenal karena keindahan warna pasirnya yang berwarna merah muda. Pada tahun 1980, Taman Nasional Komodo didirikan dengan tujuan melindungi komodo dari kepunahan sekaligus mencegah habitat alaminya mengalami kerusakan, taman nasional ini mencakup dua pulau besar lainnya yaitu Pulau Rinca dan Pulau Padar. Pada tahun 2011, Taman Nasional Komodo dinobatkan sebagai salah satu dari Tujuh Keajaiban Dunia Baru."),
             LessonData(title: "Kesehatan", subtitle: "Kesehatan fisik merupakan suatu hal yang sangat penting, akan tetapi menjaga kesehatan mental juga merupakan hal yang tidak kalah pentingnya. Kesehatan mental yang buruk seringkali membawa orang ke jurang depresi dan memicu bunuh diri. Pada tahun 2018, Organisasi Kesehatan Dunia memperkirakan bahwa setiap 40 detik, seseorang di dunia mengakhiri hidupnya. Orang yang mengalami depresi sering kali tidak menyadari kemunculan gangguan tersebut. Depresi dapat dicegah dengan menjaga kesehatan mental dengan baik, kesehatan mental dapat dijaga dengan beberapa cara seperti lebih menerima dan menghargai diri, aktif berkegiatan seperti olahraga atau bergabung di suatu komunitas, dan mau membuka diri untuk bercerita pada orang lain."),
             LessonData(title: "", subtitle: "")
+        ],
+        [
+            LessonData(title: "Kesehatan", subtitle: "1. Angka kematian ibu melahirkan di Indonesia. \n 2. Penyebab \n \t a. Kurangnya kualitas pelayanan \n \t b. Hipertensi kehamilan \n \t c. Pernikahan dini \n 3. Solusi \n \t a. Sumber daya manusia di puskesmas \n \t b. Perbaikan edukasi \n \t c. Peran pemerintahan daerah"),
+            LessonData(title: "Budaya", subtitle: "1. Tari Saman \n2. Asal \n3. Arti"),
+            LessonData(title: "Ekonomi", subtitle: "1. Korupsi \n 2. Penyebab\n\t a. Faktor internal\n\t\t i. Rasa tamak\n\t\t ii. Gaya hidup boros \n\t\t iii. Moral yang lemah \n\t b. Faktor eksternal \n\t\t i. Ketidakpuasan dengan pangkat politik \n\t\t ii. Pendapatan yang dirasa kurang \n\t\t iii. Hukum yang kurang tegas.\n 3. Dampak \n\t a. Kepercayaan masyarakat menurun \n\t b. Pendapatan negara berkurang \n\t c. Pengembangan infrastruktur negara melambat \n\t d. Budaya korupsi berlanjut")
         ]
     ]
     
@@ -26,7 +31,18 @@ class TopicViewController: UITableViewController {
             LessonData(title: "Alam", subtitle: "Komodo adalah reptil spesies kadal terbesar di dunia, komodo dewasa di alam bebas pada umumnya memiliki berat 70 kilogram dengan panjang antara 2 sampai 3 meter. Nama dari reptil ini diambil dari nama habitat alaminya yaitu Pulau Komodo yang merupakan bagian dari Provinsi Nusa Tenggara Timur. Pulau Komodo mempunyai luas 390 kilometer persegi dan jumlah populasi lebih dari 2000 jiwa. Di pulau ini terdapat satu dari tujuh Pantai Merah Muda di dunia yang dikenal karena keindahan warna pasirnya yang berwarna merah muda. Pada tahun 1980, Taman Nasional Komodo didirikan dengan tujuan melindungi komodo dari kepunahan sekaligus mencegah habitat alaminya mengalami kerusakan, taman nasional ini mencakup dua pulau besar lainnya yaitu Pulau Rinca dan Pulau Padar. Pada tahun 2011, Taman Nasional Komodo dinobatkan sebagai salah satu dari Tujuh Keajaiban Dunia Baru."),
             LessonData(title: "Kesehatan", subtitle: "Kesehatan fisik merupakan suatu hal yang sangat penting, akan tetapi menjaga kesehatan mental juga merupakan hal yang tidak kalah pentingnya. Kesehatan mental yang buruk seringkali membawa orang ke jurang depresi dan memicu bunuh diri. Pada tahun 2018, Organisasi Kesehatan Dunia memperkirakan bahwa setiap 40 detik, seseorang di dunia mengakhiri hidupnya. Orang yang mengalami depresi sering kali tidak menyadari kemunculan gangguan tersebut. Depresi dapat dicegah dengan menjaga kesehatan mental dengan baik, kesehatan mental dapat dijaga dengan beberapa cara seperti lebih menerima dan menghargai diri, aktif berkegiatan seperti olahraga atau bergabung di suatu komunitas, dan mau membuka diri untuk bercerita pada orang lain.")
         
+        ],
+        [
+            LessonData(title: "Kesehatan", subtitle: "1. Angka kematian ibu melahirkan di Indonesia. \n 2. Penyebab \n \t a. Kurangnya kualitas pelayanan \n \t b. Hipertensi kehamilan \n \t c. Pernikahan dini \n 3. Solusi \n \t a. Sumber daya manusia di puskesmas \n \t b. Perbaikan edukasi \n \t c. Peran pemerintahan daerah"),
+            LessonData(title: "Budaya", subtitle: "1. Tari Saman \n 2. Asal \n 3. Arti"),
+            LessonData(title: "Ekonomi", subtitle: "1. Korupsi \n 2. Penyebab\n\t a. Faktor internal\n\t\t i. Rasa tamak\n\t\t ii. Gaya hidup boros \n\t\t iii. Moral yang lemah \n\t b. Faktor eksternal \n\t\t i. Ketidakpuasan dengan pangkat politik \n\t\t ii. Pendapatan yang dirasa kurang \n\t\t iii. Hukum yang kurang tegas.\n 3. Dampak \n\t a. Kepercayaan masyarakat menurun \n\t b. Pendapatan negara berkurang \n\t c. Pengembangan infrastruktur negara melambat \n\t d. Budaya korupsi berlanjut")
+        ],
+        [
+            LessonData(title: "Kesehatan", subtitle: "1. Angka kematian ibu melahirkan di Indonesia. \n 2. Penyebab \n \t a. Kurangnya kualitas pelayanan \n \t b. Hipertensi kehamilan \n \t c. Pernikahan dini \n 3. Solusi \n \t a. Sumber daya manusia di puskesmas \n \t b. Perbaikan edukasi \n \t c. Peran pemerintahan daerah"),
+            LessonData(title: "Budaya", subtitle: "1. Tari Saman \n2. Asal \n3. Arti"),
+            LessonData(title: "Ekonomi", subtitle: "1. Korupsi \n 2. Penyebab\n\t a. Faktor internal\n\t\t i. Rasa tamak\n\t\t ii. Gaya hidup boros \n\t\t iii. Moral yang lemah \n\t b. Faktor eksternal \n\t\t i. Ketidakpuasan dengan pangkat politik \n\t\t ii. Pendapatan yang dirasa kurang \n\t\t iii. Hukum yang kurang tegas.\n 3. Dampak \n\t a. Kepercayaan masyarakat menurun \n\t b. Pendapatan negara berkurang \n\t c. Pengembangan infrastruktur negara melambat \n\t d. Budaya korupsi berlanjut")
         ]
+        
     
     ]
     
@@ -120,10 +136,11 @@ class TopicViewController: UITableViewController {
         if segue.destination is LatihanTopicVC
         {
             let vc = segue.destination as? LatihanTopicVC
-            if ((vc?.dataTopic = dataTopic) != nil) {
+//            if ((vc?.dataTopic = dataTopic) != nil) {
 //                vc?.dataTopic[selectedIndex.section][selectedIndex.row] = dataTopic[selectedIndex.section][selectedIndex.row]
+            vc?.dataTopic = self.dataTopic
                 vc?.selectedIndex = self.selectedIndex
-            }
+//            }
         }
     }
 }
