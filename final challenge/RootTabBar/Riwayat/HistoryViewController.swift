@@ -137,7 +137,7 @@ class HistoryViewController: UITableViewController, NSFetchedResultsControllerDe
         
         cell.labelTitle.text = audio.titleRecording
         cell.labelDetail.text = stringDate
-        cell.labelSubtitle.text = String(describing: "durasi : \(audio.durasi) detik ")
+        cell.labelSubtitle.text = "\(getCurrentTimeAsString(angka: Int(audio.durasi)))"
         cell.labelTitle.textColor = .white
         
 //        if let audioName = audio.value(forKey: "titleRecording") as? String, let dateRecording = audio.value(forKey: "date") as? Date {
@@ -146,6 +146,17 @@ class HistoryViewController: UITableViewController, NSFetchedResultsControllerDe
 //        }
         
         return cell
+    }
+    
+    func getCurrentTimeAsString(angka: Int) -> String {
+        var seconds = 0
+        var minutes = 0
+        
+        seconds = Int(angka) % 60
+        minutes = (Int(angka) / 60) % 60
+        
+        
+        return String(format: "%02d:%02d", minutes, seconds)
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
