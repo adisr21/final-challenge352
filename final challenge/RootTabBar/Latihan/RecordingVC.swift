@@ -16,7 +16,6 @@ import Foundation
 class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsControllerDelegate, SFSpeechRecognizerDelegate, AVSpeechSynthesizerDelegate{
     
     
-    
     let visualizerAnimationDuration = 0.15
     var lowPassReslts: Float = 0.0
     var lowPassReslts1: Float = 0.0
@@ -26,7 +25,7 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
     var midViewY: CGFloat!
     
     let animateDuration = 0.75
-    let visualizerColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    let visualizerColor = UIColor.fadedBlue
     var barsNumber = 0
     let barWidth = 4 // width of bar
     let radius: CGFloat = 100
@@ -297,21 +296,21 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
             let rectangle = UIView(frame: CGRect(x: barPoints[i].x, y: barPoints[i].y, width: CGFloat(barWidth), height: CGFloat(barWidth)))
             
             initialBarHeight = CGFloat(self.barWidth)
-            print("BEFORE : width: \(rectangle.frame.width), height: \(rectangle.frame.height)")
+            print("BEFORE \(i) : width: \(rectangle.frame.width), height: \(rectangle.frame.height)")
             rectangle.setAnchorPoint(anchorPoint: CGPoint.zero)
             let rotationAngle = (CGFloat(( 360/barsNumber) * i)).degreesToRadians + 180.degreesToRadians
             
             rectangle.transform = CGAffineTransform(rotationAngle: rotationAngle)
             
-            print("AFTER : width: \(rectangle.frame.width), height: \(rectangle.frame.height)")
+            print("AFTER \(i) : width: \(rectangle.frame.width), height: \(rectangle.frame.height)")
             rectangle.backgroundColor = visualizerColor
             rectangle.layer.cornerRadius = CGFloat(rectangle.bounds.width / 2)
             rectangle.tag = i
-            self.circleView.addSubview(rectangle)
+            self.view.addSubview(rectangle)
             
             rectArray.append(rectangle)
             
-            var values = [5, 10, 15, 10, 5, 1]
+            var values = [5, 10, 15, 10, 5, 1, 10, 15, 5]
             waveFormArray = [Int]()
             var j: Int = 0
             for _ in 0..<barsNumber {
@@ -327,7 +326,7 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
     func setupCircular() {
 //        setupRadarLayer()
         
-        self.barsNumber = 100
+        self.barsNumber = 90
         setupCircleLayer()
         
         // add tap gesture
@@ -383,7 +382,7 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
 //        self.view.addSubview(radarView)
         self.setupCircular()
         
-        self.barsNumber = 30
+//        self.barsNumber = 90
         
         
     }
