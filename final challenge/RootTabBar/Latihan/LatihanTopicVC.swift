@@ -27,12 +27,13 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
             LessonData(title: "Ekonomi", subtitle: "1. Korupsi \n 2. Penyebab\n\t a. Faktor internal\n\t\t i. Rasa tamak\n\t\t ii. Gaya hidup boros \n\t\t iii. Moral yang lemah \n\t b. Faktor eksternal \n\t\t i. Ketidakpuasan dengan pangkat politik \n\t\t ii. Pendapatan yang dirasa kurang \n\t\t iii. Hukum yang kurang tegas.\n 3. Dampak \n\t a. Kepercayaan masyarakat menurun \n\t b. Pendapatan negara berkurang \n\t c. Pengembangan infrastruktur negara melambat \n\t d. Budaya korupsi berlanjut")
         ],
         [
-            LessonData(title: "Kesehatan", subtitle: "1. Angka kematian ibu melahirkan di Indonesia. \n 2. Penyebab \n \t a. Kurangnya kualitas pelayanan \n \t b. Hipertensi kehamilan \n \t c. Pernikahan dini \n 3. Solusi \n \t a. Sumber daya manusia di puskesmas \n \t b. Perbaikan edukasi \n \t c. Peran pemerintahan daerah"),
-            LessonData(title: "Budaya", subtitle: "1. Tari Saman \n2. Asal \n3. Arti"),
-            LessonData(title: "Ekonomi", subtitle: "1. Korupsi \n 2. Penyebab\n\t a. Faktor internal\n\t\t i. Rasa tamak\n\t\t ii. Gaya hidup boros \n\t\t iii. Moral yang lemah \n\t b. Faktor eksternal \n\t\t i. Ketidakpuasan dengan pangkat politik \n\t\t ii. Pendapatan yang dirasa kurang \n\t\t iii. Hukum yang kurang tegas.\n 3. Dampak \n\t a. Kepercayaan masyarakat menurun \n\t b. Pendapatan negara berkurang \n\t c. Pengembangan infrastruktur negara melambat \n\t d. Budaya korupsi berlanjut")
+            LessonData(title: "Kesehatan", subtitle: "1. Aktivitas seperti apa yang anda lakukan untuk menjaga kesehatan tubuh anda? \n 2. Jenis olahraga apa yang paling anda gemari? Mengapa? \n 3. Jika Anda mempunyai kekuatan untuk menghilangkan suatu jenis penyakit di dunia ini, penyakit apakah itu? Mengapa?"),
+            LessonData(title: "Sosial", subtitle: "1. Bagaimana Anda menjelaskan pada turis yang tidak mahir berbahasa Indonesia terkait keindahan alam di Indonesia? \n 2. Bayangkan Anda baru saja bergabung di suatu perusahaan dan menjadi anggota baru di suatu tim, bagaimana Anda memperkenalkan diri Anda kepada para anggota lainnya?"),
+            LessonData(title: "Dirimu", subtitle: "1. Atribut positif apa yang ada dalam diri Anda yang Anda ingi  orang lain ketahui? \n 2. Apa makanan kesukaan Anda? Mengapa? \n 3. Hal apa yang menjadi hobi/kegemaran Anda? Bagaimana Anda mengajak orang lain untuk mencoba hal yang Anda gemari ini?")
         ]
     ]
     var selectedIndex: IndexPath!
+    var section: Int!
     
     
     let visualizerAnimationDuration = 0.9
@@ -178,13 +179,13 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
             let rectangle = UIView(frame: CGRect(x: barPoints[i].x, y: barPoints[i].y, width: CGFloat(barWidth), height: CGFloat(barWidth)))
             
             initialBarHeight = CGFloat(self.barWidth)
-            print("BEFORE : width: \(rectangle.frame.width), height: \(rectangle.frame.height)")
+//            print("BEFORE : width: \(rectangle.frame.width), height: \(rectangle.frame.height)")
             rectangle.setAnchorPoint(anchorPoint: CGPoint.zero)
             let rotationAngle = (CGFloat(( 360/barsNumber) * i)).degreesToRadians + 180.degreesToRadians
             
             rectangle.transform = CGAffineTransform(rotationAngle: rotationAngle)
             
-            print("AFTER : width: \(rectangle.frame.width), height: \(rectangle.frame.height)")
+//            print("AFTER : width: \(rectangle.frame.width), height: \(rectangle.frame.height)")
             rectangle.backgroundColor = visualizerColor
             rectangle.layer.cornerRadius = CGFloat(rectangle.bounds.width / 2)
             rectangle.tag = i
@@ -282,7 +283,10 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
         
         
         self.defineTopic()
-        self.text_Topic.text = self.dataTopic[selectedIndex.section][selectedIndex.row].subtitle
+        self.text_Topic.text = self.dataTopic[section][selectedIndex.row].subtitle
+        print("section: \(self.section)")
+        
+        print("row : \(selectedIndex.row)")
         print(self.text_Topic.text)
         self.text_Topic.isEditable = false
         self.text_Topic.isScrollEnabled = true
@@ -307,9 +311,9 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
                 LessonData(title: "Ekonomi", subtitle: "1. Korupsi \n 2. Penyebab\n\t a. Faktor internal\n\t\t i. Rasa tamak\n\t\t ii. Gaya hidup boros \n\t\t iii. Moral yang lemah \n\t b. Faktor eksternal \n\t\t i. Ketidakpuasan dengan pangkat politik \n\t\t ii. Pendapatan yang dirasa kurang \n\t\t iii. Hukum yang kurang tegas.\n 3. Dampak \n\t a. Kepercayaan masyarakat menurun \n\t b. Pendapatan negara berkurang \n\t c. Pengembangan infrastruktur negara melambat \n\t d. Budaya korupsi berlanjut")
             ],
             [
-                LessonData(title: "Kesehatan", subtitle: "1. Angka kematian ibu melahirkan di Indonesia. \n 2. Penyebab \n \t a. Kurangnya kualitas pelayanan \n \t b. Hipertensi kehamilan \n \t c. Pernikahan dini \n 3. Solusi \n \t a. Sumber daya manusia di puskesmas \n \t b. Perbaikan edukasi \n \t c. Peran pemerintahan daerah"),
-                LessonData(title: "Budaya", subtitle: "1. Tari Saman \n2. Asal \n3. Arti"),
-                LessonData(title: "Ekonomi", subtitle: "1. Korupsi \n 2. Penyebab\n\t a. Faktor internal\n\t\t i. Rasa tamak\n\t\t ii. Gaya hidup boros \n\t\t iii. Moral yang lemah \n\t b. Faktor eksternal \n\t\t i. Ketidakpuasan dengan pangkat politik \n\t\t ii. Pendapatan yang dirasa kurang \n\t\t iii. Hukum yang kurang tegas.\n 3. Dampak \n\t a. Kepercayaan masyarakat menurun \n\t b. Pendapatan negara berkurang \n\t c. Pengembangan infrastruktur negara melambat \n\t d. Budaya korupsi berlanjut")
+                LessonData(title: "Kesehatan", subtitle: "1. Aktivitas seperti apa yang anda lakukan untuk menjaga kesehatan tubuh anda? \n 2. Jenis olahraga apa yang paling anda gemari? Mengapa? \n 3. Jika Anda mempunyai kekuatan untuk menghilangkan suatu jenis penyakit di dunia ini, penyakit apakah itu? Mengapa?"),
+                LessonData(title: "Sosial", subtitle: "1. Bagaimana Anda menjelaskan pada turis yang tidak mahir berbahasa Indonesia terkait keindahan alam di Indonesia? \n 2. Bayangkan Anda baru saja bergabung di suatu perusahaan dan menjadi anggota baru di suatu tim, bagaimana Anda memperkenalkan diri Anda kepada para anggota lainnya?"),
+                LessonData(title: "Dirimu", subtitle: "1. Atribut positif apa yang ada dalam diri Anda yang Anda ingi  orang lain ketahui? \n 2. Apa makanan kesukaan Anda? Mengapa? \n 3. Hal apa yang menjadi hobi/kegemaran Anda? Bagaimana Anda mengajak orang lain untuk mencoba hal yang Anda gemari ini?")
             ]
         ]
     }

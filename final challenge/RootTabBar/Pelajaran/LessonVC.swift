@@ -119,6 +119,7 @@ class LessonVC: UITableViewController {
 
 
     }
+    var section: Int!
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let VC=segue.destination as? TopicViewController
         {
@@ -126,6 +127,7 @@ class LessonVC: UITableViewController {
             if let dataTopic = dataTopic[headline.title]
             {
                 VC.dataTopic = dataTopic
+                VC.section = selectedIndex.row
             }
         }
     }

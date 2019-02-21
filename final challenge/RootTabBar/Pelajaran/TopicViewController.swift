@@ -12,7 +12,8 @@ class TopicViewController: UITableViewController {
 
     let sectionTitles = ["Membaca Teks"]
     var selectedIndex : IndexPath!
-
+    var section: Int!
+    
     var dataTopic = [
         [
             LessonData(title: "Alam", subtitle: "Komodo adalah reptil spesies kadal terbesar di dunia, komodo dewasa di alam bebas pada umumnya memiliki berat 70 kilogram dengan panjang antara 2 sampai 3 meter. Nama dari reptil ini diambil dari nama habitat alaminya yaitu Pulau Komodo yang merupakan bagian dari Provinsi Nusa Tenggara Timur. Pulau Komodo mempunyai luas 390 kilometer persegi dan jumlah populasi lebih dari 2000 jiwa. Di pulau ini terdapat satu dari tujuh Pantai Merah Muda di dunia yang dikenal karena keindahan warna pasirnya yang berwarna merah muda. Pada tahun 1980, Taman Nasional Komodo didirikan dengan tujuan melindungi komodo dari kepunahan sekaligus mencegah habitat alaminya mengalami kerusakan, taman nasional ini mencakup dua pulau besar lainnya yaitu Pulau Rinca dan Pulau Padar. Pada tahun 2011, Taman Nasional Komodo dinobatkan sebagai salah satu dari Tujuh Keajaiban Dunia Baru."),
@@ -23,7 +24,8 @@ class TopicViewController: UITableViewController {
             LessonData(title: "Kesehatan", subtitle: "1. Angka kematian ibu melahirkan di Indonesia. \n 2. Penyebab \n \t a. Kurangnya kualitas pelayanan \n \t b. Hipertensi kehamilan \n \t c. Pernikahan dini \n 3. Solusi \n \t a. Sumber daya manusia di puskesmas \n \t b. Perbaikan edukasi \n \t c. Peran pemerintahan daerah"),
             LessonData(title: "Budaya", subtitle: "1. Tari Saman \n2. Asal \n3. Arti"),
             LessonData(title: "Ekonomi", subtitle: "1. Korupsi \n 2. Penyebab\n\t a. Faktor internal\n\t\t i. Rasa tamak\n\t\t ii. Gaya hidup boros \n\t\t iii. Moral yang lemah \n\t b. Faktor eksternal \n\t\t i. Ketidakpuasan dengan pangkat politik \n\t\t ii. Pendapatan yang dirasa kurang \n\t\t iii. Hukum yang kurang tegas.\n 3. Dampak \n\t a. Kepercayaan masyarakat menurun \n\t b. Pendapatan negara berkurang \n\t c. Pengembangan infrastruktur negara melambat \n\t d. Budaya korupsi berlanjut")
-        ]
+        ],
+        
     ]
     
     var topicDetail = [
@@ -38,9 +40,9 @@ class TopicViewController: UITableViewController {
             LessonData(title: "Ekonomi", subtitle: "1. Korupsi \n 2. Penyebab\n\t a. Faktor internal\n\t\t i. Rasa tamak\n\t\t ii. Gaya hidup boros \n\t\t iii. Moral yang lemah \n\t b. Faktor eksternal \n\t\t i. Ketidakpuasan dengan pangkat politik \n\t\t ii. Pendapatan yang dirasa kurang \n\t\t iii. Hukum yang kurang tegas.\n 3. Dampak \n\t a. Kepercayaan masyarakat menurun \n\t b. Pendapatan negara berkurang \n\t c. Pengembangan infrastruktur negara melambat \n\t d. Budaya korupsi berlanjut")
         ],
         [
-            LessonData(title: "Kesehatan", subtitle: "1. Angka kematian ibu melahirkan di Indonesia. \n 2. Penyebab \n \t a. Kurangnya kualitas pelayanan \n \t b. Hipertensi kehamilan \n \t c. Pernikahan dini \n 3. Solusi \n \t a. Sumber daya manusia di puskesmas \n \t b. Perbaikan edukasi \n \t c. Peran pemerintahan daerah"),
-            LessonData(title: "Budaya", subtitle: "1. Tari Saman \n2. Asal \n3. Arti"),
-            LessonData(title: "Ekonomi", subtitle: "1. Korupsi \n 2. Penyebab\n\t a. Faktor internal\n\t\t i. Rasa tamak\n\t\t ii. Gaya hidup boros \n\t\t iii. Moral yang lemah \n\t b. Faktor eksternal \n\t\t i. Ketidakpuasan dengan pangkat politik \n\t\t ii. Pendapatan yang dirasa kurang \n\t\t iii. Hukum yang kurang tegas.\n 3. Dampak \n\t a. Kepercayaan masyarakat menurun \n\t b. Pendapatan negara berkurang \n\t c. Pengembangan infrastruktur negara melambat \n\t d. Budaya korupsi berlanjut")
+            LessonData(title: "Kesehatan", subtitle: "1. Aktivitas seperti apa yang anda lakukan untuk menjaga kesehatan tubuh anda? \n 2. Jenis olahraga apa yang paling anda gemari? Mengapa? \n 3. Jika Anda mempunyai kekuatan untuk menghilangkan suatu jenis penyakit di dunia ini, penyakit apakah itu? Mengapa?"),
+            LessonData(title: "Sosial", subtitle: "1. Bagaimana Anda menjelaskan pada turis yang tidak mahir berbahasa Indonesia terkait keindahan alam di Indonesia? \n 2. Bayangkan Anda baru saja bergabung di suatu perusahaan dan menjadi anggota baru di suatu tim, bagaimana Anda memperkenalkan diri Anda kepada para anggota lainnya?"),
+            LessonData(title: "Dirimu", subtitle: "1. Atribut positif apa yang ada dalam diri Anda yang Anda ingi  orang lain ketahui? \n 2. Apa makanan kesukaan Anda? Mengapa? \n 3. Hal apa yang menjadi hobi/kegemaran Anda? Bagaimana Anda mengajak orang lain untuk mencoba hal yang Anda gemari ini?")
         ]
         
     
@@ -125,6 +127,7 @@ class TopicViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex = indexPath
+//        self.section = selectedIndex.section
         //selectedTopic()
         self.performSegue(withIdentifier: "recordTopic", sender: self)
         
@@ -140,6 +143,9 @@ class TopicViewController: UITableViewController {
 //                vc?.dataTopic[selectedIndex.section][selectedIndex.row] = dataTopic[selectedIndex.section][selectedIndex.row]
             vc?.dataTopic = self.dataTopic
                 vc?.selectedIndex = self.selectedIndex
+            vc?.section = self.section
+            print("prepare section TVC : \(self.section)")
+            
 //            }
         }
     }

@@ -296,13 +296,13 @@ class RecordingVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResultsCo
             let rectangle = UIView(frame: CGRect(x: barPoints[i].x, y: barPoints[i].y, width: CGFloat(barWidth), height: CGFloat(barWidth)))
             
             initialBarHeight = CGFloat(self.barWidth)
-            print("BEFORE \(i) : width: \(rectangle.frame.width), height: \(rectangle.frame.height)")
+//            print("BEFORE \(i) : width: \(rectangle.frame.width), height: \(rectangle.frame.height)")
             rectangle.setAnchorPoint(anchorPoint: CGPoint.zero)
             let rotationAngle = (CGFloat(( 360/barsNumber) * i)).degreesToRadians + 180.degreesToRadians
             
             rectangle.transform = CGAffineTransform(rotationAngle: rotationAngle)
             
-            print("AFTER \(i) : width: \(rectangle.frame.width), height: \(rectangle.frame.height)")
+//            print("AFTER \(i) : width: \(rectangle.frame.width), height: \(rectangle.frame.height)")
             rectangle.backgroundColor = visualizerColor
             rectangle.layer.cornerRadius = CGFloat(rectangle.bounds.width / 2)
             rectangle.tag = i
