@@ -62,9 +62,7 @@ class LatihanTopicVC: UIViewController, AVAudioRecorderDelegate, NSFetchedResult
     @IBOutlet weak var view_text_topic: UIView!
     @IBOutlet weak var record_btn_ref: UIButton!
     @IBOutlet weak var record_TimeLabel: UILabel!
-//    @IBOutlet var play_btn_ref: UIButton!
-//    @IBOutlet var background_text: UIView!
-//    @IBOutlet var text_semangat: UILabel!
+
     @IBOutlet var my_range_wpm: UILabel!
     @IBOutlet var titleNavBar: UINavigationItem!
     

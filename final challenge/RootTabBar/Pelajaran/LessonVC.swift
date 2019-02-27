@@ -10,6 +10,8 @@ import UIKit
 
 class LessonVC: UITableViewController {
 
+
+    
     var selectedIndex : IndexPath!
     let sectionTitles = ["Kecepatan Berbicara"]
 
@@ -70,36 +72,88 @@ class LessonVC: UITableViewController {
         (view as! UITableViewHeaderFooterView).textLabel?.textColor=UIColor.white
     }
     
-//    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-//        cell.backgroundColor = UIColor.clear
-//    }
+
 
     override func viewWillAppear(_ animated: Bool) {
         navigationController?.navigationBar.prefersLargeTitles=true
         navigationItem.largeTitleDisplayMode = .automatic
         navigationItem.title="Pelajaran"
+        
     }
 
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "LessonCell", for: indexPath)
         let headline = self.dataLesson[indexPath.section][indexPath.row]
+        let backgroundView = UIView()
         let titleLabel = (cell.viewWithTag(101) as! UILabel)
         let descriptionLabel =  (cell.viewWithTag(102) as! UILabel)
-        let backgroundView = UIView()
+        let viewBeautifikasi=(cell.viewWithTag(103) as! UIView)
+        viewBeautifikasi.layer.borderWidth = 2
+        viewBeautifikasi.layer.backgroundColor=#colorLiteral(red: 0.1481781304, green: 0.1530496776, blue: 0.1572969854, alpha: 1)
+        viewBeautifikasi.clipsToBounds = true
+        viewBeautifikasi.layer.cornerRadius = 10.0
+        viewBeautifikasi.layer.borderColor = UIColor.clear.cgColor
         titleLabel.text = headline.title
-        titleLabel.textColor=#colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
-  //      titleLabel.tintColor=#colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+        titleLabel.textColor = .orange
         descriptionLabel.text = headline.subtitle
         descriptionLabel.textColor=#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         cell.backgroundColor = UIColor.clear
-        backgroundView.backgroundColor = .darkGray
-        cell.selectedBackgroundView = backgroundView
+        
+        cell.selectionStyle = .none
+        
+        //backgroundView.backgroundColor = .red
+        //cell.selectedBackgroundView?.backgroundColor = .red
+        //cell.tintColor = .red
+//        let img = UIImage(named: "right-arrow")!
+//        let imgView:UIImageView = UIImageView()
+//        imgView.contentMode = UIView.ContentMode.scaleAspectFill
+//        imgView.frame.size.width = 10.0
+//        imgView.frame.size.height = 10.0
+//        imgView.image = img
+//        imgView.image = imgView.image!.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+        //imgView.tintColor = UIColor.orange
+        //cell.accessoryView = imgView
 
+//        if(cell.isSelected){
+//            viewBeautifikasi.layer.backgroundColor = UIColor.red.cgColor
+//            cell.backgroundColor=UIColor.red
+//        }else{
+//            cell.backgroundColor = UIColor.clear
+//        }
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+        let cell  = tableView.cellForRow(at: indexPath)
+        let viewBeautifikasi=(cell?.viewWithTag(103) as! UIView)
+        //cell!.contentView.backgroundColor = .red
+        viewBeautifikasi.layer.backgroundColor=UIColor.red.cgColor
+    }
 
+    override func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
+        let cell  = tableView.cellForRow(at: indexPath)
+        cell!.contentView.backgroundColor = .clear
+        let viewBeautifikasi=(cell?.viewWithTag(103) as! UIView)
+        viewBeautifikasi.layer.backgroundColor=#colorLiteral(red: 0.1481781304, green: 0.1530496776, blue: 0.1572969854, alpha: 1)
+        
+    }
+    
+    
+    // if tableView is set in attribute inspector with selection to multiple Selection it should work.
+    
+    // Just set it back in deselect
+    
+//    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+//        var cellToDeSelect:UITableViewCell = tableView.cellForRowAtIndexPath(indexPath as IndexPath)!
+//        cellToDeSelect.contentView.backgroundColor = UIColor.blue
+//    }
+    
+    
+    //colorForCellUnselected is just a var in my class
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return sectionTitles.count
     }
@@ -116,7 +170,9 @@ class LessonVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedIndex=indexPath
         self.performSegue(withIdentifier: "TopicVC", sender: self)
-
+        var selectedCell:UITableViewCell = tableView.cellForRow(at: indexPath)!
+        //selectedCell.contentView.backgroundColor = UIColor.red
+        //selectedCell.accessoryView?.tintColor = UIColor.red
 
     }
     var section: Int!

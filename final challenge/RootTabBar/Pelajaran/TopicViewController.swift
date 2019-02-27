@@ -44,8 +44,6 @@ class TopicViewController: UITableViewController {
             LessonData(title: "Sosial", subtitle: "1. Bagaimana Anda menjelaskan pada turis yang tidak mahir berbahasa Indonesia terkait keindahan alam di Indonesia? \n 2. Bayangkan Anda baru saja bergabung di suatu perusahaan dan menjadi anggota baru di suatu tim, bagaimana Anda memperkenalkan diri Anda kepada para anggota lainnya?"),
             LessonData(title: "Dirimu", subtitle: "1. Atribut positif apa yang ada dalam diri Anda yang Anda ingi  orang lain ketahui? \n 2. Apa makanan kesukaan Anda? Mengapa? \n 3. Hal apa yang menjadi hobi/kegemaran Anda? Bagaimana Anda mengajak orang lain untuk mencoba hal yang Anda gemari ini?")
         ]
-        
-    
     ]
     
     override func viewDidLoad() {

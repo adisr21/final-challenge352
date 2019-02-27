@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E1B62B2221413AC005B59AA /* LatihanPakeTopik.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E1B62B1221413AC005B59AA /* LatihanPakeTopik.swift */; };
 		1EB5D3D8220AD0B9000A5C44 /* AlvaTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB5D3D7220AD0B9000A5C44 /* AlvaTesting.swift */; };
 		1EF1D5DC220BD52700EF8BAB /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF1D5D8220BD52600EF8BAB /* DateTableViewCell.swift */; };
 		1EF1D5DD220BD52700EF8BAB /* HistoryDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EF1D5D9220BD52700EF8BAB /* HistoryDetail.swift */; };
@@ -110,7 +109,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1E1B62B1221413AC005B59AA /* LatihanPakeTopik.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatihanPakeTopik.swift; sourceTree = "<group>"; };
 		1EB5D3D7220AD0B9000A5C44 /* AlvaTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlvaTesting.swift; sourceTree = "<group>"; };
 		1EF1D5D8220BD52600EF8BAB /* DateTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
 		1EF1D5D9220BD52700EF8BAB /* HistoryDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryDetail.swift; sourceTree = "<group>"; };
@@ -379,7 +377,6 @@
 		3C378169220ABFD100225723 /* Pelajaran */ = {
 			isa = PBXGroup;
 			children = (
-				1E1B62B1221413AC005B59AA /* LatihanPakeTopik.swift */,
 				1EF1D64C220BD89600EF8BAB /* TopicViewController.swift */,
 				1EF1D5E0220BD54400EF8BAB /* LessonVC.swift */,
 				3C378165220ABFBC00225723 /* Pelajaran.storyboard */,
@@ -630,7 +627,6 @@
 				1EF1D64D220BD89600EF8BAB /* TopicViewController.swift in Sources */,
 				3C31E69A220AE3AB00E33910 /* FuncAndStuffs.swift in Sources */,
 				3C378135220ABC9F00225723 /* AppDelegate.swift in Sources */,
-				1E1B62B2221413AC005B59AA /* LatihanPakeTopik.swift in Sources */,
 				1EB5D3D8220AD0B9000A5C44 /* AlvaTesting.swift in Sources */,
 				1EF1D5E1220BD54400EF8BAB /* LessonVC.swift in Sources */,
 				3C6E38A1221265FC00F0FB44 /* RootTabBarViewController.swift in Sources */,
@@ -826,7 +822,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6QR34RC9H5;
+				DEVELOPMENT_TEAM = 9NK5K8792B;
 				INFOPLIST_FILE = "final challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -844,7 +840,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 6QR34RC9H5;
+				DEVELOPMENT_TEAM = 9NK5K8792B;
 				INFOPLIST_FILE = "final challenge/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
