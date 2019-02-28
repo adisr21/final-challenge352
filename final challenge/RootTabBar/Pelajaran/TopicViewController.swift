@@ -75,21 +75,30 @@ class TopicViewController: UITableViewController {
         navigationItem.title="Topik"
     }
     
-    
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TopicCell", for: indexPath)
         let headline = self.dataTopic[indexPath.section][indexPath.row]
         let titleLabel = (cell.viewWithTag(101) as! UILabel)
-        //let descriptionLabel =  (cell.viewWithTag(102) as! UILabel)
+        let descriptionLabel =  (cell.viewWithTag(102) as! UILabel)
         let backgroundView = UIView()
         titleLabel.text = headline.title
         titleLabel.textColor=#colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
-        //descriptionLabel.text = headline.subtitle
-        //descriptionLabel.textColor=#colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+        descriptionLabel.text = headline.subtitle
+        descriptionLabel.textColor=#colorLiteral(red: 1, green: 0.5763723254, blue: 0, alpha: 1)
+        let viewBeautifikasi=(cell.viewWithTag(103) as! UIView)
+        viewBeautifikasi.layer.borderWidth = 2
+        viewBeautifikasi.layer.backgroundColor=#colorLiteral(red: 0.1481781304, green: 0.1530496776, blue: 0.1572969854, alpha: 1)
+        viewBeautifikasi.clipsToBounds = true
+        viewBeautifikasi.layer.cornerRadius = 10.0
+        viewBeautifikasi.layer.borderColor = UIColor.clear.cgColor
+        titleLabel.text = headline.title
+        titleLabel.textColor = .orange
+        descriptionLabel.text = headline.subtitle
+        descriptionLabel.textColor=#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         cell.backgroundColor = UIColor.clear
-        backgroundView.backgroundColor = .darkGray
-        cell.selectedBackgroundView = backgroundView
+        
+        cell.selectionStyle = .none
+        
         
         return cell
     }

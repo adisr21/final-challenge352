@@ -130,7 +130,7 @@ class LessonVC: UITableViewController {
         let cell  = tableView.cellForRow(at: indexPath)
         let viewBeautifikasi=(cell?.viewWithTag(103) as! UIView)
         //cell!.contentView.backgroundColor = .red
-        viewBeautifikasi.layer.backgroundColor=UIColor.red.cgColor
+        viewBeautifikasi.layer.backgroundColor=UIColor.orange.cgColor
     }
 
     override func tableView(_ tableView: UITableView, didUnhighlightRowAt indexPath: IndexPath) {
